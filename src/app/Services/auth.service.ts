@@ -11,6 +11,7 @@ export class AuthService {
   private url = 'http://127.0.0.1:8000/api/auth'
 
   userToken: string;
+  
   constructor(private http: HttpClient) { 
     this.readToken();
   }
