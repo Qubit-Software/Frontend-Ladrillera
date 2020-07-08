@@ -1,3 +1,13 @@
+@font-face {
+    font-family: "helveticaNowMicro-Regular";
+    src: url("../../../assets/Fonts/HelveticaNowMicro-Regular.otf");
+  }
+
+@font-face {
+    font-family: "Mark-bold";
+    src: url("../../../assets/Fonts/Mark-Bold.ttf");
+  }
+
 .container-fluid {
     display: flex; 
     justify-content:center;
@@ -16,9 +26,10 @@
     width: 100%;
 }
 #titleLogin{
-    font-size: 20px;
+    font-family: "Mark-bold";
+    font-size: 25px;
     margin: 2rem 0rem 3rem 0rem;
-    font-weight: bold;
+    font-weight: bolder;
 }
 #logoLadrillera{
     margin: 1rem 0rem 3rem 0rem;
@@ -30,19 +41,43 @@
     background-color: transparent;
     border-radius: 0px;
     color:rgb(160, 160, 160) ;
+    font-family: "Mark-bold";
     font-size: 20px;
     font-weight: bolder;
 }
 .form-control:focus{
+    font-size: 20px;
     box-shadow: none;
+    font-family: "helveticaNowMicro-Regular";
 }
 #forgotPassword{
+    font-family: "Mark-bold";
     text-align: left;
     font-weight: bold;
 }
 .btn{
+    font-family: "Mark-bold";
     background: red;
     color: white;
     border-radius: 10px;
     padding: 6px 32px 6px 32px;
 }
+#copyright{
+    font-size: 1rem;
+    font-family: "helveticaNowMicro-Regular";
+}
+
+@media (max-width: 600px) {
+    .container-fluid {
+        margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 320px) {
+    .container-fluid {
+        margin-top: 0px;
+    }
+    #titleLogin{
+        margin: 1rem 0rem 1rem 0rem;
+    }
+  }
