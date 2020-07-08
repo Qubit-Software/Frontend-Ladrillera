@@ -6,13 +6,17 @@
                 <img id="logoLadrillera" class="img-fluid" src="../../../assets/Logo.png" alt="Logo Ladrillera 21">
             </picture>
 
-            <form>
+            <form (ngSubmit)="onSubmit( f )" #f="ngForm" class="">
 
-                <div class="input-group my-4 px-5">
-                    <input type="text" class="form-control" placeholder="Correo">
+                <span *ngIf="f.submitted && f.controls['email'].errors"  class="text-danger">Algo anda mal con tú correo</span>
+                <div class="input-group mb-4 px-5">
+                    <input type="mail" [(ngModel)]="usuario.email" minlength="3" name="email" required email
+                        class="form-control" placeholder="Correo">
                 </div>
-                <div class="input-group my-4 px-5">
-                    <input type="password" class="form-control" placeholder="Contraseña">
+                <span *ngIf="f.submitted && f.controls['password'].errors" class="text-danger">Algo anda mal con tú contraseña</span>
+                <div class="input-group mb-4 px-5">
+                    <input type="password" [(ngModel)]="usuario.password" minlength="6" name="password" required
+                        class="form-control" placeholder="Contraseña">
                 </div>
                 <div id="forgotPassword" class="px-5 pt-3">
                     <span>
@@ -23,7 +27,7 @@
 
                 <div class="container-login100-form-btn m-t-17">
                     <button class="btn mt-5" type="submit">
-                        Ingresar
+                        Continuar
                     </button>
                 </div>
 
