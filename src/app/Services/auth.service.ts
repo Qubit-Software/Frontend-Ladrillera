@@ -6,20 +6,20 @@ import { UsuarioModel } from '../models/usuario.model';
   providedIn: 'root'
 })
 export class AuthService {
-  private url='http://127.0.0.1:8000/api/auth'
+  private url = 'http://127.0.0.1:8000/api/auth'
 
 
-  constructor( private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  logout(){
+  logout() {
 
   }
 
-  login( usuario: UsuarioModel){
+  login(usuario: UsuarioModel) {
 
-    const authData={
+    const authData = {
       ...usuario,
-      remember_me:true
+      remember_me: true
     };
 
     return this.http.post(
@@ -29,7 +29,18 @@ export class AuthService {
 
   }
 
-  register( usuario: UsuarioModel){
+  register(usuario: UsuarioModel, nombre,  contraseña) {
+
+    const authData = {
+      name: nombre,
+      ...usuario,
+      password_confirmation: contraseña
+    };
+
+    return this.http.post(
+      `${this.url}/signup`,
+      authData
+    )
 
   }
 }
