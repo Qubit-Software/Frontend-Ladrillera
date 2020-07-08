@@ -8,12 +8,12 @@
 
             <form (ngSubmit)="onSubmit( f )" #f="ngForm" class="">
 
-                <span *ngIf="f.submitted && f.controls['email'].errors"  class="text-danger">Algo anda mal con tú correo</span>
+                <span *ngIf="f.submitted && f.controls['email'].errors"  class="text-danger animated fadeIn">Algo anda mal con tú correo</span>
                 <div class="input-group mb-4 px-5">
                     <input type="mail" [(ngModel)]="usuario.email" minlength="3" name="email" required email
                         class="form-control" placeholder="Correo">
                 </div>
-                <span *ngIf="f.submitted && f.controls['password'].errors" class="text-danger">Algo anda mal con tú contraseña</span>
+                <span *ngIf="f.submitted && f.controls['password'].errors" class="text-danger animated fadeIn">Algo anda mal con tú contraseña</span>
                 <div class="input-group mb-4 px-5">
                     <input type="password" [(ngModel)]="usuario.password" minlength="6" name="password" required
                         class="form-control" placeholder="Contraseña">
