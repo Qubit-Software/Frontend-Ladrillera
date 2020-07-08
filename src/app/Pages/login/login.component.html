@@ -1,12 +1,12 @@
-<div class="container-fluid">
-    <div id="loginBox" class="row text-center">
+<div class="container-fluid animated fadeInLeft">
+    <div id="loginBox" class="row text-center ">
         <div id="contentLogin" class="col-lg">
             <h1 id="titleLogin" class="">iniciar Sesión</h1>
             <picture>
                 <img id="logoLadrillera" class="img-fluid" src="../../../assets/Logo.png" alt="Logo Ladrillera 21">
             </picture>
 
-            <form (ngSubmit)="onSubmit( f )" #f="ngForm" class="">
+            <form (ngSubmit)="login( f )" #f="ngForm" class="">
 
                 <span *ngIf="f.submitted && f.controls['email'].errors"  class="text-danger animated fadeIn">Algo anda mal con tú correo</span>
                 <div class="input-group mb-4 px-5">
