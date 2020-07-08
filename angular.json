@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Ladrillera21"
+    }
+  },
+  "defaultProject": "Ladrillera21",
+  "cli": {
+    "analytics": "b2646d67-3f33-4f96-8e70-392dc50e0797"
+  }
 }
