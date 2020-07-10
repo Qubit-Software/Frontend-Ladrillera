@@ -1,0 +1,142 @@
+#containerNav{
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+#searchButton{
+    border: 1px solid rgb(170, 167, 167);
+    border-radius: 20px;
+    padding: 0px 15px 0px 15px;
+}
+#userLogo{
+    border: 1px solid rgb(170, 167, 167);
+    border-radius: 50px;
+    padding: 3px;
+}
+
+
+.dropdown-menu{
+    min-width: 13rem;
+}
+.dropdown-submenu:active .dropdown-menu{
+    display: flex;
+    flex-direction: column;
+}
+.dropdown-submenu:hover .dropdown-menu, .dropdown-submenu:focus .dropdown-menu{
+    display: flex;
+    flex-direction: column;
+}
+@media (max-width: 992px) {
+    .dropdown-menu{
+        width: 50%;
+    }
+    .dropdown-menu .dropdown-submenu{
+        width: auto;
+    }
+}
+/*Nav bar styles ends*/
+#leftMenu{
+    background: #f8f9fa;
+    height: 88vh;
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.list-group-item{
+    border: none;
+    background: transparent;
+}
+
+#icons, #titles{
+    vertical-align: middle;
+    display: inline-block;
+}
+#titles{
+    margin: auto;
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+
+/**/
+@font-face {
+    font-family: "helveticaNowMicro-Regular";
+    src: url("../../../assets/Fonts/HelveticaNowMicro-Regular.otf");
+  }
+
+@font-face {
+    font-family: "Mark-bold";
+    src: url("../../../assets/Fonts/Mark-Bold.ttf");
+  }
+
+  .verticalCenter {
+    min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+    min-height: 100%; /* These two lines are counted as one :-)       */
+  
+    display: flex;
+    align-items: center;
+  }
+#containerBox {
+    display: flex; 
+    justify-content:center;
+    
+}
+#loginBox{
+    display: flex;
+    justify-content:center ;
+    background: rgb(233, 232, 232);
+    height: 39rem;
+    width: 40rem;
+    border-radius: 10px;
+}
+#contentLogin{
+    width: 100%;
+}
+#titleLogin{
+    font-family: "Mark-bold";
+    font-size: 25px;
+    margin: 2rem 0rem 3rem 0rem;
+    font-weight: bolder;
+}
+#logoLadrillera{
+    margin: 1rem 0rem 3rem 0rem;
+}
+.form-control{
+    outline: none;
+    border-width: 0 0 2px;
+    border-color: rgb(209, 209, 209);
+    background-color: transparent;
+    border-radius: 0px;
+    color:rgb(160, 160, 160) ;
+    font-family: "Mark-bold";
+    font-size: 20px;
+    font-weight: bolder;
+}
+.form-control:focus{
+    font-size: 20px;
+    box-shadow: none;
+    font-family: "helveticaNowMicro-Regular";
+}
+.btn{
+    font-family: "Mark-bold";
+    background: red;
+    color: white;
+    border-radius: 10px;
+    padding: 6px 32px 6px 32px;
+}
+
+
+@media (max-width: 600px) {
+    .container-fluid {
+        margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 320px) {
+    .container-fluid {
+        margin-top: 0px;
+    }
+    #titleLogin{
+        margin: 1rem 0rem 1rem 0rem;
+    }
+  }
