@@ -8,11 +8,17 @@
     src: url("../../../assets/Fonts/Mark-Bold.ttf");
   }
 
+  .verticalCenter {
+    min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+    min-height: 100vh; /* These two lines are counted as one :-)       */
+  
+    display: flex;
+    align-items: center;
+  }
 .container-fluid {
     display: flex; 
     justify-content:center;
-    margin-top: 0rem;
-
+    
 }
 #loginBox{
     display: flex;
