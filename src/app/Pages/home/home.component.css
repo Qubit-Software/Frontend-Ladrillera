@@ -39,7 +39,13 @@
     border-width: 0 0 0px;
     padding: .25rem;
 }
-
+.list-group-item a{
+    color: #212529;
+}
+.list-group-item a:hover {
+    color: #0d0e0e;
+    text-decoration: none;
+}
 #icons, #titles{
     vertical-align: middle;
     display: inline-block;
