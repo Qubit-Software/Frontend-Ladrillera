@@ -34,12 +34,14 @@
         <!--Main Content Starts-->
         <div class="col-md-12 col-lg-10">
 
-            <div class="verticalCenter">
+            <div class="verticalCenter my-3">
                 <div id="containerBox" class="container animated fadeInRight ">
                     <div id="createEmployeeBox" class="row text-center ">
                         <div id="contentCreateEmployee" class="col-lg shadow-lg rounded">
                             <h1 id="titleCreateEmployee" class="titles">Registrar empleado</h1>
-                            <form class="">
+
+                            <!--Form Starts-->
+                            <form (ngSubmit)="login( f )" #f="ngForm" class="">
                                 <div class="input-group mb-4 px-5">
                                     <div class="form-row align-items-center">
                                         <div class="col-6 my-1">
@@ -52,11 +54,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="input-group mb-4 px-5">
-                                    <input type="mail" minlength="3" name="email" required email class="form-control"
-                                        placeholder="Correo">
-                                </div>
-
 
                                 <div class="input-group mb-4 px-5">
                                     <div class="form-row align-items-center">
@@ -71,10 +68,27 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="input-group mb-4 px-5">
-                                    <input type="text" minlength="3" name="telefono" required email class="form-control"
-                                        placeholder="Telefono">
+                                    <div class="form-row align-items-center">
+                                        <div class="col-md-12 col-lg-4 my-1">
+                                            <select class="form-control">
+                                                <option value="">Genero</option>
+                                                <option value="hombre">Hombre</option>
+                                                <option value="mujer">Mujer</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-8 my-1">
+                                            <div class="form-group mt-3 row">
+                                                <label for="example-date-input" class="col-2 col-form-label titles">Date: </label>
+                                                <div class="col-md-12 col-lg-10">
+                                                  <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+                                                </div>
+                                              </div>
+                                        </div>
+                                    </div>
                                 </div>
+                                
                                 <div class="input-group mb-4 px-5">
                                     <select class="form-control">
                                         <option value="">Rol</option>
@@ -82,27 +96,41 @@
                                     </select>
                                 </div>
 
+
+                                <div class="input-group mb-4 px-5">
+                                    <input type="mail" [(ngModel)]="usuario.email" minlength="3" name="email" required
+                                        email class="form-control" placeholder="Correo">
+                                </div>
+
+
+                                <div class="input-group mb-4 px-5">
+                                    <input type="password" minlength="3" name="password" required email class="form-control"
+                                        placeholder="Password">
+                                </div>
+
                                 <div class="form-check form-check-inline">
                                     <div class="custom-control custom-switch">
                                         <input type="checkbox" class="custom-control-input" id="ventas">
-                                        <label class="custom-control-label" for="ventas">Ventas</label>
+                                        <label class="custom-control-label titles" for="ventas">Ventas</label>
                                     </div>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <div class="custom-control custom-switch">
                                         <input type="checkbox" class="custom-control-input" id="pedidos">
-                                        <label class="custom-control-label" for="pedidos">pedidos</label>
+                                        <label class="custom-control-label titles" for="pedidos">pedidos</label>
                                     </div>
                                 </div>
 
 
                                 <div class="">
-                                    <button class="btn mt-5" type="submit">
+                                    <button class="btn my-5" type="submit">
                                         Continuar
                                     </button>
                                 </div>
 
                             </form>
+
+                            <!-- Form ends-->
                         </div>
                     </div>
 
