@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from './Services/auth.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
 
-  constructor(){}
+  constructor(private auth: AuthService) {  }
 
   ngOnInit(): void {
     var size;
@@ -23,7 +24,7 @@ export class AppComponent implements OnInit{
         elemento[i].className = "dropdown-submenu dropleft"
       }
     }
-    
+
     function reportWindowSize() {
       size = window.innerWidth;
       console.log(window.innerWidth);
@@ -40,5 +41,6 @@ export class AppComponent implements OnInit{
 
     window.onresize = reportWindowSize;
   }
+ token=this.auth.readToken();;
   title = 'Ladrillera21';
 }

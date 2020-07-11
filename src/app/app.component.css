@@ -41,3 +41,8 @@
     
 }
 /*Nav bar styles ends*/
+
+#router{
+    padding-right: 0px;
+    padding-left: 0px;
+}

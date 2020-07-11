@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminService } from 'src/app/Services/admin.service';
+import { UsuarioModel } from 'src/app/models/usuario.model';
 
 @Component({
   selector: 'app-create-employees',
@@ -7,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateEmployeesComponent implements OnInit {
 
-  constructor() { }
+  usuario: UsuarioModel = new UsuarioModel();
+
+
+  constructor( private admin: AdminService) { }
 
   ngOnInit(): void {
   }

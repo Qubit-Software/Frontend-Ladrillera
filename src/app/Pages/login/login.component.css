@@ -32,7 +32,6 @@
     width: 100%;
 }
 #titleLogin{
-    font-family: "Mark-bold";
     font-size: 25px;
     margin: 2rem 0rem 3rem 0rem;
     font-weight: bolder;
@@ -47,7 +46,6 @@
     background-color: transparent;
     border-radius: 0px;
     color:rgb(160, 160, 160) ;
-    font-family: "Mark-bold";
     font-size: 20px;
     font-weight: bolder;
 }
@@ -57,12 +55,10 @@
     font-family: "helveticaNowMicro-Regular";
 }
 #forgotPassword{
-    font-family: "Mark-bold";
     text-align: left;
     font-weight: bold;
 }
 .btn{
-    font-family: "Mark-bold";
     background: red;
     color: white;
     border-radius: 10px;
@@ -70,7 +66,6 @@
 }
 #copyright{
     font-size: 1rem;
-    font-family: "helveticaNowMicro-Regular";
 }
 
 @media (max-width: 600px) {

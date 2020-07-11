@@ -45,7 +45,7 @@
     justify-content:center;
     
 }
-#loginBox{
+#createEmployeeBox{
     display: flex;
     justify-content:center ;
     background: rgb(233, 232, 232);
@@ -53,11 +53,10 @@
     width: 30rem;
     border-radius: 10px;
 }
-#contentLogin{
+#contentCreateEmployee{
     width: 100%;
 }
-#titleLogin{
-    font-family: "Mark-bold";
+#titleCreateEmployee{
     font-size: 25px;
     margin: 2rem 0rem 3rem 0rem;
     font-weight: bolder;

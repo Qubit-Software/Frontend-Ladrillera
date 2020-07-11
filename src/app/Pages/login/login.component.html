@@ -2,32 +2,32 @@
     <div class="container-fluid animated fadeInLeft ">
         <div id="loginBox" class="row text-center ">
             <div id="contentLogin" class="col-lg shadow-lg rounded">
-                <h1 id="titleLogin" class="">Iniciar Sesión</h1>
+                <h1 id="titleLogin" class="titles">Iniciar Sesión</h1>
                 <picture>
                     <img id="logoLadrillera" class="img-fluid" src="../../../assets/Logo.png" alt="Logo Ladrillera 21">
                 </picture>
     
                 <form (ngSubmit)="login( f )" #f="ngForm" class="">
     
-                    <span *ngIf="f.submitted && f.controls['email'].errors"  class="text-danger animated fadeIn">Algo anda mal con tú correo</span>
+                    <span *ngIf="f.submitted && f.controls['email'].errors"  class="text-danger animated fadeIn titles">Algo anda mal con tú correo</span>
                     <div class="input-group mb-4 px-5">
                         <input type="mail" [(ngModel)]="usuario.email" minlength="3" name="email" required email
-                            class="form-control" placeholder="Correo">
+                            class="form-control titles" placeholder="Correo">
                     </div>
-                    <span *ngIf="f.submitted && f.controls['password'].errors" class="text-danger animated fadeIn">Algo anda mal con tú contraseña</span>
+                    <span *ngIf="f.submitted && f.controls['password'].errors" class="text-danger animated fadeIn titles">Algo anda mal con tú contraseña</span>
                     <div class="input-group mb-4 px-5">
                         <input type="password" [(ngModel)]="usuario.password" minlength="6" name="password" required
-                            class="form-control" placeholder="Contraseña">
+                            class="form-control titles" placeholder="Contraseña">
                     </div>
                     <div id="forgotPassword" class="px-5 pt-3">
                         <span>
-                            <a href="#">¿Olvidaste tu contraseña?</a>
+                            <a href="#" class="titles">¿Olvidaste tu contraseña?</a>
                         </span>
                     </div>
     
     
-                    <div class="container-login100-form-btn m-t-17">
-                        <button class="btn mt-5" type="submit">
+                    <div class="">
+                        <button class="btn mt-5 titles" type="submit">
                             Continuar
                         </button>
                     </div>
@@ -37,7 +37,7 @@
         </div>
         <div class="row fixed-bottom text-center">
             <div  class="col-lg">
-                <h3 id="copyright">Ladrillera 21 © Derechos Reservados 2020</h3>
+                <h3 id="copyright" class="text">Ladrillera 21 © Derechos Reservados 2020</h3>
             </div>
         </div>
     </div>

@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: "helveticaNowMicro-Regular";
+    src: url("./assets/Fonts/HelveticaNowMicro-Regular.otf");
+  }
+
+@font-face {
+    font-family: "Mark-bold";
+    src: url("./assets/Fonts/Mark-Bold.ttf");
+}
+
+.text{
+    font-family: "helveticaNowMicro-Regular";
+    
+}
+
+.titles{
+    font-family: "Mark-bold";
+}
