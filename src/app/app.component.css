@@ -1,0 +1,43 @@
+#containerNav{
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+#searchButton{
+    border: 1px solid rgb(170, 167, 167);
+    border-radius: 20px;
+    padding: 0px 15px 0px 15px;
+}
+#userLogo{
+    border: 1px solid rgb(170, 167, 167);
+    border-radius: 50px;
+    padding: 3px;
+}
+
+
+.dropdown-menu{
+    min-width: 13rem;
+}
+.dropdown-submenu:active .dropdown-menu{
+    display: flex;
+    flex-direction: column;
+}
+.dropdown-submenu:hover .dropdown-menu, .dropdown-submenu:focus .dropdown-menu{
+    display: flex;
+    flex-direction: column;
+}
+@media (max-width: 992px) {
+    .dropdown-menu{
+        width: 50%;
+    }
+    .dropdown-menu .dropdown-submenu{
+        width: auto;
+    }
+    #userLogo{
+        display: block!important;
+        margin-top: 10px;
+        margin-left: 15px !important;
+    }
+    
+}
+/*Nav bar styles ends*/
