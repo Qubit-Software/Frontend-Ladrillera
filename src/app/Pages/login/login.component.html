@@ -6,37 +6,48 @@
                 <picture>
                     <img id="logoLadrillera" class="img-fluid" src="../../../assets/Logo.png" alt="Logo Ladrillera 21">
                 </picture>
-    
+
                 <form (ngSubmit)="login( f )" #f="ngForm" class="">
-    
-                    <span *ngIf="f.submitted && f.controls['email'].errors"  class="text-danger animated fadeIn titles">Algo anda mal con tú correo</span>
+
+                    <span *ngIf="f.submitted && f.controls['email'].errors"
+                        class="text-danger animated fadeIn titles">Algo anda mal con tú correo</span>
                     <div class="input-group mb-4 px-5">
                         <input type="mail" [(ngModel)]="usuario.email" minlength="3" name="email" required email
                             class="form-control titles" placeholder="Correo">
                     </div>
-                    <span *ngIf="f.submitted && f.controls['password'].errors" class="text-danger animated fadeIn titles">Algo anda mal con tú contraseña</span>
+                    <span *ngIf="f.submitted && f.controls['password'].errors"
+                        class="text-danger animated fadeIn titles">Algo anda mal con tú contraseña</span>
                     <div class="input-group mb-4 px-5">
                         <input type="password" [(ngModel)]="usuario.password" minlength="6" name="password" required
                             class="form-control titles" placeholder="Contraseña">
                     </div>
-                    <div id="forgotPassword" class="px-5 pt-3">
-                        <span>
-                            <a href="#" class="titles">¿Olvidaste tu contraseña?</a>
-                        </span>
+
+                    <div class="row px-5 pt-3">
+                        <div class="col-sm-12 col-lg-8">
+                            <a id="forgotPassword" href="#" class="titles">¿Olvidaste tu contraseña?</a>
+                        </div>
+                        <div class="col-sm-12 col-lg-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                <label class="form-check-label titles" for="defaultCheck1">
+                                   Recordar
+                                </label>
+                            </div>
+                        </div>
                     </div>
-    
-    
+
+
                     <div class="">
                         <button class="btn mt-5 titles" type="submit">
                             Continuar
                         </button>
                     </div>
-    
+
                 </form>
             </div>
         </div>
         <div class="row fixed-bottom text-center">
-            <div  class="col-lg">
+            <div class="col-lg">
                 <h3 id="copyright" class="text">Ladrillera 21 © Derechos Reservados 2020</h3>
             </div>
         </div>

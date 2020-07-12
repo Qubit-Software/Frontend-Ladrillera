@@ -18,10 +18,9 @@ export class AdminService {
     createEmployee( name, lastname, cedula, gender, bornDate, rol,correo,contrasena){
       const opts ={
         headers : new HttpHeaders({
-          'Authorization': "bearer "+this.auth.readToken(),
+          'Authorization': "Bearer "+this.auth.readToken(),
         })
       }
-      console.log(opts.headers.get('Authorization'));
       const authData = {
         nombres: name,
         apellidos: lastname,
