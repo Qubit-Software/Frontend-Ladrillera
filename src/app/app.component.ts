@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     var size;
     var elemento = document.getElementsByClassName("dropdown-submenu");
-
+    var tokenActive;
     size = window.innerWidth;
     if (size <= 990) {
       for (let i = 0; i < elemento.length; i++) {
@@ -41,6 +41,6 @@ export class AppComponent implements OnInit {
 
     window.onresize = reportWindowSize;
   }
- token=this.auth.readToken();;
+  tokenActive=this.auth.readToken();;
   title = 'Ladrillera21';
 }

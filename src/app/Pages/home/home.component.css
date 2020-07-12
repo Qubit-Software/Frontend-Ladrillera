@@ -12,7 +12,7 @@
 }
 #icons, #titles{
     vertical-align: middle;
-    display: inline-block;
+    display: inline;
 }
 
 .card{
@@ -27,6 +27,9 @@
 .list-group-item{
     background: transparent;
 }
+.list-group-item:hover{
+    background: rgba(180, 180, 180, 0.5);
+}
 .bg-secondary {
     background-color: rgb(233, 232, 232)!important;
 
@@ -35,3 +38,13 @@
     column-count: 2;
 }
 
+
+@media (max-width: 992px) {
+    .list-group-item{
+        background: transparent;
+        font-size: x-small;
+    }
+    #titles{
+        font-size: large;
+    }
+}
