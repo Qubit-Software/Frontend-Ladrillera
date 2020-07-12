@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './Services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import { AuthService } from './Services/auth.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private auth: AuthService) {  }
+  constructor(private auth: AuthService, private router: Router) {  }
 
   ngOnInit(): void {
     var size;
@@ -27,7 +28,6 @@ export class AppComponent implements OnInit {
 
     function reportWindowSize() {
       size = window.innerWidth;
-      console.log(window.innerWidth);
       if (size <= 990) {
         for (let i = 0; i < elemento.length; i++) {
           elemento[i].className = "dropdown-submenu dropright"
@@ -40,6 +40,10 @@ export class AppComponent implements OnInit {
     }
 
     window.onresize = reportWindowSize;
+  }
+  logOut(){
+    this.auth.logout();
+    this.router.navigateByUrl("/login");
   }
   tokenActive=this.auth.readToken();;
   title = 'Ladrillera21';
