@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
         text: "Revisa tus credenciales antes de acceder"
       });
       console.log(err)
-    })
+    });
   }
 
 }

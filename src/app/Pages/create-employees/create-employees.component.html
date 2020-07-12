@@ -41,71 +41,81 @@
                             <h1 id="titleCreateEmployee" class="titles">Registrar empleado</h1>
 
                             <!--Form Starts-->
-                            <form (ngSubmit)="login( f )" #f="ngForm" class="">
+                            <form autocomplete="off" [formGroup]="form" (ngSubmit)="createEmployee()" class="">
                                 <div class="input-group mb-4 px-5">
                                     <div class="form-row align-items-center">
                                         <div class="col-6 my-1">
-                                            <input type="text" name="nombre" required class="form-control"
-                                                placeholder="Nombres">
+                                            <input type="text" name="nombre" class="form-control" placeholder="Nombres"
+                                                formControlName="nombres" [class.is-invalid]="nombresNoValido"
+                                                [class.is-valid]="nombresValido">
                                         </div>
                                         <div class="col-6 my-1">
-                                            <input type="text" name="apellidos" required class="form-control"
-                                                placeholder="Apellidos">
+                                            <input type="text" name="apellidos" class="form-control"
+                                                placeholder="Apellidos" formControlName="apellidos"
+                                                [class.is-invalid]="apellidosNoValido"
+                                                [class.is-valid]="apellidosValido">
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="input-group mb-4 px-5">
                                     <div class="form-row align-items-center">
-                                        <div class="col-3 my-1">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text" id="basic-addon1">C.C.</span>
-                                            </div>
+                                        <div class="col-md-12 col-lg-7 my-3">
+                                            <input type="text" minlength="10" name="text" class="form-control"
+                                                placeholder="C.C." formControlName="cedula_ciudadania"
+                                                [class.is-invalid]="cedula_ciudadaniaNoValido"
+                                                [class.is-valid]="cedula_ciudadaniaValido">
                                         </div>
-                                        <div class="col-9 my-1">
-                                            <input type="text" minlength="11" name="text" required class="form-control"
-                                                placeholder="XXXXXXXXX">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="input-group mb-4 px-5">
-                                    <div class="form-row align-items-center">
-                                        <div class="col-md-12 col-lg-4 my-1">
-                                            <select class="form-control">
-                                                <option value="">Genero</option>
+                                        <div class="col-md-12 col-lg-5 my-1">
+                                            <select class="form-control" formControlName="genero"
+                                                [class.is-invalid]="generoNoValido" [class.is-valid]="generoValido">
+                                                <option value="" selected disabled>Genero</option>
                                                 <option value="hombre">Hombre</option>
                                                 <option value="mujer">Mujer</option>
                                             </select>
                                         </div>
-                                        <div class="col-8 my-1">
-                                            <div class="form-group mt-3 row">
-                                                <label for="example-date-input" class="col-2 col-form-label titles">Date: </label>
-                                                <div class="col-md-12 col-lg-10">
-                                                  <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
-                                                </div>
-                                              </div>
+                                    </div>
+                                </div>
+                                <div class="input-group mb-2 px-5 text-center">
+                                    <div class="form-group  row">
+                                        <label for="example-date-input"
+                                            class="col-md-12 col-lg-4 col-form-label titles">Fecha de
+                                            nacimiento: </label>
+                                        <div class="col-md-12 mt-2 col-lg-8">
+                                            <input class="form-control" type="date" value="2011-08-19"
+                                                id="example-date-input" formControlName="fecha_nacimiento"
+                                                [class.is-invalid]="fecha_nacimientoNoValido" [class.is-valid]="fecha_nacimientoValido">
                                         </div>
                                     </div>
                                 </div>
-                                
+
+
                                 <div class="input-group mb-4 px-5">
-                                    <select class="form-control">
-                                        <option value="">Rol</option>
+                                    <select class="form-control" formControlName="rol"
+                                        [class.is-invalid]="rolNoValido" [class.is-valid]="rolValido">
+                                        <option value="" selected disabled>Rol</option>
                                         <option value="developer">Developer</option>
                                     </select>
                                 </div>
 
 
                                 <div class="input-group mb-4 px-5">
-                                    <input type="mail" [(ngModel)]="usuario.email" minlength="3" name="email" required
-                                         class="form-control" placeholder="Correo">
+                                    <input type="mail" minlength="3" name="email" class="form-control"
+                                        placeholder="Correo" formControlName="email"
+                                        [class.is-invalid]="emailNoValido" [class.is-valid]="emailValido">
                                 </div>
 
 
                                 <div class="input-group mb-4 px-5">
-                                    <input type="password" minlength="3" name="password" required  class="form-control"
-                                        placeholder="Password">
+                                    <input type="password" minlength="3" name="password" class="form-control"
+                                        placeholder="Password" formControlName="password"
+                                        [class.is-invalid]="passwordNoValido" [class.is-valid]="passwordValido">
+                                </div>
+
+                                <div class="form-group mb-4 px-5">
+                                    <label for="exampleFormControlFile1" class="titles">Ingresa tú foto</label>
+                                    <input type="file" class="form-control-file titles text-wrap"
+                                        id="exampleFormControlFile1">
                                 </div>
 
                                 <div class="form-check form-check-inline">

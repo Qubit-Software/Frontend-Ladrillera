@@ -72,11 +72,13 @@ export class AuthService {
   readToken() {
     if (localStorage.getItem('token')) {
       this.userToken = localStorage.getItem('token');
+      return this.userToken;
     } else {
       this.userToken = '';
+      return false;
     }
 
-    return this.userToken;
+    
   }
 
   authenticated(): boolean{
