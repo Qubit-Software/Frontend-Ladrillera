@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   usuario: UsuarioModel = new UsuarioModel();
-
+   isChecked : boolean = false;
   constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {  }
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     });
     Swal.showLoading();
 
-    this.auth.login(this.usuario).subscribe(resp => {
+    this.auth.login(this.usuario,this.isChecked).subscribe(resp => {
       Swal.close();
       this.router.navigateByUrl('/home');
     }, (err) => {

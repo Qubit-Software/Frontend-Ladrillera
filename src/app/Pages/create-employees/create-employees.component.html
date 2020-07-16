@@ -2,32 +2,22 @@
     <div class="row">
         <!--Left Menu starts-->
         <div id="leftMenu" class="col-md-12 col-lg-2 text-left ">
-            <ul class="list-group ">
+            <ul id="leftMenuItems" class="list-group list-group-flush ">
+                <li class="list-group-item titles"><a routerLink="/createEmployees" href="#"> <img
+                            src="../../../assets/Iconos/noun_Plus_1886659.svg" width="30" height="30"
+                            class="d-inline-block align-top" alt="" loading="lazy"> Crear Empleado</a></li>
 
-                <li id="titles" class="list-group-item">
-                    <a href="#">
-                        <img src="../../../assets/Iconos/noun_Plus_1886659.svg" width="30" height="30"
-                            class="d-inline-block align-top" alt="" loading="lazy">
-                        Crear Empleado
-                    </a></li>
-                <li id="titles" class="list-group-item">
-                    <a class=".text-wrap" href="#">
-                        <img src="../../../assets/Iconos/noun_Eye_1853787.svg" width="30" height="30"
-                            class="d-inline-block align-top" alt="" loading="lazy">
-                        Ver Empleado
-                    </a></li>
-                <li id="titles" class="list-group-item">
-                    <a class=".text-wrap" href="#">
-                        <img src="../../../assets/Iconos/noun_Pencil_2135274.svg" width="30" height="30"
-                            class="d-inline-block align-top" alt="" loading="lazy">
-                        Modificar
-                    </a></li>
-                <li id="titles" class="list-group-item">
-                    <a class=".text-wrap" href="#">
-                        <img src="../../../assets/Iconos/noun_X_2147847.svg" width="30" height="30"
-                            class="d-inline-block align-top" alt="" loading="lazy">
-                        Eliminar
-                    </a></li>
+                <li class="list-group-item titles"><a routerLink="/createEmployees" href="#"> <img
+                            src="../../../assets/Iconos/noun_Plus_1886659.svg" width="30" height="30"
+                            class="d-inline-block align-top" alt="" loading="lazy"> Ver empleado</a></li>
+
+                <li class="list-group-item titles"><a routerLink="/createEmployees" href="#"> <img
+                            src="../../../assets/Iconos/noun_Plus_1886659.svg" width="30" height="30"
+                            class="d-inline-block align-top" alt="" loading="lazy"> Modificar</a></li>
+
+                <li class="list-group-item titles"><a routerLink="/createEmployees" href="#"> <img
+                            src="../../../assets/Iconos/noun_Plus_1886659.svg" width="30" height="30"
+                            class="d-inline-block align-top" alt="" loading="lazy"> Eliminar</a></li>
             </ul>
         </div>
         <!--Left Menu Ends-->
@@ -45,12 +35,12 @@
                                 <div class="input-group mb-4 px-5">
                                     <div class="form-row align-items-center">
                                         <div class="col-6 my-1">
-                                            <input type="text" name="nombre" class="form-control" placeholder="Nombres"
-                                                formControlName="nombres" [class.is-invalid]="nombresNoValido"
-                                                [class.is-valid]="nombresValido">
+                                            <input type="text" name="nombre" class="form-control titles"
+                                                placeholder="Nombres" formControlName="nombres"
+                                                [class.is-invalid]="nombresNoValido" [class.is-valid]="nombresValido">
                                         </div>
                                         <div class="col-6 my-1">
-                                            <input type="text" name="apellidos" class="form-control"
+                                            <input type="text" name="apellidos" class="form-control titles"
                                                 placeholder="Apellidos" formControlName="apellidos"
                                                 [class.is-invalid]="apellidosNoValido"
                                                 [class.is-valid]="apellidosValido">
@@ -61,17 +51,17 @@
                                 <div class="input-group mb-4 px-5">
                                     <div class="form-row align-items-center">
                                         <div class="col-md-12 col-lg-7 my-3">
-                                            <input type="text" minlength="10" name="text" class="form-control"
+                                            <input type="text" minlength="10" name="text" class="form-control titles"
                                                 placeholder="C.C." formControlName="cedula_ciudadania"
                                                 [class.is-invalid]="cedula_ciudadaniaNoValido"
                                                 [class.is-valid]="cedula_ciudadaniaValido">
                                         </div>
                                         <div class="col-md-12 col-lg-5 my-1">
-                                            <select class="form-control" formControlName="genero"
+                                            <select class="form-control titles" formControlName="genero"
                                                 [class.is-invalid]="generoNoValido" [class.is-valid]="generoValido">
                                                 <option value="" selected disabled>Genero</option>
-                                                <option value="hombre">Hombre</option>
-                                                <option value="mujer">Mujer</option>
+                                                <option value="M">Hombre</option>
+                                                <option value="F">Mujer</option>
                                             </select>
                                         </div>
                                     </div>
@@ -82,16 +72,17 @@
                                             class="col-md-12 col-lg-4 col-form-label titles">Fecha de
                                             nacimiento: </label>
                                         <div class="col-md-12 mt-2 col-lg-8">
-                                            <input class="form-control" type="date" value="2011-08-19"
+                                            <input class="form-control titles" type="date" value="2011-08-19"
                                                 id="example-date-input" formControlName="fecha_nacimiento"
-                                                [class.is-invalid]="fecha_nacimientoNoValido" [class.is-valid]="fecha_nacimientoValido">
+                                                [class.is-invalid]="fecha_nacimientoNoValido"
+                                                [class.is-valid]="fecha_nacimientoValido">
                                         </div>
                                     </div>
                                 </div>
 
 
                                 <div class="input-group mb-4 px-5">
-                                    <select class="form-control" formControlName="rol"
+                                    <select class="form-control titles" formControlName="rol"
                                         [class.is-invalid]="rolNoValido" [class.is-valid]="rolValido">
                                         <option value="" selected disabled>Rol</option>
                                         <option value="developer">Developer</option>
@@ -99,68 +90,70 @@
                                 </div>
 
 
-                                <div class="input-group mb-4 px-5">
-                                    <input type="mail" minlength="3" name="email" class="form-control"
-                                        placeholder="Correo" formControlName="email"
-                                        [class.is-invalid]="emailNoValido" [class.is-valid]="emailValido">
+                                <div autocomplete="off" class="input-group mb-4 px-5">
+                                    <input type="mail" minlength="3" name="email" class="form-control titles"
+                                        placeholder="Correo" formControlName="email" [class.is-invalid]="emailNoValido"
+                                        [class.is-valid]="emailValido">
                                 </div>
 
 
-                                <div class="input-group mb-4 px-5">
-                                    <input type="password" minlength="3" name="password" class="form-control"
+                                <div autocomplete="off" class="input-group mb-4 px-5">
+                                    <input type="password" minlength="3" name="password" class="form-control titles"
                                         placeholder="Password" formControlName="password"
                                         [class.is-invalid]="passwordNoValido" [class.is-valid]="passwordValido">
                                 </div>
 
                                 <div class="form-group mb-4 px-5">
                                     <label for="exampleFormControlFile1" class="titles">Ingresar foto empleado</label>
-                                    <input type="file" class="form-control-file titles text-wrap"
-                                        id="exampleFormControlFile1">
+                                    <input type="file" class="form-control titles-file titles text-wrap"
+                                        formControlName="photoFile" 
+                                        (change)="handleFileInput($event.target.files)"
+                                        [class.is-invalid]="photoFiledNoValido" [class.is-valid]="photoFileValido">
                                 </div>
 
                                 <!--Modulos disponibles-->
                                 <div class="px-5">
                                     <div class="form-check form-check-inline">
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" id="ventas">
-                                            <label class="custom-control-label titles" for="ventas">Usuarios</label>
+                                            <input type="checkbox" class="custom-control-input" id="usuarios">
+                                            <label class="custom-control-label titles" for="usuarios">Usuarios</label>
                                         </div>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" id="ventas">
-                                            <label class="custom-control-label titles" for="ventas">Noticias</label>
+                                            <input type="checkbox" class="custom-control-input" id="noticias">
+                                            <label class="custom-control-label titles" for="noticias">Noticias</label>
                                         </div>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" id="ventas">
-                                            <label class="custom-control-label titles" for="ventas">Clientes</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" id="ventas">
-                                            <label class="custom-control-label titles" for="ventas">Pedidos</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" id="ventas">
-                                            <label class="custom-control-label titles" for="ventas">Finanzas</label>
+                                            <input type="checkbox" class="custom-control-input" id="clientes">
+                                            <label class="custom-control-label titles" for="clientes">Clientes</label>
                                         </div>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <div class="custom-control custom-switch">
                                             <input type="checkbox" class="custom-control-input" id="pedidos">
-                                            <label class="custom-control-label titles" for="pedidos">Despacho</label>
+                                            <label class="custom-control-label titles" for="pedidos">Pedidos</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="finanzas">
+                                            <label class="custom-control-label titles" for="finanzas">Finanzas</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="despacho">
+                                            <label class="custom-control-label titles" for="despacho">Despacho</label>
                                         </div>
                                     </div>
                                 </div>
 
 
                                 <div class="">
-                                    <button class="btn my-5" type="submit">
+                                    <button class="btn my-5 titles" type="submit">
                                         Continuar
                                     </button>
                                 </div>

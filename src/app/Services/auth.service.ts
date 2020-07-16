@@ -23,10 +23,10 @@ export class AuthService {
   }
 
   //LOGIN*************************************
-  login(usuario: UsuarioModel) {
+  login(usuario: UsuarioModel,remember:boolean) {
     const authData = {
       ...usuario,
-      remember_me: true
+      remember_me: remember
     };
     return this.http.post(
       `${this.url}/login`,

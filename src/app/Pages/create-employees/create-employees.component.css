@@ -2,6 +2,7 @@
 #leftMenu{
     background: #f8f9fa;
     height: auto;
+    width: auto;
     padding-right: 0px;
     padding-left: 0px;
 }
@@ -34,9 +35,8 @@
   }
 
   .verticalCenter {
-    min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
-    min-height: 100%; /* These two lines are counted as one :-)       */
-  
+    min-height: 100%;  
+    min-height: 100%; 
     display: flex;
     align-items: center;
   }
@@ -71,7 +71,6 @@
     background-color: transparent;
     border-radius: 0px;
     color:rgb(160, 160, 160) ;
-    font-family: "Mark-bold";
     font-size: 18px;
     font-weight: bolder;
 }
@@ -84,7 +83,6 @@
     font-family: "helveticaNowMicro-Regular";
 }
 .btn{
-    font-family: "Mark-bold";
     background: red;
     color: white;
     border-radius: 10px;
@@ -104,5 +102,13 @@
     }
     #titleLogin{
         margin: 1rem 0rem 1rem 0rem;
+    }
+  }
+  @media (max-width: 992px) {
+    #leftMenuItems{
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+
     }
   }

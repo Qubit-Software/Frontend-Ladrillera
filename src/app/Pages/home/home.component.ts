@@ -16,7 +16,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.auth.validateUser()
     .subscribe( user =>{
-      console.log(user);
       this.nombre=user;
     });
   }

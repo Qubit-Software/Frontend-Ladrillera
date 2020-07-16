@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 export class CreateEmployeesComponent implements OnInit {
 
   form: FormGroup;
-
+  fileToUpload: File = null;
   constructor(private admin: AdminService, private fb: FormBuilder) { this.createForm(); }
 
   ngOnInit(): void {
@@ -73,6 +73,14 @@ export class CreateEmployeesComponent implements OnInit {
   get passwordValido() {
     return this.form.get("password").valid && this.form.get('password').touched;
   }
+
+  //foto validation
+  get photoFiledNoValido() {
+    return this.form.get("photoFile").invalid && this.form.get('photoFile').touched;
+  }
+  get photoFileValido() {
+    return this.form.get("photoFile").valid && this.form.get('photoFile').touched;
+  }
   //Validations ends
 
   createForm() {
@@ -83,25 +91,34 @@ export class CreateEmployeesComponent implements OnInit {
       genero: ['', [Validators.required,]],
       fecha_nacimiento: ['', [Validators.required,]],
       rol: ['', [Validators.required,]],
-      email: ['', [Validators.required,Validators.email]],
-      password: ['', [Validators.required,]]
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required,]],
+      photoFile: ['', [Validators.required,]]
     });
   }
 
+  handleFileInput(file: FileList) {
+    this.fileToUpload = file.item(0);
+    console.log(this.fileToUpload);
+  }
+  // Create Employee
   createEmployee() {
     console.log(this.form);
     if (this.form.invalid) {
-      return Object.values(this.form.controls).forEach( control =>{control.markAsTouched()});
-    }else{
+      return Object.values(this.form.controls).forEach(control => { control.markAsTouched() });
+    } else {
       Swal.fire({
         allowOutsideClick: false,
         icon: 'info',
         text: 'Espere por favor'
       });
-
-      this.admin.createEmployee(this.form.get("nombres").value, this.form.get("nombres").value, this.form.get("nombres").value, this.form.get("nombres").value, this.form.get("nombres").value, this.form.get("nombres").value,this.form.get("nombres").value,this.form.get("nombres").value).subscribe(resp => {
-        console.log(resp);
+      Swal.showLoading();
+      // name, lastname, cedula, gender, bornDate, rol,correo,contrasena, fileToUp: File
+      this.admin.createEmployee(this.form.get("nombres").value, this.form.get("apellidos").value, this.form.get("cedula_ciudadania").value, this.form.get("genero").value, this.form.get("fecha_nacimiento").value, this.form.get("rol").value, this.form.get("email").value, this.form.get("password").value, this.fileToUpload).subscribe(resp => {
         Swal.close();
+        Swal.fire('Registro realizado',
+          'Ell usuario se ha registrado',
+          'success');
       }, (err) => {
         Swal.close();
         Swal.fire({
