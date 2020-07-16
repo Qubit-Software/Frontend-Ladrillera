@@ -99,7 +99,6 @@ export class AuthService {
         'Authorization': "Bearer "+this.readToken()
       })
     }
-    console.log("kha");
     return this.http.get(
       (`${this.url}/user`),
       opts

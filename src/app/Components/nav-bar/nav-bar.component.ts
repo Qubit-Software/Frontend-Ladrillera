@@ -13,9 +13,9 @@ export class NavBarComponent implements OnInit {
   constructor(private auth: AuthService, public router: Router) { }
 
   ngOnInit(): void {
+    //DIRECTION NAVBAR
     var size;
     var elemento = document.getElementsByClassName("dropdown-submenu");
-    var tokenActive;
     size = window.innerWidth;
     if (size <= 990) {
       for (let i = 0; i < elemento.length; i++) {
@@ -26,7 +26,6 @@ export class NavBarComponent implements OnInit {
         elemento[i].className = "dropdown-submenu dropleft"
       }
     }
-
     function reportWindowSize() {
       size = window.innerWidth;
       if (size <= 990) {
@@ -39,13 +38,13 @@ export class NavBarComponent implements OnInit {
         }
       }
     }
-
     window.onresize = reportWindowSize;
   }
+
+  //LOGOUT
   logOut(){
     this.auth.logout();
     this.router.navigateByUrl("/login");
   }
-  tokenActive=this.auth.readToken();;
 
 }
