@@ -5,19 +5,23 @@
             <ul id="leftMenuItems" class="list-group list-group-flush ">
                 <li class="list-group-item titles"><a routerLink="/createEmployees" href="#"> <img
                             src="../../../assets/Iconos/noun_Plus_1886659.svg" width="30" height="30"
-                            class="d-inline-block align-top" alt="" loading="lazy"> Crear Empleado</a></li>
+                            class="d-inline-block align-top" alt="" loading="lazy"> <span class="mx-3">Crear
+                            Empleado</span></a></li>
 
                 <li class="list-group-item titles"><a routerLink="/createEmployees" href="#"> <img
-                            src="../../../assets/Iconos/noun_Plus_1886659.svg" width="30" height="30"
-                            class="d-inline-block align-top" alt="" loading="lazy"> Ver empleado</a></li>
+                            src="../../../assets/Iconos/noun_Eye_1853787.svg" width="30" height="30"
+                            class="d-inline-block align-top" alt="" loading="lazy"> <span class="mx-3">Ver
+                            empleado</span></a></li>
 
                 <li class="list-group-item titles"><a routerLink="/createEmployees" href="#"> <img
-                            src="../../../assets/Iconos/noun_Plus_1886659.svg" width="30" height="30"
-                            class="d-inline-block align-top" alt="" loading="lazy"> Modificar</a></li>
+                            src="../../../assets/Iconos/noun_Pencil_2135274.svg" width="30" height="30"
+                            class="d-inline-block align-top" alt="" loading="lazy"> <span
+                            class="mx-3">Modificar</span></a></li>
 
                 <li class="list-group-item titles"><a routerLink="/createEmployees" href="#"> <img
-                            src="../../../assets/Iconos/noun_Plus_1886659.svg" width="30" height="30"
-                            class="d-inline-block align-top" alt="" loading="lazy"> Eliminar</a></li>
+                            src="../../../assets/Iconos//noun_X_2147847.svg" width="30" height="30"
+                            class="d-inline-block align-top" alt="" loading="lazy"> <span
+                            class="mx-3">Eliminar</span></a></li>
             </ul>
         </div>
         <!--Left Menu Ends-->
@@ -106,52 +110,23 @@
                                 <div class="form-group mb-4 px-5">
                                     <label for="exampleFormControlFile1" class="titles">Ingresar foto empleado</label>
                                     <input type="file" class="form-control titles-file titles text-wrap"
-                                        formControlName="photoFile" 
-                                        (change)="handleFileInput($event.target.files)"
+                                        formControlName="photoFile" (change)="handleFileInput($event.target.files)"
                                         [class.is-invalid]="photoFiledNoValido" [class.is-valid]="photoFileValido">
                                 </div>
 
                                 <!--Modulos disponibles-->
-                                <div class="px-5">
-                                    <div class="form-check form-check-inline">
+                                <div class="px-5" formArrayName="modulos">
+                                    <div class="form-check form-check-inline"
+                                        *ngFor="let control of modulos.controls; let i = index">
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" id="usuarios">
-                                            <label class="custom-control-label titles" for="usuarios">Usuarios</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" id="noticias">
-                                            <label class="custom-control-label titles" for="noticias">Noticias</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" id="clientes">
-                                            <label class="custom-control-label titles" for="clientes">Clientes</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" id="pedidos">
-                                            <label class="custom-control-label titles" for="pedidos">Pedidos</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" id="finanzas">
-                                            <label class="custom-control-label titles" for="finanzas">Finanzas</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" id="despacho">
-                                            <label class="custom-control-label titles" for="despacho">Despacho</label>
+                                            <input type="checkbox" [formControlName]="i" class="custom-control-input"
+                                                id={{modulesName[i]}}>
+                                            <label class="custom-control-label titles"
+                                                for={{modulesName[i]}}>{{modulesName[i]}}
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
-
-
                                 <div class="">
                                     <button class="btn my-5 titles" type="submit">
                                         Continuar

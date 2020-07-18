@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from 'src/app/Services/admin.service';
-import { ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 
 import Swal from 'sweetalert2';
+import { ModulesService } from 'src/app/Services/Modulos/modules.service';
 
 @Component({
   selector: 'app-create-employees',
@@ -13,13 +14,19 @@ export class CreateEmployeesComponent implements OnInit {
 
   form: FormGroup;
   fileToUpload: File = null;
-  constructor(private admin: AdminService, private fb: FormBuilder) { this.createForm(); }
+  modulesName = [];
+  modulesModel = [];
+  constructor(private admin: AdminService, private moduleService: ModulesService, private fb: FormBuilder) { this.createForm(); }
 
   ngOnInit(): void {
+
+    this.getModules();
+
   }
   //Nombres validation
   get nombresNoValido() {
     return this.form.get("nombres").invalid && this.form.get('nombres').touched;
+
   }
   get nombresValido() {
     return this.form.get("nombres").valid && this.form.get('nombres').touched;
@@ -83,6 +90,10 @@ export class CreateEmployeesComponent implements OnInit {
   }
   //Validations ends
 
+  //Get modulos
+  get modulos() {
+    return this.form.get('modulos') as FormArray;
+  }
   createForm() {
     this.form = this.fb.group({
       nombres: ['', [Validators.required, Validators.minLength(4)]],
@@ -93,7 +104,10 @@ export class CreateEmployeesComponent implements OnInit {
       rol: ['', [Validators.required,]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required,]],
-      photoFile: ['', [Validators.required,]]
+      photoFile: ['', [Validators.required,]],
+      modulos: this.fb.array([
+
+      ])
     });
   }
 
@@ -104,6 +118,7 @@ export class CreateEmployeesComponent implements OnInit {
   // Create Employee
   createEmployee() {
     console.log(this.form);
+    const modulos = this.activeModules();
     if (this.form.invalid) {
       return Object.values(this.form.controls).forEach(control => { control.markAsTouched() });
     } else {
@@ -114,11 +129,13 @@ export class CreateEmployeesComponent implements OnInit {
       });
       Swal.showLoading();
       // name, lastname, cedula, gender, bornDate, rol,correo,contrasena, fileToUp: File
-      this.admin.createEmployee(this.form.get("nombres").value, this.form.get("apellidos").value, this.form.get("cedula_ciudadania").value, this.form.get("genero").value, this.form.get("fecha_nacimiento").value, this.form.get("rol").value, this.form.get("email").value, this.form.get("password").value, this.fileToUpload).subscribe(resp => {
+      this.admin.createEmployee(this.form.get("nombres").value, this.form.get("apellidos").value, this.form.get("cedula_ciudadania").value, this.form.get("genero").value, this.form.get("fecha_nacimiento").value, this.form.get("rol").value, this.form.get("email").value, this.form.get("password").value, this.fileToUpload, JSON.stringify(modulos)).subscribe(resp => {
         Swal.close();
         Swal.fire('Registro realizado',
           'Ell usuario se ha registrado',
           'success');
+        //cleaning the form after a post 
+        this.form.reset();
       }, (err) => {
         Swal.close();
         Swal.fire({
@@ -129,6 +146,31 @@ export class CreateEmployeesComponent implements OnInit {
         console.log(err)
       });
     }
+
+  }
+
+//Obtiene los modulos disponibles desde la base de datos
+  getModules() {
+    this.moduleService.getModules().subscribe(resp => {
+      resp.forEach(element => {
+        this.modulos.push(this.fb.control(false));
+        this.modulesName.push(element['nombre']);
+        this.modulesModel.push(element['id']);
+      });
+    });
+  }
+//Lee los modulos seleccionados por el usuario
+  activeModules() {
+    const activeModules = [];
+    const values="";
+    console.log(this.modulesModel[3]);
+    this.form.get('modulos').value.forEach((element, index) => {
+      if (element) {
+        activeModules.push(this.modulesModel[index]);
+      }
+    });
+    console.log(typeof(activeModules));
+    return activeModules;
   }
 
 }
