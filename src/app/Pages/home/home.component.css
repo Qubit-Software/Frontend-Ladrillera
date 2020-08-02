@@ -40,6 +40,7 @@
 
 .scrollable{
     overflow-y: scroll;
+    height: 100%;
     max-height: 80vh;
 }
 
@@ -76,6 +77,42 @@
   }
   
 /*Scroll styles ends**************************************/
+
+#usersPic{
+    height: 45px;
+}
+.userLogo{
+    border: 1px solid rgb(170, 167, 167);
+    border-radius: 50px;
+}
+#userLogo1{
+    position: absolute;
+    z-index: 0;
+}
+#userLogo2{
+    position: absolute;
+    z-index: 1;
+    left: 42px;
+    background: red;
+}
+#userLogo3{
+    position: absolute;
+    z-index:2 ;
+    left: 71px;
+    background: green;
+}
+#userLogo4{
+    position: absolute;
+    z-index:3;
+    left: 100px;
+    background: orange;
+}
+#userLogo5{
+    position: absolute;
+    z-index:4 ;
+    left: 129px;
+    background: purple;
+}
 
 @media (max-width: 992px) {
     .list-group-item{
