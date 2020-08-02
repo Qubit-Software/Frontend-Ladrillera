@@ -38,6 +38,44 @@
     column-count: 2;
 }
 
+.scrollable{
+    overflow-y: scroll;
+    max-height: 80vh;
+}
+
+/*Scroll styles**************************************/
+/* Tamaño del scroll */
+.scrollable::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+   /* Estilos barra (thumb) de scroll */
+   .scrollable::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+  }
+  
+  .scrollable::-webkit-scrollbar-thumb:active {
+    background-color: #999999;
+  }
+  
+  .scrollable::-webkit-scrollbar-thumb:hover {
+    background: #b3b3b3;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+  }
+  
+   /* Estilos track de scroll */
+   .scrollable::-webkit-scrollbar-track {
+    background: #e1e1e1;
+    border-radius: 4px;
+  }
+  
+  .scrollable::-webkit-scrollbar-track:hover, 
+  .scrollable::-webkit-scrollbar-track:active {
+    background: #d4d4d4;
+  }
+  
+/*Scroll styles ends**************************************/
 
 @media (max-width: 992px) {
     .list-group-item{

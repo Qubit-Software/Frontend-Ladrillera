@@ -113,11 +113,9 @@ export class CreateEmployeesComponent implements OnInit {
 
   handleFileInput(file: FileList) {
     this.fileToUpload = file.item(0);
-    console.log(this.fileToUpload);
   }
   // Create Employee
   createEmployee() {
-    console.log(this.form);
     const modulos = this.activeModules();
     if (this.form.invalid) {
       return Object.values(this.form.controls).forEach(control => { control.markAsTouched() });
@@ -140,16 +138,17 @@ export class CreateEmployeesComponent implements OnInit {
         Swal.close();
         Swal.fire({
           icon: 'error',
-          title: 'Error al autenticar',
-          text: "Revisa tus credenciales antes de acceder"
+          title: 'Error al registrar el empleado',
+          text: err.error.email
         });
-        console.log(err)
+        console.log(err.error.email);
+        console.log(err.error['email']);
       });
     }
 
   }
 
-//Obtiene los modulos disponibles desde la base de datos
+  //Obtiene los modulos disponibles desde la base de datos
   getModules() {
     this.moduleService.getModules().subscribe(resp => {
       resp.forEach(element => {
@@ -159,17 +158,15 @@ export class CreateEmployeesComponent implements OnInit {
       });
     });
   }
-//Lee los modulos seleccionados por el usuario
+  //Lee los modulos seleccionados por el usuario
   activeModules() {
     const activeModules = [];
-    const values="";
-    console.log(this.modulesModel[3]);
+    const values = "";
     this.form.get('modulos').value.forEach((element, index) => {
       if (element) {
         activeModules.push(this.modulesModel[index]);
       }
     });
-    console.log(typeof(activeModules));
     return activeModules;
   }
 

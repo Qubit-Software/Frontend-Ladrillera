@@ -33,9 +33,6 @@ export class AdminService {
       fd.append('password',contrasena);
       fd.append('foto',fileToUp);
       fd.append('modulos',modulos);
-      fd.forEach(element => {
-        console.log(element);
-      });
 //
 
       return this.http.post(
