@@ -21,7 +21,10 @@
     "@angular/platform-browser-dynamic": "~9.1.11",
     "@angular/router": "~9.1.11",
     "g": "^2.0.1",
+    "jquery": "^3.5.1",
+    "ng2-tooltip-directive": "^2.9.22",
     "rxjs": "~6.5.4",
+    "save": "^2.4.0",
     "sweetalert2": "^9.15.2",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

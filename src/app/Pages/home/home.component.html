@@ -141,12 +141,15 @@
                           </div>
                         </div>
                         <div class="row">
-                          <small class="form-text text-muted col-12">Visto por: <button type="button"
-                              class="btn" data-container="body" data-toggle="popover"
-                              data-placement="right"
-                              data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+                          <small class="form-text text-muted col-12">Visto por:
+                            <button class="btn" [tooltip]="HtmlContent" content-type="template">
                               +3
-                            </button></small>
+                            </button>
+                          </small>
+                          <ng-template #HtmlContent>
+                            <span >Juan Pablo</span><br>
+                            <span>Martha</span>
+                          </ng-template>
                         </div>
                       </div>
                       <div class="col">
@@ -164,3 +167,6 @@
     </div>
   </div>
 </div>
+
+
+
