@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Services/auth.service';
+import { WebSocketService } from 'src/app/Services/webSocket/web-socket.service';
 declare var $: any;
 
 @Component({
@@ -11,10 +12,14 @@ declare var $: any;
 })
 export class NavBarComponent implements OnInit {
 
+  apiToken: any = localStorage.getItem('token');;
 
-  constructor(private auth: AuthService, public router: Router) { }
+  constructor(private auth: AuthService, public router: Router, public webSocket: WebSocketService) { }
+
   public notificationState: boolean = false;
-  ngOnInit(): void {
+
+   ngOnInit() {
+    this.webSocket.setupWithToken(this.apiToken);
     //DIRECTION NAVBAR
     var size;
     var elemento = document.getElementsByClassName("dropdown-submenu");
@@ -70,7 +75,7 @@ export class NavBarComponent implements OnInit {
 
 
     //******************************************************************************** */
-   
+
 
 
   }
