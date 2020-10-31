@@ -20,10 +20,11 @@ export class AuthService {
   //LOGOUT*************************************
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('expires');
   }
 
   //LOGIN*************************************
-  login(usuario: UsuarioModel,remember:boolean) {
+  login(usuario: UsuarioModel, remember: boolean) {
     const authData = {
       ...usuario,
       remember_me: remember
@@ -79,24 +80,21 @@ export class AuthService {
   //AUTHENTICATED*************************************
   authenticated(): boolean {
     if (this.userToken.length < 2) {
+      console.log('false');
       return false;
-    }
-    const expires = Number(localStorage.getItem('expires'));
-    const expiresDate = new Date();
-    expiresDate.setTime(expires);
-    if (expiresDate > new Date()) {
-      return true;
     } else {
-      return false;
+      console.log('true');
+      return true;
     }
+
   }
 
   //VALIDATEUSER
-  validateUser(){
-   
-    const opts ={
-      headers : new HttpHeaders({
-        'Authorization': "Bearer "+this.readToken()
+  validateUser() {
+
+    const opts = {
+      headers: new HttpHeaders({
+        'Authorization': "Bearer " + this.readToken()
       })
     }
     return this.http.get(

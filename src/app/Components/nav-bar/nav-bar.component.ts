@@ -11,14 +11,15 @@ declare var $: any;
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-
   apiToken: any = localStorage.getItem('token');;
 
   constructor(private auth: AuthService, public router: Router, public webSocket: WebSocketService) { }
 
+ 
+  public notificationData = this.webSocket.notificationData;
   public notificationState: boolean = false;
 
-   ngOnInit() {
+  ngOnInit() {
     this.webSocket.setupWithToken(this.apiToken);
     //DIRECTION NAVBAR
     var size;

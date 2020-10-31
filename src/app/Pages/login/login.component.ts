@@ -15,10 +15,10 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   usuario: UsuarioModel = new UsuarioModel();
-   isChecked : boolean = false;
+  isChecked: boolean = false;
   constructor(private auth: AuthService, private router: Router) { }
 
-  ngOnInit(): void {  }
+  ngOnInit(): void { }
 
   login(form: NgForm) {
 
@@ -31,9 +31,9 @@ export class LoginComponent implements OnInit {
     });
     Swal.showLoading();
 
-    this.auth.login(this.usuario,this.isChecked).subscribe(resp => {
+    this.auth.login(this.usuario, this.isChecked).subscribe(resp => {
       Swal.close();
-      this.router.navigateByUrl('/home');
+      this.router.navigate([]).then(result => { window.location.href = "/home"; });
     }, (err) => {
       Swal.close();
       Swal.fire({

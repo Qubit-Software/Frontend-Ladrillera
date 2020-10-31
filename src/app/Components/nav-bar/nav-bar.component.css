@@ -1,88 +1,99 @@
-#containerNav{
+#containerNav {
     padding-right: 0px;
     padding-left: 0px;
 }
 
-#searchButton{
+#searchButton {
     border: 1px solid rgb(170, 167, 167);
     border-radius: 20px;
     padding: 0px 15px 0px 15px;
 }
-#userLogo{
+
+#userLogo {
     border: 1px solid rgb(170, 167, 167);
     border-radius: 50px;
     padding: 3px;
 }
 
+#amountNotification {
+    text-decoration: none;
+    color: white;
+    background-color: red;
+    padding:0px 5px 0px 5px;
+    position: relative;
+}
 
-.dropdown-menu{
+.dropdown-menu {
     min-width: 13rem;
 }
-.dropdown-submenu:active .dropdown-menu{
+
+.dropdown-submenu:active .dropdown-menu {
     display: flex;
     flex-direction: column;
 }
-.dropdown-submenu:hover .dropdown-menu, .dropdown-submenu:focus .dropdown-menu{
+
+.dropdown-submenu:hover .dropdown-menu, .dropdown-submenu:focus .dropdown-menu {
     display: flex;
     flex-direction: column;
 }
+
 @media (max-width: 992px) {
-    .dropdown-menu{
+    .dropdown-menu {
         width: 50%;
     }
-    .dropdown-menu .dropdown-submenu{
+    .dropdown-menu .dropdown-submenu {
         width: auto;
     }
-    #userLogo{
+    #userLogo {
         display: block!important;
         margin-top: 10px;
         margin-left: 15px !important;
     }
-    
 }
+
 /*Nav bar styles ends*/
 
 /*Notification sistem starts*/
 
-li.right{
+li.right {
     list-style: none;
 }
 
 .dropdown-container.expanded .dropdown {
-  -webkit-animation: fadein .5s;
-  -moz-animation: fadein .5s;
-  -ms-animation: fadein .5s;
-  -o-animation: fadein .5s;
-  animation: fadein .5s;
-  display: block;
-}
-.dropdown-container .dropdown {
-  -webkit-animation: fadeout .5s;
-  -moz-animation: fadeout .5s;
-  -ms-animation: fadeout .5s;
-  -o-animation: fadeout .5s;
-  animation: fadeout .5s;
-  display: none;
-  position: absolute;
-  width: 300px;
-  height: auto;
-  max-height: 600px;
-  overflow-y: hidden;
-  padding: 0;
-  margin: 0;
-  background: #eee;
-  margin-top: 3px;
-  margin-right: -15px;
-  border-top: 4px solid #ff5252;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-  -webkit-box-shadow: 2px 2px 15px -5px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 2px 2px 15px -5px rgba(0, 0, 0, 0.75);
-  box-shadow: 2px 2px 15px -5px rgba(0, 0, 0, 0.75);
- 
+    -webkit-animation: fadein .5s;
+    -moz-animation: fadein .5s;
+    -ms-animation: fadein .5s;
+    -o-animation: fadein .5s;
+    animation: fadein .5s;
+    display: block;
 }
 
-#notificationMenu{
+.dropdown-container .dropdown {
+    -webkit-animation: fadeout .5s;
+    -moz-animation: fadeout .5s;
+    -ms-animation: fadeout .5s;
+    -o-animation: fadeout .5s;
+    animation: fadeout .5s;
+    display: none;
+    position: absolute;
+    width: 300px;
+    height: auto;
+    max-height: 600px;
+    overflow-y: hidden;
+    padding: 0;
+    margin: 0;
+    background: #eee;
+    margin-top: 3px;
+    margin-right: -15px;
+    border-top: 4px solid #ff5252;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    -webkit-box-shadow: 2px 2px 15px -5px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 2px 2px 15px -5px rgba(0, 0, 0, 0.75);
+    box-shadow: 2px 2px 15px -5px rgba(0, 0, 0, 0.75);
+}
+
+#notificationMenu {
     z-index: 1;
     margin-right: 1px;
     margin-top: 27px;

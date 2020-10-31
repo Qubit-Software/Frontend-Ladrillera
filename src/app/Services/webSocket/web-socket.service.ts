@@ -6,6 +6,7 @@ import Pusher from 'pusher-js';
 })
 @Injectable()
 export class WebSocketService {
+  public notificationData: any[] = [];
   echo: Echo = null
   pusher: Pusher = null
 
@@ -34,9 +35,14 @@ export class WebSocketService {
   listen() {
     this.echo.channel('notificaciones')
       .listen('EventoNotificacionGeneral', (data) => {
-        console.log("Dataaaaaaaaaa " + data);
-        console.log(data);
+        this.notificationData.unshift(data);
+
+        let audio = new Audio();
+        audio.src = "../../../assets/Sonidos/1.mp3";
+        audio.load();
+        audio.play();
       })
+
   }
   constructor() { }
 }

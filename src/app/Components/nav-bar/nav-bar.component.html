@@ -83,13 +83,14 @@
                     <div class="dropdown-container">
                         <a href="#" data-dropdown="notificationMenu" class="menu-link has-notifications circle">
                             <img src="../../../assets/Iconos/notifications_none-24px.svg" class="img-fluid" alt="puede contener una campana">
+                            <span id="amountNotification" class="rounded-circle">1</span>
                         </a>
                         <ul class="dropdown" name="notificationMenu" id="notificationMenu">
                             <li class="notification-group">
                                 <div >
                                     <ul class="list-group list-group-flush">
-                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                          Cras justo odio
+                                        <li  *ngFor="let item of notificationData; index as i;" class="list-group-item d-flex justify-content-between align-items-center">
+                                         {{item.message}}
                                           <span class="badge badge-danger badge-pill">14</span>
                                         </li>
                                         <li class="list-group-item d-flex justify-content-between align-items-center">
