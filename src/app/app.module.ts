@@ -9,9 +9,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './Pages/home/home.component';
 import { LoginComponent } from './Pages/login/login.component';
-import { CreateEmployeesComponent } from './Pages/create-employees/create-employees.component';
+import { CreateEmployeesComponent } from './Pages/employees/employees.component';
 import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
-import { CreateEmployeeComponent } from './Components/create-employee/create-employee.component';
+import { CreateEmployeeComponent } from './Components/create-employee/employee/create-employee.component';
+import { NewsComponent } from './Pages/news/news.component';
+import { CreateNewReleaseComponent } from './Components/News/create-new-release/create-new-release.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { CreateEmployeeComponent } from './Components/create-employee/create-emp
     LoginComponent,
     CreateEmployeesComponent,
     NavBarComponent,
-    CreateEmployeeComponent
+    CreateEmployeeComponent,
+    NewsComponent,
+    CreateNewReleaseComponent
   ],
   imports: [
     BrowserModule,

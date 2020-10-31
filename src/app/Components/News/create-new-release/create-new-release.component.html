@@ -1,0 +1,26 @@
+<div class="verticalCenter ">
+    <div id="containerBox" class="container animated fadeInRight ">
+        <div id="createEmployeeBox" class="row text-center ">
+            <div id="contentCreateEmployee" class="col-lg shadow rounded">
+                <h1 id="titleCreateEmployee" class="titles">Actualización</h1>
+                <!--Form Starts-->
+                <form autocomplete="off" [formGroup]="form" (ngSubmit)="createRelease()" class="">
+                    <div class="input-group mb-4 px-5">
+                        <input type="text" minlength="3" name="title" class="form-control titles" placeholder="Titulo"
+                            formControlName="title" [class.is-invalid]="invalidTitle" [class.is-valid]="validTitle">
+                    </div>
+                    <div autocomplete="off" class="input-group mb-4 px-5">
+                        <textarea class="form-control" name="content" id="" rows="10"
+                            placeholder="Cuentanos cual es la novedad"></textarea>
+                    </div>
+                    <div class="">
+                        <button class="btn my-5 titles" type="submit">
+                            Publicar actualización
+                        </button>
+                    </div>
+                </form>
+                <!-- Form ends-->
+            </div>
+        </div>
+    </div>
+</div>

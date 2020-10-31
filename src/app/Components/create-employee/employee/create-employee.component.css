@@ -3,12 +3,12 @@
 /**/
 @font-face {
     font-family: "helveticaNowMicro-Regular";
-    src: url("../../../assets/Fonts/HelveticaNowMicro-Regular.otf");
+    src: url("../../../../assets/Fonts/HelveticaNowMicro-Regular.otf");
   }
 
 @font-face {
     font-family: "Mark-bold";
-    src: url("../../../assets/Fonts/Mark-Bold.ttf");
+    src: url("../../../../assets/Fonts/Mark-Bold.ttf");
   }
 
   .verticalCenter {
