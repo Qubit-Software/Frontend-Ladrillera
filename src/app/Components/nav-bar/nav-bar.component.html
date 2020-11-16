@@ -83,7 +83,7 @@
                     <div class="dropdown-container">
                         <a href="#" data-dropdown="notificationMenu" class="menu-link has-notifications circle">
                             <img src="../../../assets/Iconos/notifications_none-24px.svg" class="img-fluid" alt="puede contener una campana">
-                            <span id="amountNotification" class="rounded-circle">1</span>
+                            <span *ngIf="notificationAmount>=1" id="amountNotification" class="rounded-circle">{{notificationAmount}}</span>
                         </a>
                         <ul class="dropdown" name="notificationMenu" id="notificationMenu">
                             <li class="notification-group">

@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 import Echo from 'laravel-echo';
+import { EventEmitter } from '@angular/core';
 import Pusher from 'pusher-js';
+
 @Injectable({
   providedIn: 'root'
 })
 @Injectable()
 export class WebSocketService {
+
+  public notificationAmount$ = new EventEmitter<any>();
   public notificationData: any[] = [];
   echo: Echo = null
   pusher: Pusher = null
@@ -41,6 +45,7 @@ export class WebSocketService {
         audio.src = "../../../assets/Sonidos/1.mp3";
         audio.load();
         audio.play();
+        this.notificationAmount$.emit();
       })
 
   }

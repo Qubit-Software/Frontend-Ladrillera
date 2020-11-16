@@ -1,0 +1,23 @@
+<div class="verticalCenter ">
+    <div id="containerBox" class="container animated fadeInRight ">
+        <div id="createEmployeeBox" class="row text-center ">
+            <div id="contentCreateEmployee" class="col-lg shadow rounded">
+                <!--Form Starts-->
+
+                <!--Here we need ! [formGroup]="form" ¡-->
+                <form (ngSubmit)="searchClient()" class="px-3 py-3">
+                    <h1 id="titleCreateEmployee" class="titles">Cliente</h1>
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-2 col-form-label text">CC:</label>
+                        <div class="col-sm-10">
+                            <input type="number"  class="form-control text" id="staticEmail"
+                                placeholder="XX.XXX.XXX">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-block btn-success mb-4">Buscar</button>
+                </form>
+                <!-- Form ends-->
+            </div>
+        </div>
+    </div>
+</div>

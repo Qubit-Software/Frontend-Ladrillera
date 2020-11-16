@@ -11,16 +11,25 @@ declare var $: any;
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
+  public notificationAmount = 0;
   apiToken: any = localStorage.getItem('token');;
-
-  constructor(private auth: AuthService, public router: Router, public webSocket: WebSocketService) { }
-
- 
   public notificationData = this.webSocket.notificationData;
   public notificationState: boolean = false;
 
+  constructor(private auth: AuthService, public router: Router, public webSocket: WebSocketService) { }
+
   ngOnInit() {
+    // observable amount of notifications
+    this.webSocket.notificationAmount$.subscribe(
+      () =>{
+        this.notificationAmount+=1;
+        console.log(this.notificationAmount);
+      }
+    );
+
+    // Open the connection between web socket and web app
     this.webSocket.setupWithToken(this.apiToken);
+
     //DIRECTION NAVBAR
     var size;
     var elemento = document.getElementsByClassName("dropdown-submenu");

@@ -14,6 +14,10 @@ import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
 import { CreateEmployeeComponent } from './Components/create-employee/employee/create-employee.component';
 import { NewsComponent } from './Pages/news/news.component';
 import { CreateNewReleaseComponent } from './Components/News/create-new-release/create-new-release.component';
+import { OrdersComponent } from './Pages/orders/orders.component';
+import { CreateOrderComponent } from './Components/Orders/create-order/create-order.component';
+import { SearchClientComponent } from './Components/Client/search-client/search-client.component';
+import { ClientComponent } from './Pages/client/client.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { CreateNewReleaseComponent } from './Components/News/create-new-release/
     NavBarComponent,
     CreateEmployeeComponent,
     NewsComponent,
-    CreateNewReleaseComponent
+    CreateNewReleaseComponent,
+    OrdersComponent,
+    CreateOrderComponent,
+    SearchClientComponent,
+    ClientComponent
   ],
   imports: [
     BrowserModule,

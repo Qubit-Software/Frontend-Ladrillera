@@ -1,0 +1,67 @@
+.form-control {
+    outline: none;
+    border-width: 0 0 2px;
+    border-color: rgb(209, 209, 209);
+    background-color: transparent;
+    border-radius: 0px;
+    color: rgb(160, 160, 160);
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+.input-group option {
+    font-size: 15px;
+}
+
+.form-control:focus {
+    font-size: 15px;
+    box-shadow: none;
+    font-family: "helveticaNowMicro-Regular";
+}
+
+.btn {
+    background: red;
+    color: white;
+    border-radius: 10px;
+    padding: 6px 32px 6px 32px;
+}
+
+#tbHeadLeft {
+    background-color: #e4e4e4;
+    border-radius: 15px 0px 0px 15px;
+    border-top: none;
+    border-bottom: none;
+}
+
+#tbHeadRight {
+    background-color: #e4e4e4;
+    border-radius: 0px 15px 15px 0px;
+    border-top: none;
+    border-bottom: none;
+}
+
+.separator {
+    background: linear-gradient(rgb(199, 199, 199), rgb(199, 199, 199)) no-repeat left/2px 60%
+}
+#tbHead th{
+    background-color: #e4e4e4;
+    border-top: none;
+    border-bottom: none;
+}
+.tRow th,.tRow td{
+    border-top: none;
+    border-bottom: none;
+    margin: 20px 20px 20px 20px;
+    background-color: #e4e4e4;
+    border: 30px solid white;
+    border-radius: 25px;
+
+}
+#lastElement{
+    border-radius: 100%;
+}
+.test{
+background-color: white;
+border-radius: 25%;
+}
+
