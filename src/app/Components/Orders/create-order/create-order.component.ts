@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-order',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-order.component.css']
 })
 export class CreateOrderComponent implements OnInit {
+
+  form: FormGroup;
+  public totalSell = 0;
   public products = [
     {
       "codigo": "LAD21-MATCO",
@@ -27,9 +31,26 @@ export class CreateOrderComponent implements OnInit {
     }
   ]
 
-  constructor() { }
+  constructor(private fb: FormBuilder) {
+    this.createForm();
+  }
 
   ngOnInit(): void {
+  }
+
+  public onsum(value) {
+    console.log(value);
+    this.totalSell - Number(value);
+    this.totalSell += Number(value);
+  }
+
+  public generateOrder() {
+
+  }
+
+  createForm() {
+    this.form = this.fb.group({
+    });
   }
 
 }

@@ -43,32 +43,52 @@
 .separator {
     background: linear-gradient(rgb(199, 199, 199), rgb(199, 199, 199)) no-repeat left/2px 60%
 }
-#tbHead th{
+
+#tbHead th {
     background-color: #e4e4e4;
     border-top: none;
     border-bottom: none;
 }
-.tRow th,.tRow td{
+
+.tRow th, .tRow td {
     border-top: none;
     border-bottom: none;
     margin: 20px 20px 20px 20px;
     background-color: #e4e4e4;
     border: 30px solid white;
     border-radius: 25px;
-
 }
-#lastElement{
+
+#lastElement {
     border-radius: 100%;
 }
-.test{
-background-color: white;
-border-radius: 25%;
+
+.test {
+    background-color: white;
+    border-radius: 25%;
 }
 
-#total{
+#total {
     margin-right: 100px;
 }
 
-#labelSell{
+#labelSell {
     border: 2px solid black;
+}
+
+#plusElement {
+    max-width: 3%;
+    position: relative;
+    width: 100%;
+    margin-right: 34px;
+    background-color: #e4e4e4;
+    padding:6px 0px 6px 0px;
+}
+
+#orderTable{
+    margin-bottom: 0px;
+}
+#mainContainer{
+    height: 100vh;
+    overflow: visible;
 }

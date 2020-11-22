@@ -1,93 +1,107 @@
-<div class="container-fluid">
-    <div class="row my-4">
-        <h2 class="titles">Montar pedido</h2>
-    </div>
-    <div class="row text-center">
-        <div class="col">
-            <table class="table table-hover">
-                <thead>
-                    <tr id="tbHead">
-                        <th class="titles" id="tbHeadLeft">Codigo Producto</th>
-                        <th class="titles separator">Nombre</th>
-                        <th class="titles separator">Cantidad</th>
-                        <th class="titles separator">Medida</th>
-                        <th class="titles separator">Valor de venta</th>
-                        <th class="titles separator" id="tbHeadRight">
-                            <img src="../../../../assets/Iconos/notebook.png" height="30px" alt="">
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="tRow" *ngFor="let i of products">
-                        <th class="text" scope="row">{{i.codigo}}</th>
-                        <td class="text">{{i.nombre}}</td>
-                        <td class="text"><input type="number" class="form-control text-center"></td>
-                        <td class="text">
-                            <select class="form-control" name="Medida" id="">
-                                <option class="form-control" disabled selected value="">Selecciona una medida</option>
-                                <option class="form-control" *ngFor="let j of i.medida" value={{j}}>
-                                    {{j}}</option>
-                            </select></td>
-                        <td class="text"><input type="number" class="form-control text-center"></td>
-                        <td class="text" id="lastElement">
-                            <div class="rounded circle">
-                                <img src="../../../../assets/Iconos/money.svg" height="30px" alt="">
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-
+<div id="mainContainer" class="container-fluid">
+    <form [formGroup]="form" (ngSubmit)="generateOrder()">
+        <div class="row my-4">
+            <h2 class="titles">Montar pedido</h2>
         </div>
-    </div>
-    <div class="row d-flex justify-content-end">
-        <div class="col-4" id="total">
-            <div class="form-group row">
-                <label for="sellAmount" id="labelSell" class="col-3 col-form-label text-center titles">Venta Total</label>
-                <div class="col">
-                    <input type="text" readonly class="form-control text-center" id="sellAmount"
-                        value="Precio total del pedido actual">
-                </div>
+        <div class="row text-center">
+            <div class="col">
+                <table id="orderTable" class="table table-hover">
+                    <thead>
+                        <tr id="tbHead">
+                            <th class="titles" id="tbHeadLeft">Codigo Producto</th>
+                            <th class="titles separator">Nombre</th>
+                            <th class="titles separator">Cantidad</th>
+                            <th class="titles separator">Medida</th>
+                            <th class="titles separator">Valor de venta</th>
+                            <th class="titles separator" id="tbHeadRight">
+                                <img src="../../../../assets/Iconos/notebook.png" height="30px" alt="">
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="tRow" *ngFor="let i of products; idex as p">
+                            <th class="text align-middle" scope="row">{{i.codigo}}</th>
+                            <td class="text align-middle">{{i.nombre}}</td>
+                            <td class="text"><input type="number" class="form-control text-center" id="productAmount" value="0">
+                            </td>
+                            <td class="text">
+                                <select class="form-control" name="Medida" id="">
+                                    <option class="form-control" disabled selected value="">Selecciona una medida
+                                    </option>
+                                    <option class="form-control" *ngFor="let j of i.medida" value={{j}}>
+                                        {{j}}</option>
+                                </select></td>
+                            <td class="text">
+                                <input type="number" class="form-control text-center" value="0"
+                                    (change)="onsum($event.target.value)">
+                            </td>
+                            <td class="text align-middle" id="lastElement">
+                                <div class="rounded circle ">
+                                    <img src="../../../../assets/Iconos/delete.svg" height="30px" alt="">
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
             </div>
-
         </div>
-    </div>
+        <div class="row d-flex justify-content-end">
+            <button class="btn rounded-circle" id="plusElement">
+                <img src="../../../../assets/Iconos/plus.png" height="25px" alt="">
+            </button>
+        </div>
+        <div class="row d-flex justify-content-end">
+            <div class="col-4" id="total">
+                <div class="form-group row">
+                    <label for="sellAmount" id="labelSell" class="col-3 col-form-label text-center titles">Venta
+                        Total</label>
+                    <div class="col">
+                        <input type="text" readonly class="form-control text-center" disabled id="sellAmount"
+                            value={{totalSell}}>
+                    </div>
+                </div>
 
-    <div class="fixed-bottom py-4">
-        <div class="container-fluid">
-            <div class="row">
+            </div>
+        </div>
+        <div class="fixed-bottom py-4 bg-white">
+            <div class="container-fluid">
+                <div class="row">
 
-                <div class="col-10 offset-2">
-                    <form>
-                        <div class="form-row text-center">
-                            <div class="col-6">
-                                <div class="form-group row">
-                                    <label for="clientName" class="col-sm-2 col-form-label titles">Cliente</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control text-center" disabled id="clientName"
-                                            placeholder="Nombre del cliente">
+                    <div class="col-10 offset-2">
+                        <form>
+                            <div class="form-row text-center">
+                                <div class="col-6">
+                                    <div class="form-group row">
+                                        <label for="clientName" class="col-sm-2 col-form-label titles">Cliente</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control text-center" disabled id="clientName"
+                                                placeholder="Nombre del cliente">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group row">
+                                        <label for="deliveryDate" class="col-sm-3 col-form-label titles">Fecha de
+                                            entrega</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="deliveryDate"
+                                                placeholder="Cúal sera la fecha de entrega">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group row">
-                                    <label for="deliveryDate" class="col-sm-3 col-form-label titles">Fecha de
-                                        entrega</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="deliveryDate"
-                                            placeholder="Cúal sera la fecha de entrega">
-                                    </div>
+                            <div class="row">
+                                <div class="col text-center">
+                                    <button class="btn btn-danger text">Continuar</button>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col text-center">
-                                <button class="btn btn-danger text">Continuar</button>
-                            </div>
-                        </div>
 
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
+
+</div>
