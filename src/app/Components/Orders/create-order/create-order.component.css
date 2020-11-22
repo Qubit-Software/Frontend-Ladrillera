@@ -65,3 +65,10 @@ background-color: white;
 border-radius: 25%;
 }
 
+#total{
+    margin-right: 100px;
+}
+
+#labelSell{
+    border: 2px solid black;
+}

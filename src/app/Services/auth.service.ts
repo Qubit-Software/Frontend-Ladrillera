@@ -80,10 +80,8 @@ export class AuthService {
   //AUTHENTICATED*************************************
   authenticated(): boolean {
     if (this.userToken.length < 2) {
-      console.log('false');
       return false;
     } else {
-      console.log('true');
       return true;
     }
 
