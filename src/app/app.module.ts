@@ -6,7 +6,6 @@ import { HttpClientModule } from "@angular/common/http";
 import { TooltipModule } from 'ng2-tooltip-directive';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { HomeComponent } from './Pages/home/home.component';
 import { LoginComponent } from './Pages/login/login.component';
 import { CreateEmployeesComponent } from './Pages/employees/employees.component';
@@ -18,6 +17,17 @@ import { OrdersComponent } from './Pages/orders/orders.component';
 import { CreateOrderComponent } from './Components/Orders/create-order/create-order.component';
 import { SearchClientComponent } from './Components/Client/search-client/search-client.component';
 import { ClientComponent } from './Pages/client/client.component';
+import { DeliveryComponent } from './Pages/delivery/delivery.component';
+import { CronogramaComponent } from './Components/delivery/cronograma/cronograma.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
+FullCalendarModule.registerPlugins([
+  dayGridPlugin,
+  interactionPlugin
+]);
+import { AppComponent } from './app.component';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +42,9 @@ import { ClientComponent } from './Pages/client/client.component';
     OrdersComponent,
     CreateOrderComponent,
     SearchClientComponent,
-    ClientComponent
+    ClientComponent,
+    DeliveryComponent,
+    CronogramaComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +52,8 @@ import { ClientComponent } from './Pages/client/client.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    TooltipModule
+    TooltipModule,
+    FullCalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

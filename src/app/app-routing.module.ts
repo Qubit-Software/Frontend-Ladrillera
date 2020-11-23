@@ -8,6 +8,7 @@ import { ActiveUserGuard } from './Guards/Login/active-user.guard';
 import { NewsComponent } from './Pages/news/news.component';
 import { OrdersComponent } from './Pages/orders/orders.component';
 import { ClientComponent } from './Pages/client/client.component';
+import { DeliveryComponent } from './Pages/delivery/delivery.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'release', component: NewsComponent, canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent,canActivate :[ActiveUserGuard]},
   { path: 'client', component: ClientComponent,canActivate :[AuthGuard]},
+  { path: 'delivery', component: DeliveryComponent,canActivate :[AuthGuard]},
   { path: '', component: LoginComponent,canActivate :[ActiveUserGuard]}
 ];
 
