@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CreateOrderService } from 'src/app/Services/Orders/createOrder/create-order.service';
 import { product } from "../../../models/products.model";
 @Component({
   selector: 'app-create-order',
@@ -34,13 +35,16 @@ export class CreateOrderComponent implements OnInit {
     }
   ]
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private CreateOrderService: CreateOrderService) {
 
   }
 
   ngOnInit(): void {
     this.product = new product();
     this.dataArray.push(this.product);
+    this.CreateOrderService.createOrder().subscribe((result)=>{
+      console.log(result);
+    });
   }
 
 

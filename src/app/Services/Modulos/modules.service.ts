@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ModulesService {
-  private url = 'http://127.0.0.1:8000/api/administracion';
+  private url = 'https://94771c6b93ee.ngrok.io/api/administracion';
 
   constructor( private http: HttpClient, private auth: AuthService ) { }
 

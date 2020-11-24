@@ -25,7 +25,8 @@
                                     [(ngModel)]="i.codigo_producto" id="productAmount">
                             </th>
                             <td class="text">
-                                <select (change)="productCodeSet(p)" name="nombre{{p}}" [(ngModel)]="i.nombre"  class="form-control" name="Medida">
+                                <select (change)="productCodeSet(p)" name="nombre{{p}}" [(ngModel)]="i.nombre"
+                                    class="form-control" name="Medida">
                                     <option class="form-control" disabled selected value="">Selecciona un producto
                                     </option>
                                     <option class="form-control" *ngFor="let h of products" value={{h.nombre}}>
@@ -38,7 +39,8 @@
                                     [(ngModel)]="i.cantidad" id="productAmount">
                             </td>
                             <td class="text">
-                                <select class="form-control" name="Medida" name="unidad_medicion{{p}}" [(ngModel)]="i.unidad_medicion">
+                                <select class="form-control" name="Medida" name="unidad_medicion{{p}}"
+                                    [(ngModel)]="i.unidad_medicion">
                                     <option class="form-control" disabled selected value="">Selecciona una medida
                                     </option>
                                     <option class="form-control" *ngFor="let measure of i.medidas" value={{measure}}>
@@ -47,10 +49,13 @@
                                 </select>
                             </td>
                             <td class="text">
-                                <input type="number" class="form-control text-center" (change)="onChange()" name="valor{{p}}"
-                                    [(ngModel)]="i.valor">
+                                <input type="number" class="form-control text-center" (change)="onChange()"
+                                    name="valor{{p}}" [(ngModel)]="i.valor">
                             </td>
-                            <td (click)="deleteProduct(p)" class="text align-middle" id="lastElement">
+                            <td *ngIf="p==0" class="text align-middle">
+
+                            </td>
+                            <td *ngIf="p!=0" (click)="deleteProduct(p)" class="text align-middle" id="lastElement">
                                 <div class="rounded circle ">
                                     <img src="../../../../assets/Iconos/delete.svg" height="30px" alt="">
                                 </div>
@@ -73,7 +78,7 @@
                         Total</label>
                     <div class="col">
                         <input type="text" readonly class="form-control text-center" disabled id="sellAmount"
-                            value={{totalSell}}>
+                            value={{totalSell|currency}}>
                     </div>
                 </div>
 
