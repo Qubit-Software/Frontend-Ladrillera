@@ -18,6 +18,8 @@ import { OrdersComponent } from './Pages/orders/orders.component';
 import { CreateOrderComponent } from './Components/Orders/create-order/create-order.component';
 import { SearchClientComponent } from './Components/Client/search-client/search-client.component';
 import { ClientComponent } from './Pages/client/client.component';
+import { SolicitudComponent } from './Components/solicitud/solicitud.component';
+import { SearchPedidoComponent } from './Components/pedido/search-pedido/search-pedido.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { ClientComponent } from './Pages/client/client.component';
     OrdersComponent,
     CreateOrderComponent,
     SearchClientComponent,
-    ClientComponent
+    ClientComponent,
+    SolicitudComponent,
+    SearchPedidoComponent
   ],
   imports: [
     BrowserModule,
