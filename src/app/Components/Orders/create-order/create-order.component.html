@@ -1,5 +1,5 @@
 <div id="mainContainer" class="container-fluid">
-    <form [formGroup]="form" (ngSubmit)="generateOrder()">
+    <form (ngSubmit)="generateOrder()">
         <div class="row my-4">
             <h2 class="titles">Montar pedido</h2>
         </div>
@@ -19,23 +19,38 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="tRow" *ngFor="let i of products; idex as p">
-                            <th class="text align-middle" scope="row">{{i.codigo}}</th>
-                            <td class="text align-middle">{{i.nombre}}</td>
-                            <td class="text"><input type="number" class="form-control text-center" id="productAmount" value="0">
+                        <tr class="tRow" *ngFor="let i of dataArray;let p=index">
+                            <th class="text align-middle" scope="row">
+                                <input type="text" disabled class="form-control text-center" name="codigo_producto{{p}}"
+                                    [(ngModel)]="i.codigo_producto" id="productAmount">
+                            </th>
+                            <td class="text">
+                                <select (change)="productCodeSet(p)" name="nombre{{p}}" [(ngModel)]="i.nombre"  class="form-control" name="Medida">
+                                    <option class="form-control" disabled selected value="">Selecciona un producto
+                                    </option>
+                                    <option class="form-control" *ngFor="let h of products" value={{h.nombre}}>
+                                        {{h.nombre}}
+                                    </option>
+                                </select>
                             </td>
                             <td class="text">
-                                <select class="form-control" name="Medida" id="">
+                                <input type="number" class="form-control text-center" name="cantidad{{p}}"
+                                    [(ngModel)]="i.cantidad" id="productAmount">
+                            </td>
+                            <td class="text">
+                                <select class="form-control" name="Medida" name="unidad_medicion{{p}}" [(ngModel)]="i.unidad_medicion">
                                     <option class="form-control" disabled selected value="">Selecciona una medida
                                     </option>
-                                    <option class="form-control" *ngFor="let j of i.medida" value={{j}}>
-                                        {{j}}</option>
-                                </select></td>
-                            <td class="text">
-                                <input type="number" class="form-control text-center" value="0"
-                                    (change)="onsum($event.target.value)">
+                                    <option class="form-control" *ngFor="let measure of i.medidas" value={{measure}}>
+                                        {{measure}}
+                                    </option>
+                                </select>
                             </td>
-                            <td class="text align-middle" id="lastElement">
+                            <td class="text">
+                                <input type="number" class="form-control text-center" (change)="onChange()" name="valor{{p}}"
+                                    [(ngModel)]="i.valor">
+                            </td>
+                            <td (click)="deleteProduct(p)" class="text align-middle" id="lastElement">
                                 <div class="rounded circle ">
                                     <img src="../../../../assets/Iconos/delete.svg" height="30px" alt="">
                                 </div>
@@ -47,7 +62,7 @@
             </div>
         </div>
         <div class="row d-flex justify-content-end">
-            <button class="btn rounded-circle" id="plusElement">
+            <button (click)="addForm()" type="submit" class="btn rounded-circle" id="plusElement">
                 <img src="../../../../assets/Iconos/plus.png" height="25px" alt="">
             </button>
         </div>
@@ -69,35 +84,33 @@
                 <div class="row">
 
                     <div class="col-10 offset-2">
-                        <form>
-                            <div class="form-row text-center">
-                                <div class="col-6">
-                                    <div class="form-group row">
-                                        <label for="clientName" class="col-sm-2 col-form-label titles">Cliente</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control text-center" disabled id="clientName"
-                                                placeholder="Nombre del cliente">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-group row">
-                                        <label for="deliveryDate" class="col-sm-3 col-form-label titles">Fecha de
-                                            entrega</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="deliveryDate"
-                                                placeholder="Cúal sera la fecha de entrega">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col text-center">
-                                    <button class="btn btn-danger text">Continuar</button>
-                                </div>
-                            </div>
 
-                        </form>
+                        <div class="form-row text-center">
+                            <div class="col-6">
+                                <div class="form-group row">
+                                    <label for="clientName" class="col-sm-2 col-form-label titles">Cliente</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control text-center" disabled id="clientName"
+                                            placeholder="Nombre del cliente">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group row">
+                                    <label for="deliveryDate" class="col-sm-3 col-form-label titles">Fecha de
+                                        entrega</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="deliveryDate"
+                                            placeholder="Cúal sera la fecha de entrega">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col text-center">
+                                <button class="btn btn-danger text">Continuar</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
