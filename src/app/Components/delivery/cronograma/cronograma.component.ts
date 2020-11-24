@@ -14,7 +14,7 @@ export class CronogramaComponent implements OnInit {
     headerToolbar: {
       start: 'prev,next',
       center: 'title',
-      end: 'dayGridMonth timeGridWeek dayGridDay'
+      end: 'dayGridMonth,timeGridWeek,dayGridDay'
     },
     footerToolbar: {
       center: "agregarevento"

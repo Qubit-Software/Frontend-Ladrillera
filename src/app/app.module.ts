@@ -10,7 +10,7 @@ import { HomeComponent } from './Pages/home/home.component';
 import { LoginComponent } from './Pages/login/login.component';
 import { CreateEmployeesComponent } from './Pages/employees/employees.component';
 import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
-import { CreateEmployeeComponent } from './Components/create-employee/employee/create-employee.component';
+import { CreateEmployeeComponent } from './Components/Employee/create-employee/create-employee.component';
 import { NewsComponent } from './Pages/news/news.component';
 import { CreateNewReleaseComponent } from './Components/News/create-new-release/create-new-release.component';
 import { OrdersComponent } from './Pages/orders/orders.component';
@@ -27,6 +27,9 @@ FullCalendarModule.registerPlugins([
   interactionPlugin
 ]);
 import { AppComponent } from './app.component';
+import { SearchOrderComponent } from './Components/Orders/search-order/search-order.component';
+import { AccountingComponent } from './Pages/accounting/accounting.component';
+import { RequestComponent } from './Components/accounting/request/request.component';
 
 
 @NgModule({
@@ -44,7 +47,10 @@ import { AppComponent } from './app.component';
     SearchClientComponent,
     ClientComponent,
     DeliveryComponent,
-    CronogramaComponent
+    CronogramaComponent,
+    SearchOrderComponent,
+    AccountingComponent,
+    RequestComponent
   ],
   imports: [
     BrowserModule,
