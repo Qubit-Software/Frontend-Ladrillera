@@ -1,0 +1,64 @@
+<div class="verticalCenter my-3">
+  <div id="containerBox" class="container animated fadeInRight ">
+    <div id="createEmployeeBox" class="row text-center ">
+      <div id="contentCreateEmployee" class="col-lg shadow-lg rounded">
+        <h1 id="titleCreateEmployee" class="titles">Cear cliente</h1>
+        <!--Form Starts-->
+        <div id="contenedorf">
+          <form autocomplete="off" [formGroup]="form" (ngSubmit)="createEmployee()" class="">
+            <div class="input-group mb-4 px-5">
+              <div class="form-row align-items-center">
+                <div class="col-12 my-1">
+                  <input type="text" name="nombre" class="form-control titles" placeholder="Nombres"
+                    formControlName="nombres" [class.is-invalid]="nombresNoValido" [class.is-valid]="nombresValido">
+                </div>
+                <div id="nder" class="col-12 my-1">
+                  <input type="text" name="apellidos" class="form-control titles" placeholder="Apellido"
+                    formControlName="apellidos" [class.is-invalid]="apellidosNoValido"
+                    [class.is-valid]="apellidosValido">
+                </div>
+                <div class="col-12 my-1">
+                  <input type="text" minlength="10" name="text" placeholder="CC/NIT" class="form-control titles"
+                    formControlName="cedula_ciudadania" [class.is-invalid]="cedula_ciudadaniaNoValido"
+                    [class.is-valid]="cedula_ciudadaniaValido">
+                </div>
+                <div class="col-12 my-1">
+                  <select class="form-control titles" formControlName="tipo" [class.is-invalid]="generoNoValido"
+                    [class.is-valid]="generoValido">
+                    <option value="M" selected>persona nautral</option>
+                    <option value="F">persona juridica</option>
+                  </select>
+                </div>
+                <div class="col-12 my-1">
+                  <input type="text" minlength="10" name="text" placeholder="Ciudad" class="form-control titles"
+                    formControlName="cedula_ciudadania" [class.is-invalid]="cedula_ciudadaniaNoValido"
+                    [class.is-valid]="cedula_ciudadaniaValido">
+                </div>
+                <div class="col-12 my-1">
+                  <input type="text" minlength="10" name="text" placeholder="Correo" class="form-control titles"
+                    formControlName="cedula_ciudadania" [class.is-invalid]="emailNoValido"
+                    [class.is-valid]="emailValido">
+                </div>
+                <div class="col-12 my-1">
+                  <input type="text" minlength="10" name="text" placeholder="Telefono" class="form-control titles"
+                    formControlName="cedula_ciudadania" [class.is-invalid]="cedula_ciudadaniaNoValido"
+                    [class.is-valid]="cedula_ciudadaniaValido">
+                </div>
+                <div class="col-12 my-1">
+                  <input type="file" formControlName="photoFile"
+                    class="form-control titles-file titles text-wrap" (change)="handleFileInput($event.target.files)"
+                    [class.is-invalid]="photoFiledNoValido" [class.is-valid]="photoFileValido">
+                </div>
+              </div>
+            </div>
+            <div id="button" class="">
+              <button class="btn my-5 titles" type="submit">
+                Continuar
+              </button>
+            </div>
+          </form>
+          <!-- Form ends-->
+        </div>
+      </div>
+    </div>
+  </div>

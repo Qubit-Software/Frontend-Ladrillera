@@ -32,6 +32,7 @@ import { AccountingComponent } from './Pages/accounting/accounting.component';
 import { RequestComponent } from './Components/accounting/request/request.component';
 import { ReportsComponent } from './Components/Orders/reports/reports.component';
 import { ChargeOrderComponent } from './Components/Orders/charge-order/charge-order.component';
+import { CreateClientComponent } from './Components/Client/create-client/create-client.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { ChargeOrderComponent } from './Components/Orders/charge-order/charge-or
     AccountingComponent,
     RequestComponent,
     ReportsComponent,
-    ChargeOrderComponent
+    ChargeOrderComponent,
+    CreateClientComponent
   ],
   imports: [
     BrowserModule,
