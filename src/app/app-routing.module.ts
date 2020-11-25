@@ -10,18 +10,20 @@ import { OrdersComponent } from './Pages/orders/orders.component';
 import { ClientComponent } from './Pages/client/client.component';
 import { DeliveryComponent } from './Pages/delivery/delivery.component';
 import { AccountingComponent } from './Pages/accounting/accounting.component';
+import { ChargeOrderComponent } from './Components/Orders/charge-order/charge-order.component';
 
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
-  { path: 'employees', component: CreateEmployeesComponent, canActivate: [AuthGuard]},
-  { path: 'orders', component: OrdersComponent, canActivate: [AuthGuard]},
-  { path: 'accounting', component: AccountingComponent, canActivate: [AuthGuard]},
-  { path: 'release', component: NewsComponent, canActivate: [AuthGuard]},
-  { path: 'login', component: LoginComponent,canActivate :[ActiveUserGuard]},
-  { path: 'client', component: ClientComponent,canActivate :[AuthGuard]},
-  { path: 'delivery', component: DeliveryComponent,canActivate :[AuthGuard]},
-  { path: '', component: LoginComponent,canActivate :[ActiveUserGuard]}
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'employees', component: CreateEmployeesComponent, canActivate: [AuthGuard] },
+  { path: 'orders', component: OrdersComponent, canActivate: [AuthGuard] },
+  { path: 'accounting', component: AccountingComponent, canActivate: [AuthGuard] },
+  { path: 'release', component: NewsComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent, canActivate: [ActiveUserGuard] },
+  { path: 'client', component: ClientComponent, canActivate: [AuthGuard] },
+  { path: 'delivery', component: DeliveryComponent, canActivate: [AuthGuard] },
+  { path: 'charge/:id', component: ChargeOrderComponent, canActivate: [AuthGuard] },
+  { path: '', component: LoginComponent, canActivate: [ActiveUserGuard] }
 ];
 
 @NgModule({

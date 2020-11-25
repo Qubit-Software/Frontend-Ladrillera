@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { CreateOrderService } from 'src/app/Services/Orders/createOrder/create-order.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-search-order',
@@ -9,22 +12,34 @@ import Swal from 'sweetalert2';
 })
 export class SearchOrderComponent implements OnInit {
   title = 'angular-sweetalert-demo';
-
+  id: number;
   form: FormGroup;
 
-  constructor() { }
+  constructor(private CreateOrderService: CreateOrderService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   prueba() {
     Swal.fire({
-      title: 'El pedido no existe',
-      icon: 'error',
-      html:
-        'Verifica los datos del codigo',
-      showCloseButton: true,
-    })
+      allowOutsideClick: false,
+      icon: 'info',
+      text: 'Espere por favor'
+    });
+    Swal.showLoading();
+
+    this.CreateOrderService.getPedidoId(this.id).subscribe(resp => {
+      Swal.close();
+      this.router.navigate(['/charge', this.id]);
+    }, (err) => {
+      Swal.close();
+      Swal.fire({
+        icon: 'error',
+        title: 'Error al autenticar',
+        text: 'Revisa tus credenciales antes de acceder'
+      });
+      console.log(err);
+    });
   }
   test() {
 

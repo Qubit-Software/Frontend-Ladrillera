@@ -8,7 +8,7 @@ import { map } from "rxjs/operators";
   providedIn: 'root'
 })
 export class AuthService {
-  private url = 'https://94771c6b93ee.ngrok.io/api/auth'
+  private url = ' http://45782557f82e.ngrok.io/api/auth'
 
   userToken: string;
   expiresAt: string;
@@ -17,13 +17,13 @@ export class AuthService {
     this.readToken();
   }
 
-  //LOGOUT*************************************
+  // LOGOUT*************************************
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('expires');
   }
 
-  //LOGIN*************************************
+  // LOGIN*************************************
   login(usuario: UsuarioModel, remember: boolean) {
     const authData = {
       ...usuario,
@@ -41,7 +41,7 @@ export class AuthService {
 
   }
 
-  //REGISTER*************************************
+  // REGISTER*************************************
   register(usuario: UsuarioModel, nombre, contraseña) {
     const authData = {
       name: nombre,
@@ -58,7 +58,7 @@ export class AuthService {
       })
     );
   }
-  //SAVETOKEN*************************************
+  // SAVETOKEN*************************************
   private saveToken(idToken: string, expiresAt: string) {
     this.userToken = idToken;
     localStorage.setItem('token', idToken);
@@ -66,7 +66,7 @@ export class AuthService {
     localStorage.setItem("expires", today.getTime().toString());
   }
 
-  //READTOKEN*************************************
+  // READTOKEN*************************************
   readToken() {
     if (localStorage.getItem('token')) {
       this.userToken = localStorage.getItem('token');
@@ -77,7 +77,7 @@ export class AuthService {
     }
   }
 
-  //AUTHENTICATED*************************************
+  // AUTHENTICATED*************************************
   authenticated(): boolean {
     if (this.userToken.length < 2) {
       return false;
@@ -87,7 +87,7 @@ export class AuthService {
 
   }
 
-  //VALIDATEUSER
+  // VALIDATEUSER
   validateUser() {
 
     const opts = {

@@ -1,0 +1,34 @@
+<div id="mainContainer" class="container-fluid">
+  <div class="row my-4">
+    <h2 class="titles">Montar pedido</h2>
+  </div>
+  <div class="row text-center">
+    <div class="col">
+      <table id="orderTable" class="table table-hover">
+        <thead>
+          <tr id="tbHead">
+            <th class="titles" id="tbHeadLeft">Codigo Pedido</th>
+            <th class="titles separator">Status</th>
+            <th class="titles separator">Total</th>
+            <!-- <th class="titles separator" id="tbHeadRight">
+              <img src="../../../../assets/Iconos/notebook.png" height="30px" alt="">
+            </th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="tRow" *ngFor="let pedido of pedidos">
+            <td class="text">
+              {{pedido.id}}
+            </td>
+            <td class="text">
+              {{pedido.status}}
+            </td>
+            <td class="text">
+              {{pedido.total|currency}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

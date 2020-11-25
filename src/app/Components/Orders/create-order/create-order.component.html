@@ -1,125 +1,123 @@
 <div id="mainContainer" class="container-fluid">
-    <form (ngSubmit)="generateOrder()">
-        <div class="row my-4">
-            <h2 class="titles">Montar pedido</h2>
-        </div>
-        <div class="row text-center">
-            <div class="col">
-                <table id="orderTable" class="table table-hover">
-                    <thead>
-                        <tr id="tbHead">
-                            <th class="titles" id="tbHeadLeft">Codigo Producto</th>
-                            <th class="titles separator">Nombre</th>
-                            <th class="titles separator">Cantidad</th>
-                            <th class="titles separator">Medida</th>
-                            <th class="titles separator">Valor de venta</th>
-                            <th class="titles separator" id="tbHeadRight">
-                                <img src="../../../../assets/Iconos/notebook.png" height="30px" alt="">
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="tRow" *ngFor="let i of dataArray;let p=index">
-                            <th class="text align-middle" scope="row">
-                                <input type="text" disabled class="form-control text-center" name="codigo_producto{{p}}"
-                                    [(ngModel)]="i.codigo_producto" id="productAmount">
-                            </th>
-                            <td class="text">
-                                <select (change)="productCodeSet(p)" name="nombre{{p}}" [(ngModel)]="i.nombre"
-                                    class="form-control" name="Medida">
-                                    <option class="form-control" disabled selected value="">Selecciona un producto
-                                    </option>
-                                    <option class="form-control" *ngFor="let h of products" value={{h.nombre}}>
-                                        {{h.nombre}}
-                                    </option>
-                                </select>
-                            </td>
-                            <td class="text">
-                                <input type="number" class="form-control text-center" name="cantidad{{p}}"
-                                    [(ngModel)]="i.cantidad" id="productAmount">
-                            </td>
-                            <td class="text">
-                                <select class="form-control" name="Medida" name="unidad_medicion{{p}}"
-                                    [(ngModel)]="i.unidad_medicion">
-                                    <option class="form-control" disabled selected value="">Selecciona una medida
-                                    </option>
-                                    <option class="form-control" *ngFor="let measure of i.medidas" value={{measure}}>
-                                        {{measure}}
-                                    </option>
-                                </select>
-                            </td>
-                            <td class="text">
-                                <input type="number" class="form-control text-center" (change)="onChange()"
-                                    name="valor{{p}}" [(ngModel)]="i.valor">
-                            </td>
-                            <td *ngIf="p==0" class="text align-middle">
+  <form (ngSubmit)="generateOrder()">
+    <div class="row my-4">
+      <h2 class="titles">Montar pedido</h2>
+    </div>
+    <div class="row text-center">
+      <div class="col">
+        <table id="orderTable" class="table table-hover">
+          <thead>
+            <tr id="tbHead">
+              <th class="titles" id="tbHeadLeft">Codigo Producto</th>
+              <th class="titles separator">Nombre</th>
+              <th class="titles separator">Cantidad</th>
+              <th class="titles separator">Medida</th>
+              <th class="titles separator">Valor de venta</th>
+              <th class="titles separator" id="tbHeadRight">
+                <img src="../../../../assets/Iconos/notebook.png" height="30px" alt="">
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="tRow" *ngFor="let i of dataArray;let p=index">
+              <th class="text align-middle" scope="row">
+                <input type="text" disabled class="form-control text-center" name="codigo_producto{{p}}"
+                  [(ngModel)]="i.codigo_producto" id="productAmount">
+              </th>
+              <td class="text">
+                <select (change)="productCodeSet(p)" name="nombre{{p}}" [(ngModel)]="i.nombre" class="form-control"
+                  name="Medida" [attr.disabled] = "active === 1 ? 'disabled' : null">
+                  <option class="form-control" disabled selected value="">Selecciona un producto
+                  </option>
+                  <option class="form-control" *ngFor="let h of products" value={{h.nombre}}>
+                    {{h.nombre}}
+                  </option>
+                </select>
+              </td>
+              <td class="text">
+                <input type="number" class="form-control text-center" name="cantidad{{p}}" [(ngModel)]="i.cantidad"
+                  id="productAmount" [attr.disabled] = "active === 1 ? 'disabled' : null">
+              </td>
+              <td class="text">
+                <select class="form-control" name="Medida" name="unidad_medicion{{p}}" [(ngModel)]="i.unidad_medicion" [attr.disabled] = "active === 1 ? 'disabled' : null">
+                  <option class="form-control" disabled selected value="">Selecciona una medida
+                  </option>
+                  <option class="form-control" *ngFor="let measure of i.medidas" value={{measure}}>
+                    {{measure}}
+                  </option>
+                </select>
+              </td>
+              <td class="text">
+                <input type="number" class="form-control text-center" (change)="onChange()" name="valor{{p}}"
+                  [(ngModel)]="i.valor" [attr.disabled] = "active === 1 ? 'disabled' : null">
+              </td>
+              <td *ngIf="p==0" class="text align-middle">
 
-                            </td>
-                            <td *ngIf="p!=0" (click)="deleteProduct(p)" class="text align-middle" id="lastElement">
-                                <div class="rounded circle ">
-                                    <img src="../../../../assets/Iconos/delete.svg" height="30px" alt="">
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+              </td>
+              <td *ngIf="p!=0" (click)="deleteProduct(p)" class="text align-middle" id="lastElement">
+                <div class="rounded circle ">
+                  <img src="../../../../assets/Iconos/delete.svg" height="30px" alt="">
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
-            </div>
+      </div>
+    </div>
+    <div class="row d-flex justify-content-end">
+      <button (click)="addForm()" type="submit" class="btn rounded-circle" id="plusElement" [attr.disabled] = "active === 1 ? 'disabled' : null">
+        <img src="../../../../assets/Iconos/plus.png" height="25px" alt="">
+      </button>
+    </div>
+    <div class="row d-flex justify-content-end">
+      <div class="col-4" id="total">
+        <div class="form-group row">
+          <label for="sellAmount" id="labelSell" class="col-3 col-form-label text-center titles">Venta
+            Total</label>
+          <div class="col">
+            <input type="text" readonly class="form-control text-center" disabled id="sellAmount"
+              value={{totalSell|currency}}>
+          </div>
         </div>
-        <div class="row d-flex justify-content-end">
-            <button (click)="addForm()" type="submit" class="btn rounded-circle" id="plusElement">
-                <img src="../../../../assets/Iconos/plus.png" height="25px" alt="">
-            </button>
-        </div>
-        <div class="row d-flex justify-content-end">
-            <div class="col-4" id="total">
+
+      </div>
+    </div>
+    <div class="fixed-bottom py-4 bg-white">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-10 offset-2">
+            <div class="form-row text-center">
+              <div class="col-6">
                 <div class="form-group row">
-                    <label for="sellAmount" id="labelSell" class="col-3 col-form-label text-center titles">Venta
-                        Total</label>
-                    <div class="col">
-                        <input type="text" readonly class="form-control text-center" disabled id="sellAmount"
-                            value={{totalSell|currency}}>
-                    </div>
+                  <label for="clientName" class="col-sm-2 col-form-label titles">Cliente</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control text-center" disabled id="clientName"
+                      placeholder="Nombre del cliente">
+                  </div>
                 </div>
-
-            </div>
-        </div>
-        <div class="fixed-bottom py-4 bg-white">
-            <div class="container-fluid">
-                <div class="row">
-
-                    <div class="col-10 offset-2">
-
-                        <div class="form-row text-center">
-                            <div class="col-6">
-                                <div class="form-group row">
-                                    <label for="clientName" class="col-sm-2 col-form-label titles">Cliente</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control text-center" disabled id="clientName"
-                                            placeholder="Nombre del cliente">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group row">
-                                    <label for="deliveryDate" class="col-sm-3 col-form-label titles">Fecha de
-                                        entrega</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="deliveryDate"
-                                            placeholder="Cúal sera la fecha de entrega">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col text-center">
-                                <button class="btn btn-danger text">Continuar</button>
-                            </div>
-                        </div>
-                    </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group row">
+                  <label for="deliveryDate" class="col-sm-3 col-form-label titles">Fecha de
+                    entrega</label>
+                  <div class="col-sm-9">
+                    <input type="date" class="form-control" id="deliveryDate" [(ngModel)]="date" name="date" [attr.disabled] = "active === 1 ? 'disabled' : null">
+                  </div>
                 </div>
+              </div>
             </div>
+            <div class="row">
+              <div class="col text-center">
+                <button type="button" [ngClass]="{btnDisable: atras === false } " class="btn btn-danger text" (click)="Atras()">Atras</button>
+                <button type="submit" [ngClass]="{btnDisable: confirm === false } " class="btn btn-danger text" (click)="verificar()">Confirmar</button>
+                <button type="button" [ngClass]="{btnDisable: continuar === false } " class="btn btn-danger text" (click)="verificar()">Continuar</button>
+              </div>
+            </div>
+          </div>
         </div>
-    </form>
+      </div>
+    </div>
+  </form>
 
 </div>

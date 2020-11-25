@@ -30,6 +30,8 @@ import { AppComponent } from './app.component';
 import { SearchOrderComponent } from './Components/Orders/search-order/search-order.component';
 import { AccountingComponent } from './Pages/accounting/accounting.component';
 import { RequestComponent } from './Components/accounting/request/request.component';
+import { ReportsComponent } from './Components/Orders/reports/reports.component';
+import { ChargeOrderComponent } from './Components/Orders/charge-order/charge-order.component';
 
 
 @NgModule({
@@ -50,7 +52,9 @@ import { RequestComponent } from './Components/accounting/request/request.compon
     CronogramaComponent,
     SearchOrderComponent,
     AccountingComponent,
-    RequestComponent
+    RequestComponent,
+    ReportsComponent,
+    ChargeOrderComponent
   ],
   imports: [
     BrowserModule,

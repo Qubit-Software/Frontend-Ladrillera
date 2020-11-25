@@ -2,21 +2,21 @@
     <div id="containerBox" class="container animated fadeInRight ">
         <div id="createEmployeeBox" class="row text-center ">
             <div id="contentCreateEmployee" class="col-lg shadow rounded">
-                <form>
+                <form #f="ngForm" (ngSubmit)="f.form.valid && prueba()">
                     <h1 id="searchOrderTitle" class="titles">Pedido</h1>
                     <div class="form-group row">
                         <label for="staticEmail" class="col-12 col-form-label text mb-2">Ingrea el código del pedido a buscar</label>
                         <div id="input" class="col-12">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">LAD-21</span>
+                                    <span class="input-group-text" id="basic-addon1">LAD21-</span>
                                 </div>
                                 <input type="text" class="form-control" placeholder="XXXXX" aria-label="Username"
-                                    aria-describedby="basic-addon1">
+                                    aria-describedby="basic-addon1" [(ngModel)]="id" name="id" required>
                             </div>
                         </div>
                     </div>
-                    <button (click)="prueba()" class=" btn mb-4">Buscar</button>
+                    <button  class=" btn mb-4">Buscar</button>
                 </form>
             </div>
         </div>
