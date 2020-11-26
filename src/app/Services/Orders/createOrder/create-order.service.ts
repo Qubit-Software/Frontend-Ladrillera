@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AuthService } from '../../auth.service';
+import { AuthService } from '../../Auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -34,11 +34,6 @@ export class CreateOrderService {
       'productos': this.productos
     };
     console.log(body);
-    // const fd = new FormData();
-    // fd.append('id_cliente', '1');
-    // fd.append('fecha_cargue', '23/11/2020');
-    // fd.append('total', '541561');
-    // fd.append('productos', JSON.stringify(this.productos));
     return this.http.post(`${this.url}`, body, opts);
   }
   public getPedidos() {

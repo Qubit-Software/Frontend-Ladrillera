@@ -50,6 +50,7 @@ export class ChargeOrderComponent implements OnInit {
       this.pedidos.fechaCargue = result['fecha_cargue'];
       this.pedidos.total = result['total'];
       this.pedidos.producto = new Array();
+      this.pedidos.status= result['estatus']
       this.pedidos.producto = result['productos'];
       this.pedidos.producto.forEach(p => {
         const produc = this.products.find(prod => prod.codigo === p.codigo_producto);

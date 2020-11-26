@@ -22,13 +22,15 @@
 .btn {
   background: red;
   color: white;
-  margin-left:10px;
+  margin-left: 10px;
   border-radius: 10px;
   padding: 6px 32px 6px 32px;
 }
-.btnDisable{
-display: none;
+
+.btnDisable {
+  display: none;
 }
+
 #tbHeadLeft {
   background-color: #e4e4e4;
   border-radius: 15px 0px 0px 15px;
@@ -85,13 +87,21 @@ display: none;
   width: 100%;
   margin-right: 34px;
   background-color: #e4e4e4;
-  padding:6px 0px 6px 0px;
+  padding: 6px 0px 6px 0px;
 }
 
-#orderTable{
+#orderTable {
   margin-bottom: 0px;
 }
-#mainContainer{
+
+#mainContainer {
   height: 100vh;
   overflow: visible;
+}
+
+#statusOrder {
+  z-index: -20;
+  position: absolute;
+  top: 60%;
+  left: 41%;
 }

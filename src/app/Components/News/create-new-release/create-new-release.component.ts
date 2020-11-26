@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { ModulesService } from 'src/app/Services/Modulos/modules.service';
 import {  FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AdminService } from 'src/app/Services/admin.service';
+import { AdminService } from 'src/app/Services/Admin/admin.service';
 
 
 @Component({

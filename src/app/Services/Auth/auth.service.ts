@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { UsuarioModel } from '../models/usuario.model';
 
 import { map } from "rxjs/operators";
+import { UsuarioModel } from 'src/app/models/usuario.model';
 
 @Injectable({
   providedIn: 'root'
