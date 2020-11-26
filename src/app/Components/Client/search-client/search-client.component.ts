@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-
+declare var $: any;
 @Component({
   selector: 'app-search-client',
   templateUrl: './search-client.component.html',
@@ -30,11 +30,8 @@ export class SearchClientComponent implements OnInit {
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        this.router.navigate(['/orders']);
+        $('#exampleModalCenter').modal('show');
       }
     })
-  }
-  test() {
-    alert('test');
   }
 }

@@ -10,7 +10,7 @@ import { NgModuleResolver } from '@angular/compiler';
   providedIn: 'root'
 })
 export class AdminService {
-  private url = 'https://94771c6b93ee.ngrok.io/api/administracion';
+  private url = 'https://45782557f82e.ngrok.io/api/administracion';
 
   constructor( private http: HttpClient, private auth: AuthService ) { }
 

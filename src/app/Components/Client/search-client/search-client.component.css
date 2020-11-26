@@ -82,3 +82,10 @@
 
     }
   }
+
+  .btn{
+    background: red;
+    color: white;
+    border-radius: 10px;
+    padding: 6px 32px 6px 32px;
+  }

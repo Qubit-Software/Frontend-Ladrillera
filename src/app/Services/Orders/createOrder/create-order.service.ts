@@ -7,21 +7,9 @@ import { AuthService } from '../../auth.service';
 })
 export class CreateOrderService {
 
-  private url = ' http://45782557f82e.ngrok.io/api/ventas/pedidos';
+  private url = 'https://45782557f82e.ngrok.io/api/ventas/pedidos';
   productos: any[] = [];
-  // productos: any[] = [{
-  //   "codigo_producto": 'LAD21-MATCO',
-  //   "cantidad": 1,
-  //   "unidad_medicion": '121',
-  //   "valor_total": 232
-  // },
-  // {
-  //   "codigo_producto": 'LAD21-MALLA',
-  //   "cantidad": 1,
-  //   'unidad_medicion': '121',
-  //   'valor_total': 232
-  // }
-  // ];
+
   constructor(private http: HttpClient, private auth: AuthService) { }
 
   public createOrder(productos: any[], fecha: string, total: string) {

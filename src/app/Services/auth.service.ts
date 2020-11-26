@@ -8,7 +8,7 @@ import { map } from "rxjs/operators";
   providedIn: 'root'
 })
 export class AuthService {
-  private url = ' http://45782557f82e.ngrok.io/api/auth'
+  private url = ' https://45782557f82e.ngrok.io/api/auth'
 
   userToken: string;
   expiresAt: string;
