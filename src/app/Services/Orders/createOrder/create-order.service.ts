@@ -7,11 +7,7 @@ import { AuthService } from '../../Auth/auth.service';
 })
 export class CreateOrderService {
 
-<<<<<<< HEAD
   private url = 'http://02450ae931d8.ngrok.io/api/ventas/pedidos';
-=======
-  private url = 'https://4e70b73a919f.ngrok.io/api/ventas/pedidos';
->>>>>>> 273adf4cd74a7e3b58e103bac78f0246c732c716
   productos: any[] = [];
 
   constructor(private http: HttpClient, private auth: AuthService) { }

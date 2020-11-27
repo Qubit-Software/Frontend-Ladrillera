@@ -7,11 +7,7 @@ import { AuthService } from '../Auth/auth.service';
   providedIn: 'root'
 })
 export class ModulesService {
-<<<<<<< HEAD
   private url = 'http://02450ae931d8.ngrok.io/api/administracion';
-=======
-  private url = 'https://4e70b73a919f.ngrok.io/api/administracion';
->>>>>>> 273adf4cd74a7e3b58e103bac78f0246c732c716
 
   constructor( private http: HttpClient, private auth: AuthService ) { }
 
