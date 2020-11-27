@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ClientService } from 'src/app/Services/Client/client.service';
 import Swal from 'sweetalert2';
 declare var $: any;
 @Component({
@@ -11,10 +12,35 @@ declare var $: any;
 export class SearchClientComponent implements OnInit {
 
   form: FormGroup;
-  constructor(private router: Router) { }
+  constructor(private router: Router, private fb: FormBuilder, public clientServ: ClientService) { this.createForm(); }
 
   ngOnInit(): void {
   }
+
+  // phone validation
+  get nombreNoValido() {
+    return this.form.get("nombre").invalid && this.form.get('nombre').touched;
+  }
+  get nombreValido() {
+    return this.form.get("nombre").valid && this.form.get('nombre').touched;
+  }
+  // phone validation
+  get phoneNoValido() {
+    return this.form.get("phone").invalid && this.form.get('phone').touched;
+  }
+  get phoneValido() {
+    return this.form.get("phone").valid && this.form.get('phone').touched;
+  }
+
+  // Creates a form
+  public createForm() {
+    this.form = this.fb.group({
+      nombre: ['', [Validators.required, Validators.minLength(4)]],
+      phone: ['', [Validators.required, Validators.minLength(4)]],
+    });
+  }
+  
+  //Search client
   public searchClient() {
     Swal.fire({
       title: 'El cliente no existe',
@@ -33,5 +59,34 @@ export class SearchClientComponent implements OnInit {
         $('#exampleModalCenter').modal('show');
       }
     })
+  }
+
+  public requestClient() {
+    if (this.form.invalid) {
+      return Object.values(this.form.controls).forEach(control => { control.markAsTouched() });
+    } else {
+      Swal.fire({
+        allowOutsideClick: false,
+        icon: 'info',
+        text: 'Espere por favor'
+      });
+      Swal.showLoading();
+      this.clientServ.requestClient(this.form.get("nombre").value, this.form.get("phone").value).subscribe(resp => {
+        Swal.close();
+        Swal.fire('Registro realizado',
+          'La solicitud de  cliente se ha registrado',
+          'success');
+        //cleaning the form after a post
+        this.form.reset();
+      }, (err) => {
+        Swal.close();
+        Swal.fire({
+          icon: 'error',
+          title: 'Error al registrar la solicitud del cliente',
+          text: err.error.email
+        });
+        console.log(err);
+      });
+    }
   }
 }

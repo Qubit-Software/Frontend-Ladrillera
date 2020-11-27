@@ -18,40 +18,39 @@
                     [class.is-valid]="apellidosValido">
                 </div>
                 <div class="col-12 my-1">
-                  <input type="text" minlength="10" name="text" placeholder="CC/NIT" class="form-control titles"
+                  <input type="text" name="text" placeholder="CC/NIT" class="form-control titles"
                     formControlName="cedula_ciudadania" [class.is-invalid]="cedula_ciudadaniaNoValido"
                     [class.is-valid]="cedula_ciudadaniaValido">
                 </div>
                 <div class="col-12 my-1">
-                  <select class="form-control titles" formControlName="tipo" [class.is-invalid]="generoNoValido"
-                    [class.is-valid]="generoValido">
-                    <option value="M" selected>persona nautral</option>
-                    <option value="F">persona juridica</option>
+                  <select class="form-control titles" formControlName="tipo" [class.is-invalid]="tipoNoValido"
+                    [class.is-valid]="tipoValido">
+                    <option value="" disabled>Selecciona el tipo de cliente</option>
+                    <option value="natural" selected>Persona nautral</option>
+                    <option value="juridica">Persona juridica</option>
                   </select>
                 </div>
                 <div class="col-12 my-1">
-                  <input type="text" minlength="10" name="text" placeholder="Ciudad" class="form-control titles"
-                    formControlName="cedula_ciudadania" [class.is-invalid]="cedula_ciudadaniaNoValido"
-                    [class.is-valid]="cedula_ciudadaniaValido">
+                  <input type="text" name="text" placeholder="Ciudad" class="form-control titles"
+                    formControlName="city" [class.is-invalid]="cityNoValido" [class.is-valid]="cityValido">
                 </div>
                 <div class="col-12 my-1">
-                  <input type="text" minlength="10" name="text" placeholder="Correo" class="form-control titles"
-                    formControlName="cedula_ciudadania" [class.is-invalid]="emailNoValido"
-                    [class.is-valid]="emailValido">
+                  <input type="text" name="text" placeholder="Correo" class="form-control titles"
+                    formControlName="email" [class.is-invalid]="emailNoValido" [class.is-valid]="emailValido">
                 </div>
                 <div class="col-12 my-1">
-                  <input type="text" minlength="10" name="text" placeholder="Telefono" class="form-control titles"
-                    formControlName="cedula_ciudadania" [class.is-invalid]="cedula_ciudadaniaNoValido"
-                    [class.is-valid]="cedula_ciudadaniaValido">
+                  <input type="text"  name="text" placeholder="Telefono" class="form-control titles"
+                    formControlName="phone" [class.is-invalid]="phoneNoValido" [class.is-valid]="phoneValido">
                 </div>
                 <div class="col-12 my-1">
-                  <input type="file" formControlName="photoFile"
-                    class="form-control titles-file titles text-wrap" (change)="handleFileInput($event.target.files)"
-                    [class.is-invalid]="photoFiledNoValido" [class.is-valid]="photoFileValido">
+                  <label for="photoFile" class="text-center text"> Documentos adjuntos</label>
+                  <input type="file" formControlName="photoFile" class="form-control titles-file titles text-wrap"
+                    (change)="handleFileInput($event.target.files)" [class.is-invalid]="photoFiledNoValido"
+                    [class.is-valid]="photoFileValido">
                 </div>
               </div>
             </div>
-            <div id="button" class="">
+            <div id="button" class=" text-center">
               <button class="btn my-5 titles" type="submit">
                 Continuar
               </button>
