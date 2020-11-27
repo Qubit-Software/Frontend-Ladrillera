@@ -28,19 +28,23 @@
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            <h3 class="modal-title titles text-center my-2" id="exampleModalLongTitle">Solicitud creación de cliente</h3>
+            <h3 class="modal-title titles text-center my-2" id="exampleModalLongTitle">Solicitud creación de cliente
+            </h3>
             <div class="modal-body">
                 <div class="container px-4">
-                    <form>
+                    <form [formGroup]="form" (ngSubmit)="requestClient()">
                         <div class="form-group text-center">
                             <label class="text" for="clientName">Nombre completo</label>
                             <input type="text" class="form-control text-center" id="clientName"
-                                aria-describedby="clientHelp" placeholder="Ingresa el nombre del cliente ">
+                                aria-describedby="clientHelp" placeholder="Ingresa el nombre del cliente "
+                                formControlName="nombre" [class.is-invalid]="nombreNoValido"
+                                [class.is-valid]="nombreValido">
                         </div>
                         <div class="form-group text-center">
                             <label class="text" for="clientNumber">Número telefonico</label>
                             <input type="number" class="form-control text-center" id="clientNumber"
-                                placeholder="+57 XXX XXX XXXX">
+                                placeholder="+57 XXX XXX XXXX" formControlName="phone"
+                                [class.is-invalid]="phoneNoValido" [class.is-valid]="phoneValido">
                         </div>
                         <button type="submit" class="btn btn-success btn-block mt-4 mb-2">Enviar solicitud</button>
                     </form>

@@ -2,7 +2,7 @@ body {
     text-align: center;
 }
 
-#contenedor1 {
+.contenedor1 {
     float: left;
     width: 400px;
     height: 200px;
