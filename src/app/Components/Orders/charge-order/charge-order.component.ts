@@ -68,5 +68,4 @@ export class PedidoModel {
   status: string;
   total: string;
   producto: product[];
-
 }
