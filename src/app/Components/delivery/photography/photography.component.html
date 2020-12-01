@@ -1,1 +1,88 @@
-<p>photography works!</p>
+<div id="mainContainer" class="container-fluid">
+    <div class="row my-4">
+      <h2 class="titles">Despacho</h2>
+    </div>
+     <div  class="fixed-bottom py-4 bg-white">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-10 offset-2">
+            <div  id="medium" class="form-row text-center">
+              <div class="col-6">
+                <div class="form-group row">
+                  <label for="clientName" class="col-sm-2 col-form-label titles">Cliente</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control text-center" disabled id="clientName"
+                      placeholder="Nombre del cliente">
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group row">
+                  <label for="deliveryDate" class="col-sm-3 col-form-label titles">Fecha de
+                    entrega</label>
+                  <div class="col-sm-9">
+                    <input type="date" class="form-control" id="deliveryDate" [(ngModel)]="pedidos.fechaCargue"
+                      name="date" disabled>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row text-center">
+      <div class="col">
+        <table id="orderTable" class="table table-hover">
+          <thead>
+            <tr id="tbHead">
+              <th class="titles" id="tbHeadLeft">Codigo Producto</th>
+              <th class="titles separator">Nombre</th>
+              <th class="titles separator">Descripcion</th>
+              <th class="titles separator">Cantidad</th>
+              <th class="titles separator">Medida</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="tRow" *ngFor="let pedido of pedidos.producto">
+              <th class="text align-middle" scope="row">
+                <!--{{pedido['codigo_producto']}}-->
+              </th>
+              <td class="text">
+                <!--{{pedido.nombre}}-->
+              </td>
+              <td class="text">
+                <!--{{pedido['cantidad']}}-->
+              </td>
+              <td class="text">
+                <!--{{pedido['unidad_medicion']}}-->
+              </td>
+              <td class="text">
+                <!--{{pedido['valor_total']|currency}}-->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div id="cupload">
+      
+    <div id="upload" class="file-field">
+      <div id="ari"></div>
+  
+      <div id="aba"  class="flex-container">
+          <span>📷</span>
+          <input type="file" placeholder="subir foto" style="color: transparent">
+        
+    </div>
+    </div>
+    </div>
+  
+    <div id="cont">
+        <button class="btn text" >continuar </button>
+    </div>
+   
+    
+   
+  </div>
+  

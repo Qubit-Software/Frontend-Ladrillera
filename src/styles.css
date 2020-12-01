@@ -16,3 +16,7 @@
 .titles{
     font-family: "Mark-bold";
 }
+
+#leftMenuRow{
+    height: 90vh;
+}

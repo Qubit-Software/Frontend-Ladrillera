@@ -7,17 +7,17 @@ import { AuthService } from 'src/app/Services/Auth/auth.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  nombre:string="...";
-  constructor( private auth:AuthService) {
-    
-   }
+  rol: any;
+  nombre: string = "...";
+  constructor(private auth: AuthService) {
+    this.rol = localStorage.getItem('rol');
+  }
 
   ngOnInit(): void {
     this.auth.validateUser()
-    .subscribe( user =>{
-      this.nombre=user;
-    });
+      .subscribe(user => {
+        this.nombre = user;
+      });
   }
 
 }

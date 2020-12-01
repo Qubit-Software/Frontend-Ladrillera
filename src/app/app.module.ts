@@ -33,7 +33,7 @@ import { RequestComponent } from './Components/accounting/request/request.compon
 import { ReportsComponent } from './Components/Orders/reports/reports.component';
 import { ChargeOrderComponent } from './Components/Orders/charge-order/charge-order.component';
 import { CreateClientComponent } from './Components/Client/create-client/create-client.component';
-import { PhotographyComponent } from './Componetns/delivery/photography/photography.component';
+import { PhotographyComponent } from './Components/delivery/photography/photography.component';
 
 
 @NgModule({
