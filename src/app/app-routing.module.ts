@@ -14,14 +14,14 @@ import { ChargeOrderComponent } from './Components/Orders/charge-order/charge-or
 
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent,  },
-  { path: 'employees', component: CreateEmployeesComponent,  },
-  { path: 'orders', component: OrdersComponent,  },
-  { path: 'accounting', component: AccountingComponent,  },
-  { path: 'release', component: NewsComponent,  },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'employees', component: CreateEmployeesComponent, canActivate: [AuthGuard] },
+  { path: 'orders', component: OrdersComponent, canActivate: [AuthGuard] },
+  { path: 'accounting', component: AccountingComponent, canActivate: [AuthGuard] },
+  { path: 'release', component: NewsComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent, canActivate: [ActiveUserGuard] },
-  { path: 'client', component: ClientComponent,  },
-  { path: 'delivery', component: DeliveryComponent,  },
+  { path: 'client', component: ClientComponent, canActivate: [AuthGuard] },
+  { path: 'delivery', component: DeliveryComponent, canActivate: [AuthGuard] },
   { path: '', component: LoginComponent, canActivate: [ActiveUserGuard] },
   { path: 'charge/:id', component: ChargeOrderComponent, },
 ];
