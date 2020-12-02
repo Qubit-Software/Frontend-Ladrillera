@@ -1,43 +1,27 @@
 <div class="container-fluid">
-    <div class="row">
-        <div id="leftMenu" class="col-2">
-            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
-                    aria-controls="v-pills-home" aria-selected="true">
-                    <img src="../../../assets/Iconos/noun_Plus_1886659.svg" width="30" height="30"
-                        class="d-inline-block pr-2" alt="" loading="lazy"><span>Crear
-                        actualización</span></a>
-                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
-                    aria-controls="v-pills-profile" aria-selected="false">
-                    <img src="../../../assets/Iconos/noun_Eye_1853787.svg" width="30" height="30"
-                        class="d-inline-block pr-2" alt="" loading="lazy"> <span>Ver
-                        empleado</span></a>
-                <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab"
-                    aria-controls="v-pills-messages" aria-selected="false"><img
-                        src="../../../assets/Iconos/noun_Pencil_2135274.svg" width="30" height="30"
-                        class="d-inline-block pr-2" alt="" loading="lazy"> <span>Modificar</span></a>
-                <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
-                    aria-controls="v-pills-settings" aria-selected="false"> <img
-                        src="../../../assets/Iconos//noun_X_2147847.svg" width="30" height="30"
-                        class="d-inline-block pr-2" alt="" loading="lazy"> <span>Eliminar</span></a>
-            </div>
-        </div>
-        <div class="col-10">
-            <div class="tab-content" id="v-pills-tabContent">
-                <!--panel-1-->
-                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
-                    aria-labelledby="v-pills-home-tab">
-                    <app-create-order></app-create-order>
-                </div>
-                <!--panel-1 ends-->
-                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                    <app-search-order></app-search-order>
-                </div>
-                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                    <app-reports></app-reports></div>
-                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                    ...</div>
-            </div>
-        </div>
+  <div class="row">
+    <div id="leftMenu" class="col-2">
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" routerLink="/orders/client" role="tab"
+          aria-controls="v-pills-home" aria-selected="true">
+          <img src="../../../assets/Iconos/noun_Plus_1886659.svg" width="30" height="30" class="d-inline-block pr-2"
+            alt="" loading="lazy"><span>Crear
+            pedido</span></a>
+        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" routerLink="/orders/search" role="tab"
+          aria-controls="v-pills-profile" aria-selected="false">
+          <img src="../../../assets/Iconos/noun_Eye_1853787.svg" width="30" height="30" class="d-inline-block pr-2"
+            alt="" loading="lazy"> <span>Ver
+            pedido</span></a>
+        <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" routerLink="/orders/search" role="tab"
+          aria-controls="v-pills-messages" aria-selected="false"><img
+            src="../../../assets/Iconos/noun_Pencil_2135274.svg" width="30" height="30" class="d-inline-block pr-2"
+            alt="" loading="lazy"> <span>Eliminar</span></a>
+      </div>
     </div>
+    <div class="col-10">
+      <div class="tab-content" id="v-pills-tabContent">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
 </div>

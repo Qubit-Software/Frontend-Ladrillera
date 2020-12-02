@@ -7,7 +7,7 @@ import { AuthService } from '../../Auth/auth.service';
 })
 export class CreateOrderService {
 
-  private url = 'https://02450ae931d8.ngrok.io/api/ventas/pedidos';
+  private url = 'https://bbccdd5fda7f.ngrok.io/api/ventas/pedidos';
   productos: any[] = [];
 
   constructor(private http: HttpClient, private auth: AuthService) { }
@@ -28,7 +28,7 @@ export class CreateOrderService {
       })
     };
     const body = {
-      'id_cliente': '1',
+      'id_cliente': localStorage.getItem('id_client'),
       'fecha_cargue': fecha,
       'total': total,
       'productos': this.productos

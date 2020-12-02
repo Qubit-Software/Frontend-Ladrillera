@@ -8,7 +8,7 @@ import { AuthService } from '../Auth/auth.service';
 export class ClientService {
 
   constructor(public http: HttpClient, public auth: AuthService) { }
-  private url = 'https://3a2d90acd31a.ngrok.io/api'
+  private url = 'https://bbccdd5fda7f.ngrok.io/api'
 
   //Creates a new client
 
@@ -46,7 +46,24 @@ export class ClientService {
     return this.http.post(`${this.url}` + '/solicitud_clientes',
       authData, opts);
   }
-
+  getClientByCCNIT(id) {
+    const opts = {
+      headers: new HttpHeaders({
+        'Authorization': "Bearer " + this.auth.readToken(),
+      })
+    }
+    return this.http.get(`${this.url}/clientes/${id}?unique_column=cc_nit`,
+      opts);
+  }
+  getClientByid(id) {
+    const opts = {
+      headers: new HttpHeaders({
+        'Authorization': "Bearer " + this.auth.readToken(),
+      })
+    }
+    return this.http.get(`${this.url}/clientes/${id}?unique_column=id`,
+      opts);
+  }
   //get clientsRequests
   public getClientRequests(status) {
     const opts = {

@@ -15,7 +15,7 @@
           <div class="col-12">
             <div class="card-columns">
               <!--Card 1-->
-              <div class="card  bg-secondary" *ngIf="true">
+              <div class="card  bg-secondary" *ngIf="rol==='Administrador'|| rol === 'Recursos Humanos'">
                 <div class="card-body">
                   <picture>
                     <img id="icons" src="../../../assets/Iconos/partnership-handshake.svg" width="40" height="40"
@@ -34,7 +34,7 @@
                 </div>
               </div>
               <!--Card 2-->
-              <div class="card  bg-secondary" *ngIf="true">
+              <div class="card  bg-secondary" *ngIf="rol==='Administrador'|| rol === 'Ventas'">
                 <div class="card-body">
                   <picture>
                     <img id="icons" src="../../../assets/Iconos/box.svg" width="40" height="40" alt="handShake"
@@ -42,14 +42,14 @@
                   </picture>
                   <h3 id="titles" class="mt-2 titles">Ventas</h3>
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item titles"><a routerLink="/client">Crear Pedidos</a> </li>
-                    <li class="list-group-item titles"><a routerLink="/delivery">Ver Pedido (Usuario/todos)</a> </li>
-                    <li class="list-group-item titles"><a href="">Eliminar</a> </li>
+                    <li class="list-group-item titles"><a routerLink="/orders/client">Crear Pedidos</a> </li>
+                    <li class="list-group-item titles"><a routerLink="/orders/search">Ver Pedido</a> </li>
+                    <li class="list-group-item titles"><a href="/orders/search">Eliminar</a> </li>
                   </ul>
                 </div>
               </div>
               <!--Card 3-->
-              <div class="card  bg-secondary" *ngIf="true">
+              <div class="card  bg-secondary" *ngIf="rol==='Administrador'|| rol === 'Finanzas'">
                 <div class="card-body">
                   <picture>
                     <img id="icons" src="../../../assets/Iconos/money.svg" width="40" height="40" alt="handShake"
@@ -57,12 +57,12 @@
                   </picture>
                   <h3 id="titles" class="mt-2 titles">Finanzas</h3>
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item titles"><a href="">Legalizar pago</a> </li>
+                    <li class="list-group-item titles"><a routerLink="/finance/search">Legalizar pago</a> </li>
                   </ul>
                 </div>
               </div>
               <!--Card 4-->
-              <div class="card  bg-secondary" *ngIf="true">
+              <div class="card  bg-secondary" *ngIf="rol==='Administrador'|| rol === 'Despacho'">
                 <div class="card-body">
                   <picture>
                     <img id="icons" src="../../../assets/Iconos/new.svg" width="40" height="40" alt="handShake"
@@ -70,13 +70,13 @@
                   </picture>
                   <h3 id="titles" class="mt-2 titles card-title">Despacho</h3>
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item titles"><a routerLink="/delivery">Cronograma</a> </li>
-                    <li class="list-group-item titles"><a routerLink="photography/:id">Buscar pedido</a> </li>
+                    <li class="list-group-item titles"><a routerLink="/delivery/cronogram">Cronograma</a> </li>
+                    <li class="list-group-item titles"><a routerLink="/delivery/search">Buscar pedido</a> </li>
                   </ul>
                 </div>
               </div>
               <!--Card 5-->
-              <div class="card  bg-secondary" *ngIf="true">
+              <div class="card  bg-secondary" *ngIf="rol==='Administrador'|| rol === 'Contabilidad'">
                 <div class="card-body">
                   <picture>
                     <img id="icons" src="../../../assets/Iconos/money.svg" width="40" height="40" alt="handShake"
@@ -84,14 +84,14 @@
                   </picture>
                   <h3 id="titles" class="mt-2 titles">Contabilidad</h3>
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item titles"><a routerLink="/accounting">Solicitud cliente</a> </li>
-                    <li class="list-group-item titles"><a href="">Crear Clientes</a> </li>
+                    <li class="list-group-item titles"><a routerLink="/accounting/request">Solicitud cliente</a> </li>
+                    <li class="list-group-item titles"><a routerLink="/accounting/create">Crear Clientes</a> </li>
                     <li class="list-group-item titles"><a href="">Modificar Clientes</a> </li>
                   </ul>
                 </div>
               </div>
               <!--Card 6-->
-              <div class="card  bg-secondary" *ngIf="true">
+              <div class="card  bg-secondary" *ngIf="rol==='Administrador'|| rol === 'Administrador'">
                 <div class="card-body">
                   <picture>
                     <img id="icons" src="../../../assets/Iconos/new.svg" width="40" height="40" alt="handShake"
@@ -99,13 +99,13 @@
                   </picture>
                   <h3 id="titles" class="mt-2 titles card-title">Administracion</h3>
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item titles"><a routerLink="/release">Crear Comunicado</a> </li>
-                    <li class="list-group-item titles"><a routerLink="/release">Modificar Comunicado</a> </li>
+                    <li class="list-group-item titles"><a routerLink="/release/create">Crear Comunicado</a> </li>
+                    <li class="list-group-item titles"><a routerLink="/release/create">Modificar Comunicado</a> </li>
                   </ul>
                 </div>
               </div>
               <!--Card 7-->
-              <div class="card  bg-secondary" *ngIf="true">
+              <div class="card  bg-secondary" *ngIf="rol==='Administrador'|| rol === 'Porteria'">
                 <div class="card-body">
                   <picture>
                     <img id="icons" src="../../../assets/Iconos/new.svg" width="40" height="40" alt="handShake"
@@ -113,8 +113,8 @@
                   </picture>
                   <h3 id="titles" class="mt-2 titles card-title">Porteria</h3>
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item titles"><a routerLink="/release">Verificacion de datos</a> </li>
-                    <li class="list-group-item titles"><a routerLink="/release">Despachar pedido</a> </li>
+                    <li class="list-group-item titles"><a routerLink="/lodge/search">Verificacion de datos</a> </li>
+                    <li class="list-group-item titles"><a routerLink="/lodge/search">Despachar pedido</a> </li>
                   </ul>
                 </div>
               </div>

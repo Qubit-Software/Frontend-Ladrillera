@@ -32,6 +32,9 @@ export class LoginComponent implements OnInit {
     Swal.showLoading();
 
     this.auth.login(this.usuario, this.isChecked).subscribe(resp => {
+    const name= `${resp['empleado']['nombre']} ${resp['empleado']['apellido']}`;
+    localStorage.setItem('rol', resp['empleado']['rol']);
+    localStorage.setItem('name', name);
       Swal.close();
       this.router.navigate([]).then(result => { window.location.href = "/home"; });
     }, (err) => {

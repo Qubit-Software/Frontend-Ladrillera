@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CreateOrderService } from 'src/app/Services/Orders/createOrder/create-order.service';
+import Swal from 'sweetalert2';
 import { product } from "../../../models/products.model";
 @Component({
   selector: 'app-create-order',
@@ -19,6 +20,7 @@ export class CreateOrderComponent implements OnInit {
   confirm = false;
   continuar = true;
   active = 0;
+  nombreCliente: string;
 
   public products = [
     {
@@ -41,13 +43,14 @@ export class CreateOrderComponent implements OnInit {
     }
   ]
 
-  constructor(private fb: FormBuilder, private CreateOrderService: CreateOrderService,private router: Router) {
+  constructor(private fb: FormBuilder, private CreateOrderService: CreateOrderService, private router: Router) {
 
   }
 
   ngOnInit(): void {
     this.product = new product();
     this.dataArray.push(this.product);
+    this.nombreCliente = localStorage.getItem('client');
     // this.CreateOrderService.createOrder(date).subscribe((result) => {
     //   console.log(result);
     // });
@@ -59,9 +62,23 @@ export class CreateOrderComponent implements OnInit {
     const fechaCargue = `${this.date.getDate() + 1}/${this.date.getMonth() + 1}/${this.date.getFullYear()}`;
     console.log(this.dataArray);
     const num = String(this.totalSell);
+    Swal.fire({
+      allowOutsideClick: false,
+      icon: 'info',
+      text: 'Espere por favor'
+    });
+    Swal.showLoading();
     this.CreateOrderService.createOrder(this.dataArray, fechaCargue, num).subscribe((result) => {
       console.log(result);
+      Swal.close();
       this.router.navigateByUrl('/home');
+    }, (err) => {
+      Swal.close();
+      Swal.fire({
+        icon: 'error',
+        title: 'Error al registrar la pedido',
+      });
+      console.log(err);
     });
   }
 

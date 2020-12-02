@@ -14,10 +14,13 @@ export class SearchOrderComponent implements OnInit {
   title = 'angular-sweetalert-demo';
   id: number;
   form: FormGroup;
+  parent: string;
 
   constructor(private CreateOrderService: CreateOrderService, private router: Router) { }
 
   ngOnInit(): void {
+    const route = this.router.url.split('/');
+    this.parent = route[1];
   }
 
   prueba() {
@@ -30,7 +33,7 @@ export class SearchOrderComponent implements OnInit {
 
     this.CreateOrderService.getPedidoId(this.id).subscribe(resp => {
       Swal.close();
-      this.router.navigate(['/charge', this.id]);
+      this.router.navigate([`${this.parent}/charge`, this.id]);
     }, (err) => {
       Swal.close();
       Swal.fire({

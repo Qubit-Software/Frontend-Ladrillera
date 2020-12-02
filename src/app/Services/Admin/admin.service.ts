@@ -8,7 +8,7 @@ import { AuthService } from '../Auth/auth.service';
   providedIn: 'root'
 })
 export class AdminService {
-  private url = 'https://3a2d90acd31a.ngrok.io/api/administracion';
+  private url = 'https://bbccdd5fda7f.ngrok.io/api/administracion';
 
   constructor(private http: HttpClient, private auth: AuthService) { }
 
@@ -21,8 +21,8 @@ export class AdminService {
       })
     }
     const fd = new FormData();
-    fd.append('nombres', name);
-    fd.append('apellidos', lastname);
+    fd.append('nombre', name);
+    fd.append('apellido', lastname);
     fd.append('cedula_ciudadania', cedula);
     fd.append('genero', gender);
     fd.append('fecha_nacimiento', bornDate);
@@ -30,14 +30,14 @@ export class AdminService {
     fd.append('email', correo);
     fd.append('password', contrasena);
     fd.append('foto', fileToUp);
-    fd.append('modulos', modulos);
+    fd.append('modulo_ids', '[1]');
     //
 
+    console.log(fd);
     return this.http.post(
-      `${this.url}/empleado`,
+      `${this.url}/empleados`,
       fd,
       opts
-
     ).pipe(
       map(resp => {
         console.log(resp);

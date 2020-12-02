@@ -11,7 +11,7 @@ import { AdminService } from 'src/app/Services/Admin/admin.service';
 })
 export class CreateEmployeeComponent implements OnInit {
 
- 
+
   form: FormGroup;
   fileToUpload: File = null;
   modulesName = [];
@@ -105,9 +105,7 @@ export class CreateEmployeeComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required,]],
       photoFile: ['', [Validators.required,]],
-      modulos: this.fb.array([
-
-      ])
+      modulos: this.fb.array(['1'])
     });
   }
 
@@ -129,10 +127,11 @@ export class CreateEmployeeComponent implements OnInit {
       // name, lastname, cedula, gender, bornDate, rol,correo,contrasena, fileToUp: File
       this.admin.createEmployee(this.form.get("nombres").value, this.form.get("apellidos").value, this.form.get("cedula_ciudadania").value, this.form.get("genero").value, this.form.get("fecha_nacimiento").value, this.form.get("rol").value, this.form.get("email").value, this.form.get("password").value, this.fileToUpload, JSON.stringify(modulos)).subscribe(resp => {
         Swal.close();
+        console.log(resp);
         Swal.fire('Registro realizado',
           'El usuario se ha registrado',
           'success');
-        //cleaning the form after a post 
+        //cleaning the form after a post
         this.form.reset();
       }, (err) => {
         Swal.close();
@@ -141,8 +140,7 @@ export class CreateEmployeeComponent implements OnInit {
           title: 'Error al registrar el empleado',
           text: err.error.email
         });
-        console.log(err.error.email);
-        console.log(err.error['email']);
+        console.log(err);
       });
     }
 

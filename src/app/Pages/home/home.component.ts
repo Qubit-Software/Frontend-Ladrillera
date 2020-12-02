@@ -11,13 +11,11 @@ export class HomeComponent implements OnInit {
   nombre: string = "...";
   constructor(private auth: AuthService) {
     this.rol = localStorage.getItem('rol');
+    this.nombre = localStorage.getItem('name');
   }
 
   ngOnInit(): void {
-    this.auth.validateUser()
-      .subscribe(user => {
-        this.nombre = user;
-      });
+
   }
 
 }

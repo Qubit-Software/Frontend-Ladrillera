@@ -66,7 +66,7 @@
       </div>
     </div>
     <div class="row d-flex justify-content-end">
-      <button (click)="addForm()" type="submit" class="btn rounded-circle" id="plusElement" [attr.disabled] = "active === 1 ? 'disabled' : null">
+      <button (click)="addForm()" type="button" class="btn rounded-circle" id="plusElement" [attr.disabled] = "active === 1 ? 'disabled' : null">
         <img src="../../../../assets/Iconos/plus.png" height="25px" alt="">
       </button>
     </div>
@@ -93,7 +93,7 @@
                   <label for="clientName" class="col-sm-2 col-form-label titles">Cliente</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control text-center" disabled id="clientName"
-                      placeholder="Nombre del cliente">
+                      placeholder="Nombre del cliente" [(ngModel)]="nombreCliente" name="nombreCliente" disabled>
                   </div>
                 </div>
               </div>
