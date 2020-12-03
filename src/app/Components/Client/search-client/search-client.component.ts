@@ -78,6 +78,28 @@ export class SearchClientComponent implements OnInit {
     });
   }
   requestClient() {
-
+    Swal.fire({
+      allowOutsideClick: false,
+      icon: 'info',
+      text: 'Espere por favor'
+    });
+    Swal.showLoading();
+    this.clientServ.requestClient(this.form.get("nombre").value, this.form.get("phone").value).subscribe(resp => {
+      Swal.close();
+      Swal.fire('Registro realizado',
+        'La solicitud se ha enviado',
+        'success');
+      //cleaning the form after a post
+      this.form.reset();
+    }, (err) => {
+      console.log(err);
+      Swal.close();
+      Swal.fire({
+        title: 'Error al crear solicitud',
+        icon: 'error',
+        text: 'Revisa los datos',
+      });
+      console.log(err);
+    });
   }
 }
