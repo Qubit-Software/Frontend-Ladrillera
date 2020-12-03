@@ -77,33 +77,4 @@ export class SearchClientComponent implements OnInit {
       })
     });
   }
-
-  public requestClient() {
-    if (this.form.invalid) {
-      return Object.values(this.form.controls).forEach(control => { control.markAsTouched() });
-    } else {
-      Swal.fire({
-        allowOutsideClick: false,
-        icon: 'info',
-        text: 'Espere por favor'
-      });
-      Swal.showLoading();
-      this.clientServ.requestClient(this.form.get("nombre").value, this.form.get("phone").value).subscribe(resp => {
-        Swal.close();
-        Swal.fire('Registro realizado',
-          'La solicitud de  cliente se ha registrado',
-          'success');
-        //cleaning the form after a post
-        this.form.reset();
-      }, (err) => {
-        Swal.close();
-        Swal.fire({
-          icon: 'error',
-          title: 'Error al registrar la solicitud del cliente',
-          text: err.error.email
-        });
-        console.log(err);
-      });
-    }
-  }
 }

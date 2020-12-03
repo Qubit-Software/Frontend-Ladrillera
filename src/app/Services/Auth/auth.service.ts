@@ -8,7 +8,7 @@ import { UsuarioModel } from 'src/app/models/usuario.model';
   providedIn: 'root'
 })
 export class AuthService {
-  private url = 'https://bbccdd5fda7f.ngrok.io/api/auth';
+  private url = 'https://c9e438798f15.ngrok.io/api/auth';
 
   userToken: string;
   expiresAt: string;

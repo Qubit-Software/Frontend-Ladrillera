@@ -7,7 +7,7 @@ import { AuthService } from '../../Auth/auth.service';
 })
 export class CreateOrderService {
 
-  private url = 'https://bbccdd5fda7f.ngrok.io/api/ventas/pedidos';
+  private url = 'https://c9e438798f15.ngrok.io/api/ventas/pedidos';
   productos: any[] = [];
 
   constructor(private http: HttpClient, private auth: AuthService) { }
@@ -52,5 +52,19 @@ export class CreateOrderService {
       })
     };
     return this.http.get(`${this.url}/${id}`, opts);
+  }
+
+  public changeStatus(idPedido, status) {
+    const opts = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + this.auth.readToken(),
+      })
+    };
+    const body = {
+      'id_pedido': idPedido,
+      'estatus': status
+    };
+    console.log(body);
+    return this.http.put(`${this.url}/${idPedido}`, body, opts);
   }
 }

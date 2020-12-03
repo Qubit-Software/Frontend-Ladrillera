@@ -12,9 +12,10 @@ export class RequestComponent implements OnInit {
   constructor(private clientServ: ClientService) { }
 
   ngOnInit(): void {
+    this.clients = new Array();
     this.clientServ.getClientRequests(0).subscribe((res: any[]) => {
+
       this.clients = res;
-      console.log(this.clients);
     });
   }
 

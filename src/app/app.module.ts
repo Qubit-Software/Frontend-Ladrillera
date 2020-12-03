@@ -36,6 +36,9 @@ import { CreateClientComponent } from './Components/Client/create-client/create-
 import { PhotographyComponent } from './Components/delivery/photography/photography.component';
 import { FinanceComponent } from './Pages/finance/finance.component';
 import { LodgeComponent } from './Pages/lodge/lodge.component';
+import { BillingComponent } from './Pages/billing/billing.component';
+import { SearchEmployeeComponent } from './Components/Employee/search-employee/search-employee.component';
+import { ChargeEmployeeComponent } from './Components/Employee/charge-employee/charge-employee.component';
 
 
 @NgModule({
@@ -62,7 +65,10 @@ import { LodgeComponent } from './Pages/lodge/lodge.component';
     CreateClientComponent,
     PhotographyComponent,
     FinanceComponent,
-    LodgeComponent
+    LodgeComponent,
+    BillingComponent,
+    SearchEmployeeComponent,
+    ChargeEmployeeComponent
   ],
   imports: [
     BrowserModule,

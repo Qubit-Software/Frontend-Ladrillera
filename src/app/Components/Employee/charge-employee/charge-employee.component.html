@@ -1,0 +1,105 @@
+<div class="verticalCenter my-3">
+  <div id="containerBox" class="container animated fadeInRight ">
+      <div id="createEmployeeBox" class="row text-center ">
+          <div id="contentCreateEmployee" class="col-lg shadow-lg rounded">
+              <h1 id="titleCreateEmployee" class="titles">Registrar empleado</h1>
+              <!--Form Starts-->
+              <form autocomplete="off" [formGroup]="form" (ngSubmit)="createEmployee()" class="">
+                  <div class="input-group mb-4 px-5">
+                      <div class="form-row align-items-center">
+                          <div class="col-6 my-1">
+                              <input type="text" name="nombre" class="form-control titles" placeholder="Nombres"
+                                  formControlName="nombres" [class.is-invalid]="nombresNoValido"
+                                  [class.is-valid]="nombresValido">
+                          </div>
+                          <div class="col-6 my-1">
+                              <input type="text" name="apellidos" class="form-control titles" placeholder="Apellidos"
+                                  formControlName="apellidos" [class.is-invalid]="apellidosNoValido"
+                                  [class.is-valid]="apellidosValido">
+                          </div>
+                      </div>
+                  </div>
+                  <div class="input-group mb-4 px-5">
+                      <div class="form-row align-items-center">
+                          <div class="col-md-12 col-lg-7 my-3">
+                              <input type="text" minlength="10" name="text" class="form-control titles"
+                                  placeholder="C.C." formControlName="cedula_ciudadania"
+                                  [class.is-invalid]="cedula_ciudadaniaNoValido"
+                                  [class.is-valid]="cedula_ciudadaniaValido">
+                          </div>
+                          <div class="col-md-12 col-lg-5 my-1">
+                              <select class="form-control titles" formControlName="genero"
+                                  [class.is-invalid]="generoNoValido" [class.is-valid]="generoValido">
+                                  <option value="" selected disabled>Genero</option>
+                                  <option value="M">Hombre</option>
+                                  <option value="F">Mujer</option>
+                              </select>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="input-group mb-2 px-5 text-center">
+                      <div class="form-group  row">
+                          <label for="example-date-input" class="col-md-12 col-lg-4 col-form-label titles">Fecha de
+                              nacimiento: </label>
+                          <div class="col-md-12 mt-2 col-lg-8">
+                              <input class="form-control titles" type="date" value="2011-08-19"
+                                  id="example-date-input" formControlName="fecha_nacimiento"
+                                  [class.is-invalid]="fecha_nacimientoNoValido"
+                                  [class.is-valid]="fecha_nacimientoValido">
+                          </div>
+                      </div>
+                  </div>
+                  <div class="input-group mb-4 px-5">
+                      <select class="form-control titles" formControlName="rol" [class.is-invalid]="rolNoValido"
+                          [class.is-valid]="rolValido">
+                          <option value="" selected disabled>Rol</option>
+                          <option value="Administrador">Administrador</option>
+                          <option value="Contabilidad">Contabilidad</option>
+                          <option value="Ventas">Ventas</option>
+                          <option value="Finanzas">Finanzas</option>
+                          <option value="Porteria">Portería</option>
+                          <option value="Despacho">Despacho</option>
+                          <option value="Recursos Humanos">Recursos Humanos</option>
+                          <option value="Facturacion">Facturacion</option>
+                          Facturacion
+                      </select>
+                  </div>
+                  <div autocomplete="off" class="input-group mb-4 px-5">
+                      <input type="mail" minlength="3" name="email" class="form-control titles" placeholder="Correo"
+                          formControlName="email" [class.is-invalid]="emailNoValido" [class.is-valid]="emailValido">
+                  </div>
+                  <!-- <div autocomplete="off" class="input-group mb-4 px-5">
+                      <input type="password" minlength="3" name="password" class="form-control titles"
+                          placeholder="Password" formControlName="password" [class.is-invalid]="passwordNoValido"
+                          [class.is-valid]="passwordValido">
+                  </div> -->
+                  <div class="form-group mb-4 px-5">
+                      <label for="exampleFormControlFile1" class="titles">Ingresar foto
+                          empleado</label>
+                      <input type="file" class="form-control titles-file titles text-wrap" formControlName="photoFile"
+                          (change)="handleFileInput($event.target.files)" [class.is-invalid]="photoFiledNoValido"
+                          [class.is-valid]="photoFileValido">
+                  </div>
+                  <!-- Modulos disponibles
+                  <div class="px-5" formArrayName="modulos">
+                      <div class="form-check form-check-inline"
+                          *ngFor="let control of modulos.controls; let i = index">
+                          <div class="custom-control custom-switch">
+                              <input type="checkbox" [formControlName]="i" class="custom-control-input"
+                                  id={{modulesName[i]}}>
+                              <label class="custom-control-label titles" for={{modulesName[i]}}>{{modulesName[i]}}
+                              </label>
+                          </div>
+                      </div>
+                  </div> -->
+                  <div class="">
+                      <button class="btn my-5 titles" type="submit">
+                          Continuar
+                      </button>
+                  </div>
+              </form>
+              <!-- Form ends-->
+          </div>
+      </div>
+  </div>
+</div>

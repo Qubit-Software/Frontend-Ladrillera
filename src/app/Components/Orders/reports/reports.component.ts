@@ -16,7 +16,7 @@ export class ReportsComponent implements OnInit {
     this.CreateOrderService.getPedidos().subscribe((result: any[]) => {
       result.forEach(p => {
         const ped = new PedidoModel();
-        ped.id = p.id;
+        ped.id =  `LAD21-${p.id}`;
         ped.status = p.estatus;
         ped.total = p.total;
         console.log(ped);
@@ -29,7 +29,7 @@ export class ReportsComponent implements OnInit {
 
 }
 export class PedidoModel {
-  id: number;
+  id: string;
   status: string;
   total: string;
 }

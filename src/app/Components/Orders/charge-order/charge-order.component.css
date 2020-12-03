@@ -98,7 +98,9 @@
   height: 100vh;
   overflow: visible;
 }
-
+.btnDisable{
+  display: none;
+}
 #statusOrder {
   z-index: -20;
   position: absolute;

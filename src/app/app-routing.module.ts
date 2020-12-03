@@ -7,7 +7,6 @@ import { AuthGuard } from './Guards/Auth/auth.guard';
 import { ActiveUserGuard } from './Guards/Login/active-user.guard';
 import { NewsComponent } from './Pages/news/news.component';
 import { OrdersComponent } from './Pages/orders/orders.component';
-import { ClientComponent } from './Pages/client/client.component';
 import { DeliveryComponent } from './Pages/delivery/delivery.component';
 import { AccountingComponent } from './Pages/accounting/accounting.component';
 import { ChargeOrderComponent } from './Components/Orders/charge-order/charge-order.component';
@@ -21,11 +20,22 @@ import { FinanceComponent } from './Pages/finance/finance.component';
 import { CronogramaComponent } from './Components/delivery/cronograma/cronograma.component';
 import { PhotographyComponent } from './Components/delivery/photography/photography.component';
 import { LodgeComponent } from './Pages/lodge/lodge.component';
+import { ReportsComponent } from './Components/Orders/reports/reports.component';
+import { BillingComponent } from './Pages/billing/billing.component';
+import { CreateEmployeeComponent } from './Components/Employee/create-employee/create-employee.component';
+import { SearchEmployeeComponent } from './Components/Employee/search-employee/search-employee.component';
+import { ChargeEmployeeComponent } from './Components/Employee/charge-employee/charge-employee.component';
 
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'employees', component: CreateEmployeesComponent, canActivate: [AuthGuard] },
+  {
+    path: 'admin', component: CreateEmployeesComponent, canActivate: [AuthGuard], children: [
+      { path: 'create', component: CreateEmployeeComponent, canActivate: [AuthGuard] },
+      { path: 'search', component: SearchEmployeeComponent, canActivate: [AuthGuard] },
+      { path: 'charge/:id', component: ChargeEmployeeComponent, canActivate: [AuthGuard] }
+    ]
+  },
   {
     path: 'orders', component: OrdersComponent, canActivate: [AuthGuard], children: [
       { path: 'client', component: SearchClientComponent, canActivate: [AuthGuard] },
@@ -43,6 +53,7 @@ const routes: Routes = [
   {
     path: 'release', component: NewsComponent, canActivate: [AuthGuard], children: [
       { path: 'create', component: CreateNewReleaseComponent, canActivate: [AuthGuard] },
+      { path: 'report', component: ReportsComponent, canActivate: [AuthGuard] }
     ]
   },
   {
@@ -54,6 +65,12 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [ActiveUserGuard] },
   {
     path: 'finance', component: FinanceComponent, canActivate: [AuthGuard], children: [
+      { path: 'search', component: SearchOrderComponent, canActivate: [AuthGuard] },
+      { path: 'charge/:id', component: ChargeOrderComponent }
+    ]
+  },
+  {
+    path: 'billing', component: BillingComponent, canActivate: [AuthGuard], children: [
       { path: 'search', component: SearchOrderComponent, canActivate: [AuthGuard] },
       { path: 'charge/:id', component: ChargeOrderComponent }
     ]

@@ -1,26 +1,43 @@
 import { Component, OnInit } from '@angular/core';
-import Swal from 'sweetalert2';
-import { ModulesService } from 'src/app/Services/Modulos/modules.service';
-import { ReactiveFormsModule, FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { AdminService } from 'src/app/Services/Admin/admin.service';
+import { ModulesService } from 'src/app/Services/Modulos/modules.service';
+import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-create-employee',
-  templateUrl: './create-employee.component.html',
-  styleUrls: ['./create-employee.component.css']
+  selector: 'app-charge-employee',
+  templateUrl: './charge-employee.component.html',
+  styleUrls: ['./charge-employee.component.css']
 })
-export class CreateEmployeeComponent implements OnInit {
-
-
+export class ChargeEmployeeComponent implements OnInit {
   form: FormGroup;
   fileToUpload: File = null;
   modulesName = [];
   modulesModel = [];
-  constructor(private admin: AdminService, private moduleService: ModulesService, private fb: FormBuilder) { this.createForm(); }
+  id: number;
+  idE: number;
+  constructor(private admin: AdminService, private moduleService: ModulesService, private fb: FormBuilder,
+    private route: ActivatedRoute) { this.createForm(); }
 
   ngOnInit(): void {
-
+    this.route.params.subscribe(params => {
+      this.id = +params['id'];
+    });
     this.getModules();
+    this.admin.searchEmployee(this.id).subscribe(res => {
+      this.idE = res['id'];
+      this.form.patchValue({
+        nombres: res['nombre'],
+        apellidos: res['apellido'],
+        cedula_ciudadania: res['cedula_ciudadania'],
+        genero: res['genero'],
+        fecha_nacimiento: res['fecha_nacimiento'],
+        rol: res['rol'],
+        email: res['correo'],
+      });
+    });
+
 
   }
   //Nombres validation
@@ -81,13 +98,13 @@ export class CreateEmployeeComponent implements OnInit {
     return this.form.get("password").valid && this.form.get('password').touched;
   }
 
-  //foto validation
-  get photoFiledNoValido() {
-    return this.form.get("photoFile").invalid && this.form.get('photoFile').touched;
-  }
-  get photoFileValido() {
-    return this.form.get("photoFile").valid && this.form.get('photoFile').touched;
-  }
+  // //foto validation
+  // get photoFiledNoValido() {
+  //   return this.form.get("photoFile").invalid && this.form.get('photoFile').touched;
+  // }
+  // get photoFileValido() {
+  //   return this.form.get("photoFile").valid && this.form.get('photoFile').touched;
+  // }
   //Validations ends
 
   //Get modulos
@@ -116,7 +133,7 @@ export class CreateEmployeeComponent implements OnInit {
   createEmployee() {
     const modulos = this.activeModules();
     if (this.form.invalid) {
-      return Object.values(this.form.controls).forEach(control => { control.markAsTouched() });
+      return Object.values(this.form.controls).forEach(control => { control.markAsTouched()});
     } else {
       Swal.fire({
         allowOutsideClick: false,
@@ -125,25 +142,24 @@ export class CreateEmployeeComponent implements OnInit {
       });
       Swal.showLoading();
       // name, lastname, cedula, gender, bornDate, rol,correo,contrasena, fileToUp: File
-      this.admin.createEmployee(this.form.get("nombres").value, this.form.get("apellidos").value, this.form.get("cedula_ciudadania").value,
-      this.form.get("genero").value, this.form.get("fecha_nacimiento").value, this.form.get("rol").value, this.form.get("email").value,
-      'Hola', this.fileToUpload, JSON.stringify(modulos)).subscribe(resp => {
-        Swal.close();
-        console.log(resp);
-        Swal.fire('Registro realizado',
-          'El usuario se ha registrado',
-          'success');
-        //cleaning the form after a post
-        this.form.reset();
-      }, (err) => {
-        Swal.close();
-        Swal.fire({
-          icon: 'error',
-          title: 'Error al registrar el empleado',
-          text: err.error.email
+      this.admin.updateEmployee(this.idE, this.form.get("nombres").value, this.form.get("apellidos").value, this.form.get("cedula_ciudadania").value,
+        this.form.get("genero").value, this.form.get("fecha_nacimiento").value, this.form.get("rol").value, this.form.get("email").value,
+        'Hola', this.fileToUpload, JSON.stringify(modulos)).subscribe(resp => {
+          Swal.close();
+          console.log(resp);
+          Swal.fire('Actualizacion realizada',
+            'El empleado se ha actualizado',
+            'success');
+          this.form.reset();
+        }, (err) => {
+          Swal.close();
+          Swal.fire({
+            icon: 'error',
+            title: 'Error al actualizar el empleado',
+            text: err.error.email
+          });
+          console.log(err);
         });
-        console.log(err);
-      });
     }
 
   }
@@ -169,4 +185,5 @@ export class CreateEmployeeComponent implements OnInit {
     });
     return activeModules;
   }
+
 }

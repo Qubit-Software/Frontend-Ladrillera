@@ -89,7 +89,7 @@ export class CreateClientComponent implements OnInit {
       city: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.minLength(4)]],
-      photoFile: ['', [Validators.required,]],
+      photoFile: ['', [Validators.required]],
     });
   }
 
