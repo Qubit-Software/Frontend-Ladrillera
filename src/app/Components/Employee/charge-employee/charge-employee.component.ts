@@ -174,7 +174,7 @@ export class ChargeEmployeeComponent implements OnInit {
       });
     });
   }
-  //Lee los modulos seleccionados por el usuario
+  // Lee los modulos seleccionados por el usuario
   activeModules() {
     const activeModules = [];
     const values = "";
