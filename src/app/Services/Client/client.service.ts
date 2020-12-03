@@ -8,7 +8,7 @@ import { AuthService } from '../Auth/auth.service';
 export class ClientService {
 
   constructor(public http: HttpClient, public auth: AuthService) { }
-  private url = 'https://c9e438798f15.ngrok.io/api';
+  private url = 'https://b650cf69ae94.ngrok.io/api';
 
   //Creates a new client
 
