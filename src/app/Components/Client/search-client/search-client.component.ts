@@ -74,7 +74,10 @@ export class SearchClientComponent implements OnInit {
         if (result.isConfirmed) {
           $('#exampleModalCenter').modal('show');
         }
-      })
+      });
     });
+  }
+  requestClient() {
+
   }
 }

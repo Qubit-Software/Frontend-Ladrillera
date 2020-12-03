@@ -98,13 +98,13 @@ export class ChargeEmployeeComponent implements OnInit {
     return this.form.get("password").valid && this.form.get('password').touched;
   }
 
-  // //foto validation
-  // get photoFiledNoValido() {
-  //   return this.form.get("photoFile").invalid && this.form.get('photoFile').touched;
-  // }
-  // get photoFileValido() {
-  //   return this.form.get("photoFile").valid && this.form.get('photoFile').touched;
-  // }
+  //foto validation
+  get photoFiledNoValido() {
+    return this.form.get("photoFile").invalid && this.form.get('photoFile').touched;
+  }
+  get photoFileValido() {
+    return this.form.get("photoFile").valid && this.form.get('photoFile').touched;
+  }
   //Validations ends
 
   //Get modulos
