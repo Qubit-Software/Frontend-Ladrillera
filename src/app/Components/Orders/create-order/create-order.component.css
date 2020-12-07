@@ -95,3 +95,7 @@
     height: 100vh;
     overflow: visible;
 }
+
+#comentarios{
+    width: 15vw;
+}

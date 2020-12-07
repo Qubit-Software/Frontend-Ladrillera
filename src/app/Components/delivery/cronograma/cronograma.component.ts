@@ -14,18 +14,15 @@ export class CronogramaComponent implements OnInit {
     headerToolbar: {
       start: 'prev,next',
       center: 'title',
-      end: 'dayGridMonth,timeGridWeek,dayGridDay'
-    },
-    footerToolbar: {
-      center: "agregarevento"
+      end: 'dayGridMonth,dayGridDay'
     },
     //eventos ejemplo
     events: [
       {
         title: 'entrega urgente',
-        start: '2020-11-01',
-        end: '2020-11-01',
-        editable: true
+        start: '2020-12-01',
+        end: '2020-12-01',
+        editable: false
       },
       {
         title: 'recorrido ',
@@ -47,16 +44,7 @@ export class CronogramaComponent implements OnInit {
         //slotDuration: '02:00',
         color: 'green'
       }
-    ],
-    //boton de agregar
-    customButtons: {
-      agregarevento: {
-        text: 'add event',
-        click: function () {
-          alert();
-        }
-      }
-    }
+    ]
   }
   constructor() { }
 

@@ -1,5 +1,5 @@
 <div id="mainContainer" class="container-fluid">
-  <form (ngSubmit)="generateOrder()">
+  <form  (ngSubmit)="generateOrder()">
     <div class="row my-4">
       <h2 class="titles">Montar pedido</h2>
     </div>
@@ -13,6 +13,8 @@
               <th class="titles separator">Cantidad</th>
               <th class="titles separator">Medida</th>
               <th class="titles separator">Valor de venta</th>
+              <th class="titles separator">Iva</th>
+              <th class="titles separator">Comentario</th>
               <th class="titles separator" id="tbHeadRight">
                 <img src="../../../../assets/Iconos/notebook.png" height="30px" alt="">
               </th>
@@ -22,11 +24,11 @@
             <tr class="tRow" *ngFor="let i of dataArray;let p=index">
               <th class="text align-middle" scope="row">
                 <input type="text" disabled class="form-control text-center" name="codigo_producto{{p}}"
-                  [(ngModel)]="i.codigo_producto" id="productAmount">
+                  [(ngModel)]="i.codigo_producto" >
               </th>
-              <td class="text">
+              <td class="text align-middle">
                 <select (change)="productCodeSet(p)" name="nombre{{p}}" [(ngModel)]="i.nombre" class="form-control"
-                  name="Medida" [attr.disabled] = "active === 1 ? 'disabled' : null">
+                  name="Medida" [attr.disabled]="active === 1 ? 'disabled' : null">
                   <option class="form-control" disabled selected value="">Selecciona un producto
                   </option>
                   <option class="form-control" *ngFor="let h of products" value={{h.nombre}}>
@@ -34,12 +36,13 @@
                   </option>
                 </select>
               </td>
-              <td class="text">
+              <td class="text align-middle">
                 <input type="number" class="form-control text-center" name="cantidad{{p}}" [(ngModel)]="i.cantidad"
-                  id="productAmount" [attr.disabled] = "active === 1 ? 'disabled' : null">
+                   [attr.disabled]="active === 1 ? 'disabled' : null">
               </td>
-              <td class="text">
-                <select class="form-control" name="Medida" name="unidad_medicion{{p}}" [(ngModel)]="i.unidad_medicion" [attr.disabled] = "active === 1 ? 'disabled' : null">
+              <td class="text align-middle">
+                <select class="form-control" name="Medida" name="unidad_medicion{{p}}" [(ngModel)]="i.unidad_medicion"
+                  [attr.disabled]="active === 1 ? 'disabled' : null">
                   <option class="form-control" disabled selected value="">Selecciona una medida
                   </option>
                   <option class="form-control" *ngFor="let measure of i.medidas" value={{measure}}>
@@ -47,9 +50,18 @@
                   </option>
                 </select>
               </td>
-              <td class="text">
+              <td class="text align-middle">
                 <input type="number" class="form-control text-center" (change)="onChange()" name="valor{{p}}"
-                  [(ngModel)]="i.valor" [attr.disabled] = "active === 1 ? 'disabled' : null">
+                  [(ngModel)]="i.valor" [attr.disabled]="active === 1 ? 'disabled' : null">
+              </td>
+              <td class="text align-middle">
+                <input type="number" class="form-control text-center" name="cantidad{{p}}" [(ngModel)]="i.iva"
+                  id="productAmount" [attr.disabled]="active === 1 ? 'disabled' : null">
+              </td>
+              <td id="comentarios" class="text">
+                <textarea type="textarea" rows="2" class="form-control text-center" name="cantidad{{p}}"
+                  [(ngModel)]="i.comentarios"
+                  [attr.disabled]="active === 1 ? 'disabled' : null"></textarea>
               </td>
               <td *ngIf="p==0" class="text align-middle">
 
@@ -66,7 +78,8 @@
       </div>
     </div>
     <div class="row d-flex justify-content-end">
-      <button (click)="addForm()" type="button" class="btn rounded-circle" id="plusElement" [attr.disabled] = "active === 1 ? 'disabled' : null">
+      <button (click)="addForm()" type="button" class="btn rounded-circle" id="plusElement"
+        [attr.disabled]="active === 1 ? 'disabled' : null">
         <img src="../../../../assets/Iconos/plus.png" height="25px" alt="">
       </button>
     </div>
@@ -102,16 +115,20 @@
                   <label for="deliveryDate" class="col-sm-3 col-form-label titles">Fecha de
                     entrega</label>
                   <div class="col-sm-9">
-                    <input type="date" class="form-control" id="deliveryDate" [(ngModel)]="date" name="date" [attr.disabled] = "active === 1 ? 'disabled' : null">
+                    <input type="date" [min]="minDate" class="form-control" id="deliveryDate"  submit-required="true"  required [(ngModel)]="date" name="date"
+                      [attr.disabled]="active === 1 ? 'disabled' : null">
                   </div>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col text-center">
-                <button type="button" [ngClass]="{btnDisable: atras === false } " class="btn btn-danger text" (click)="Atras()">Atras</button>
-                <button type="submit" [ngClass]="{btnDisable: confirm === false } " class="btn btn-danger text" (click)="verificar()">Confirmar</button>
-                <button type="button" [ngClass]="{btnDisable: continuar === false } " class="btn btn-danger text" (click)="verificar()">Continuar</button>
+                <button type="button" [ngClass]="{btnDisable: atras === false } " class="btn btn-danger text"
+                  (click)="Atras()">Atras</button>
+                <button type="submit" [ngClass]="{btnDisable: confirm === false } " class="btn btn-danger text"
+                  (click)="verificar()">Confirmar</button>
+                <button type="button" [ngClass]="{btnDisable: continuar === false } " class="btn btn-danger text"
+                  (click)="verificar()">Continuar</button>
               </div>
             </div>
           </div>

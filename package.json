@@ -29,6 +29,7 @@
     "g": "^2.0.1",
     "jquery": "^3.5.1",
     "laravel-echo": "^1.9.0",
+    "moment": "^2.29.1",
     "ng2-tooltip-directive": "^2.9.22",
     "pusher-js": "^7.0.1",
     "rxjs": "~6.5.4",

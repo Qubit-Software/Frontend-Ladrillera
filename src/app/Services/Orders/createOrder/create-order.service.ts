@@ -7,7 +7,7 @@ import { AuthService } from '../../Auth/auth.service';
 })
 export class CreateOrderService {
 
-  private url = 'https://b650cf69ae94.ngrok.io/api/ventas/pedidos';
+  private url = 'https://f1b8ab710373.ngrok.io/api/ventas/pedidos';
   productos: any[] = [];
 
   constructor(private http: HttpClient, private auth: AuthService) { }
@@ -18,7 +18,9 @@ export class CreateOrderService {
         'codigo_producto': p.codigo_producto,
         "cantidad": p.cantidad,
         "unidad_medicion": p.unidad_medicion,
-        "valor_total": p.valor
+        "valor_total": p.valor,
+        "iva": p.iva,
+        "comentarios": p.comentarios
       };
       this.productos.push(products);
     });
