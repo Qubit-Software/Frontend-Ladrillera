@@ -7,7 +7,7 @@ import { AuthService } from '../../Auth/auth.service';
 })
 export class CreateOrderService {
 
-  private url = 'https://f1b8ab710373.ngrok.io/api/ventas/pedidos';
+  private url = 'https://3dd3d7fc9c93.ngrok.io/api/ventas/pedidos';
   productos: any[] = [];
 
   constructor(private http: HttpClient, private auth: AuthService) { }
@@ -69,4 +69,13 @@ export class CreateOrderService {
     console.log(body);
     return this.http.put(`${this.url}/${idPedido}`, body, opts);
   }
+  public cronogramItems() {
+    const opts = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + this.auth.readToken(),
+      })
+    };
+    return this.http.get(`${this.url}/tipo/cronograma`, opts);
+  }
+
 }
