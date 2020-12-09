@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CalendarOptions } from '@fullcalendar/angular';
 import { CreateOrderService } from 'src/app/Services/Orders/createOrder/create-order.service';
 import Swal from 'sweetalert2';
@@ -9,6 +10,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./cronograma.component.css']
 })
 export class CronogramaComponent implements OnInit {
+
+  url = window.location.href.slice(0, -9);
   title = 'calendario';
   data: any[] = [
     {
@@ -20,12 +23,12 @@ export class CronogramaComponent implements OnInit {
   ];
   calendarOptions: CalendarOptions;
 
-  constructor(private orders: CreateOrderService) {
+  constructor(private orders: CreateOrderService, private router: Router) {
     this.getOrders();
   }
 
   ngOnInit(): void {
-
+    console.log(this.url);
   }
   private render() {
     this.calendarOptions = {
@@ -53,7 +56,8 @@ export class CronogramaComponent implements OnInit {
             start: res[i][h].fecha_cargue,
             end: res[i][h].fecha_cargue,
             editable: false,
-            color: 'red'
+            color: 'red',
+            url: `${this.url + `photography/:` + res[i][h].id}`
           });
         }
       }
