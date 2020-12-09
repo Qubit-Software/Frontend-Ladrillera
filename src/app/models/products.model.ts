@@ -5,4 +5,6 @@ export class product{
     unidad_medicion:any;
     valor:any;
     medidas:any[];
+    iva:any;
+    comentarios:any;
 }

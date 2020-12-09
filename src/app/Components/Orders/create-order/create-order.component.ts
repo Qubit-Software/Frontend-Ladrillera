@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import * as moment from 'moment';
+
 import { CreateOrderService } from 'src/app/Services/Orders/createOrder/create-order.service';
 import Swal from 'sweetalert2';
 import { product } from "../../../models/products.model";
@@ -11,6 +13,7 @@ import { product } from "../../../models/products.model";
 })
 export class CreateOrderComponent implements OnInit {
 
+  minDate = moment(new Date()).format('YYYY-MM-DD');
   public totalSell = 0;
   public product = new product();
   public dataArray = [];
@@ -46,40 +49,47 @@ export class CreateOrderComponent implements OnInit {
   constructor(private fb: FormBuilder, private CreateOrderService: CreateOrderService, private router: Router) {
 
   }
+  
 
   ngOnInit(): void {
     this.product = new product();
     this.dataArray.push(this.product);
     this.nombreCliente = localStorage.getItem('client');
-    // this.CreateOrderService.createOrder(date).subscribe((result) => {
-    //   console.log(result);
-    // });
   }
 
 
   public generateOrder() {
-    this.date = new Date(this.date);
-    const fechaCargue = `${this.date.getDate() + 1}/${this.date.getMonth() + 1}/${this.date.getFullYear()}`;
-    console.log(this.dataArray);
-    const num = String(this.totalSell);
-    Swal.fire({
-      allowOutsideClick: false,
-      icon: 'info',
-      text: 'Espere por favor'
-    });
-    Swal.showLoading();
-    this.CreateOrderService.createOrder(this.dataArray, fechaCargue, num).subscribe((result) => {
-      console.log(result);
-      Swal.close();
-      this.router.navigateByUrl('/home');
-    }, (err) => {
-      Swal.close();
+
+    if (this.date != undefined || this.dataArray[0].cantidad != undefined) {
+      this.date = new Date(this.date);
+      const fechaCargue = `${this.date.getDate() + 1}/${this.date.getMonth() + 1}/${this.date.getFullYear()}`;
+      const num = String(this.totalSell);
+
+      Swal.fire({
+        allowOutsideClick: false,
+        icon: 'info',
+        text: 'Espere por favor'
+      });
+      Swal.showLoading();
+      this.CreateOrderService.createOrder(this.dataArray, fechaCargue, num).subscribe((result) => {
+        this.dataArray = [];
+        Swal.close();
+        this.router.navigateByUrl('/home');
+      }, (err) => {
+        Swal.close();
+        Swal.fire({
+          icon: 'error',
+          title: 'Error al registrar la pedido',
+        });
+        this.dataArray = [];
+      });
+    } else {
       Swal.fire({
         icon: 'error',
-        title: 'Error al registrar la pedido',
+        title: 'Revisa los campos aun hacen falta datos',
       });
-      console.log(err);
-    });
+    }
+
   }
 
 
