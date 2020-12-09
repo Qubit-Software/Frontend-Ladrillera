@@ -11,8 +11,9 @@ import { CreateOrderService } from 'src/app/Services/Orders/createOrder/create-o
 export class PhotographyComponent implements OnInit {
 
   totalSell = 0;
+  product;
   public pedidos: PedidoModel;
-  id: number;
+  idOrder: number;
   private sub: any;
   public products = [
     {
@@ -35,30 +36,31 @@ export class PhotographyComponent implements OnInit {
     }
   ];
 
-  constructor(private CreateOrderService: CreateOrderService, private route: ActivatedRoute) { }
+  constructor(private CreateOrderService: CreateOrderService, private route: ActivatedRoute) {
+    this.idOrder = parseInt(this.route.snapshot.paramMap.get("id").slice(1, 99));
+  }
 
   ngOnInit(): void {
-    this.sub = this.route.params.subscribe(params => {
-      this.id = +params['id']; // (+) converts string 'id' to a number
-      // In a real app: dispatch action to load the details here.
-    });
+
     this.pedidos = new PedidoModel();
-    this.CreateOrderService.getPedidoId(this.id).subscribe((result: any[]) => {
+    this.CreateOrderService.getPedidoId(Number(this.idOrder)).subscribe((result: any[]) => {
+      console.log(result)
+     this.product=result['productos'];
       this.pedidos.id = result['id'];
       this.pedidos.idCliente = result['id_cliente'];
       this.pedidos.fechaCargue = result['fecha_cargue'];
       this.pedidos.total = result['total'];
-      this.pedidos.producto = new Array();
-      this.pedidos.status= result['estatus']
+      this.pedidos.producto = [['']];
+      this.pedidos.status = result['estatus']
       this.pedidos.producto = result['productos'];
       this.pedidos.producto.forEach(p => {
         const produc = this.products.find(prod => prod.codigo === p.codigo_producto);
         p.nombre = produc.nombre;
       });
-      console.log(this.pedidos.producto);
+      console.log(this.pedidos.producto )
     });
   }
-  
+
 
 }
 export class PedidoModel {
@@ -67,6 +69,6 @@ export class PedidoModel {
   fechaCargue: string;
   status: string;
   total: string;
-  producto: product[];
+  producto: any;
 
 }
