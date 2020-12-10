@@ -8,7 +8,7 @@ import { AuthService } from '../Auth/auth.service';
   providedIn: 'root'
 })
 export class AdminService {
-  private url = 'https://aeab4d731485.ngrok.io/api/administracion';
+  private url = 'https://2c071f848671.ngrok.io/api/administracion';
 
   constructor(private http: HttpClient, private auth: AuthService) { }
 
@@ -52,6 +52,27 @@ export class AdminService {
       })
     };
     return this.http.get(`${this.url}/empleados/${id}`, opts);
+  }
+  createComunicado(titulo, cuerpo, fecha){
+    const opts = {
+      headers: new HttpHeaders({
+        'Authorization': "Bearer " + this.auth.readToken(),
+      })
+    };
+    const fd = new FormData();
+    fd.append('titulo', titulo);
+    fd.append('descripcion', cuerpo);
+    fd.append('fecha', fecha);
+    console.log(fd);
+    return this.http.post(
+      `https://2c071f848671.ngrok.io/api/actualizaciones`,
+      fd,
+      opts
+    ).pipe(
+      map(resp => {
+        console.log(resp);
+      })
+    );
   }
   updateEmployee(id,name, lastname, cedula, gender, bornDate, rol, correo, contrasena, fileToUp: File, modulos) {
     const opts = {

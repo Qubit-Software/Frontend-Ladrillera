@@ -11,7 +11,7 @@
                     </div>
                     <div autocomplete="off" class="input-group mb-4 px-5">
                         <textarea class="form-control" name="content" id="" rows="10"
-                            placeholder="Cuentanos cual es la novedad"></textarea>
+                            placeholder="Cuentanos cual es la novedad"  formControlName="paragraph" [class.is-invalid]="apellidosNoValido" [class.is-valid]="apellidosValido"></textarea>
                     </div>
                     <div class="">
                         <button class="btn my-5 titles" type="submit">

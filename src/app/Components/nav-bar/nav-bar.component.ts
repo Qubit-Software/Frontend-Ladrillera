@@ -24,6 +24,7 @@ export class NavBarComponent implements OnInit {
       () =>{
         this.notificationAmount+=1;
         console.log(this.notificationAmount);
+        console.log(this.webSocket.notificationData);
       }
     );
 
