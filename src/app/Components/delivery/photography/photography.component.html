@@ -12,7 +12,7 @@
                 <label for="clientName" class="col-sm-2 col-form-label titles">Cliente</label>
                 <div class="col-sm-10">
                   <input type="text" class="form-control text-center" disabled id="clientName"
-                    placeholder="Nombre del cliente">
+                    placeholder="{{clientName}}">
                 </div>
               </div>
             </div>
@@ -21,7 +21,7 @@
                 <label for="deliveryDate" class="col-sm-3 col-form-label titles">Fecha de
                   entrega</label>
                 <div class="col-sm-9">
-                  <input type="date" class="form-control" id="deliveryDate" [(ngModel)]="pedidos.fechaCargue"
+                  <input type="date" class="form-control text-center" id="deliveryDate" [(ngModel)]="fechaCargue"
                     name="date" disabled>
                 </div>
               </div>
