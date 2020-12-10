@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { CalendarOptions } from '@fullcalendar/angular';
+import { Calendar } from '@fullcalendar/core'; // include this line
+import { FullCalendarComponent, CalendarOptions } from '@fullcalendar/angular';
 import { CreateOrderService } from 'src/app/Services/Orders/createOrder/create-order.service';
+import interactionPlugin from '@fullcalendar/interaction';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -10,6 +12,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./cronograma.component.css']
 })
 export class CronogramaComponent implements OnInit {
+
+  @ViewChild('calendar') calendarComponent: FullCalendarComponent;
 
   url = window.location.href.slice(0, -9);
   title = 'calendario';
@@ -24,14 +28,21 @@ export class CronogramaComponent implements OnInit {
   calendarOptions: CalendarOptions;
 
   constructor(private orders: CreateOrderService, private router: Router) {
+    const name = Calendar.name;
     this.getOrders();
   }
 
   ngOnInit(): void {
     console.log(this.url);
   }
-  private render() {
+  public render() {
+    let calendarApi = this.calendarComponent.getApi();
     this.calendarOptions = {
+      plugins: [interactionPlugin],
+      dateClick: function (info) {
+        calendarApi.gotoDate(info.dateStr);
+        calendarApi.changeView('dayGridDay');
+      },
       headerToolbar: {
         start: 'prev,next',
         center: 'title',
