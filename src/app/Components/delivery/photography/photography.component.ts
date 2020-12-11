@@ -53,7 +53,6 @@ export class PhotographyComponent implements OnInit {
     this.pedidos = new PedidoModel();
     this.CreateOrderService.getPedidoId(Number(this.idOrder)).subscribe((result: any[]) => {
       Swal.close();
-      console.log(result)
       this.product = result['productos'];
       this.product=result['productos'];
       this.pedidos.id = result['id'];
@@ -67,9 +66,9 @@ export class PhotographyComponent implements OnInit {
         const produc = this.products.find(prod => prod.codigo === p.codigo_producto);
         p.nombre = produc.nombre;
       });
-      console.log(this.pedidos.producto )
-      this.clientName = result['id_cliente'];
-      this.fechaCargue=result['fecha_cargue']
+      this.clientName = result['cliente'].nombre+" "+result['cliente'].apellido;
+      this.fechaCargue=result['fecha_cargue'];
+      console.log(this.clientName);
     });
   }
 
