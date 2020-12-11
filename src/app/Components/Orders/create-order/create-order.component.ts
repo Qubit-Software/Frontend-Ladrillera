@@ -14,6 +14,7 @@ import { product } from "../../../models/products.model";
 export class CreateOrderComponent implements OnInit {
 
   minDate = moment(new Date()).format('YYYY-MM-DD');
+  ladId:any;
   public totalSell = 0;
   public product = new product();
   public dataArray = [];
@@ -73,8 +74,19 @@ export class CreateOrderComponent implements OnInit {
       Swal.showLoading();
       this.CreateOrderService.createOrder(this.dataArray, fechaCargue, num).subscribe((result) => {
         this.dataArray = [];
+        this.ladId=result['pedido'].id;
         Swal.close();
-        this.router.navigateByUrl('/home');
+        Swal.fire({
+          title: '',
+          text: "El codigo del pedido es: Lad21-"+this.ladId,
+          icon: 'warning',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'Confirmar'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.router.navigateByUrl('/home');
+          }
+        })
       }, (err) => {
         Swal.close();
         Swal.fire({
