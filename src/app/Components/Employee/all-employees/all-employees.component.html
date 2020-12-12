@@ -14,19 +14,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="tRow">
-                        <!--*ngFor="let pedido of pedidos.producto"-->
+                    <tr class="tRow" *ngFor="let employee of employeeData">
                         <th class="text align-middle" scope="row">
-                            test
+                            {{employee.cedula_ciudadania}}
                         </th>
                         <td class="text">
-                            test
+                            {{employee.nombre}}
                         </td>
                         <td class="text">
-                            test
+                            {{employee.rol}}
                         </td>
                         <td class="text">
-                            test
+                            <a href="mailto:{{employee.correo}}">
+                                {{employee.correo}}
+                            </a>
                         </td>
                     </tr>
                 </tbody>

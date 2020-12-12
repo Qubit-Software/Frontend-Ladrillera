@@ -8,7 +8,7 @@ import { AuthService } from '../Auth/auth.service';
   providedIn: 'root'
 })
 export class AdminService {
-  private url = 'https://cd8d0cd57a8b.ngrok.io/api/administracion';
+  private url = 'https://4202e8fe770f.ngrok.io/api/administracion';
 
   constructor(private http: HttpClient, private auth: AuthService) { }
 
@@ -53,7 +53,7 @@ export class AdminService {
     };
     return this.http.get(`${this.url}/empleados/${id}`, opts);
   }
-  createComunicado(titulo, cuerpo, fecha){
+  createComunicado(titulo, cuerpo, fecha) {
     const opts = {
       headers: new HttpHeaders({
         'Authorization': "Bearer " + this.auth.readToken(),
@@ -74,7 +74,7 @@ export class AdminService {
       })
     );
   }
-  updateEmployee(id,name, lastname, cedula, gender, bornDate, rol, correo, contrasena, fileToUp: File, modulos) {
+  updateEmployee(id, name, lastname, cedula, gender, bornDate, rol, correo, contrasena, fileToUp: File, modulos) {
     const opts = {
       headers: new HttpHeaders({
         'Authorization': "Bearer " + this.auth.readToken(),
@@ -104,5 +104,14 @@ export class AdminService {
         console.log(resp);
       })
     );
+  }
+
+  public getEmployees() {
+    const opts = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + this.auth.readToken(),
+      })
+    };
+    return this.http.get(`${this.url}/empleados`, opts);
   }
 }
