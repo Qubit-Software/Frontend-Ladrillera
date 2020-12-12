@@ -57,7 +57,7 @@
             <td class="text align-middle">
               <p>{{pedido.unidad_medicion}}</p>
             </td>
-            <td id="comentarios"  class="text align-middle">
+            <td id="comentarios" class="text align-middle">
               <p>{{pedido.comentarios}}</p>
             </td>
           </tr>
@@ -65,21 +65,35 @@
       </table>
     </div>
   </div>
+  <div class="row">
+    <div *ngFor="let image of images" class="col-sm-3 my-2">
+      <div class="card">
+        <div class="card-body">
+          <img src="{{image.url}}" alt="" class="img-fluid rounded">
+          <button (click)="deleteImage(image)" class="btn btn-block mt-2"><img
+              src="../../../../assets/Iconos/delete.svg" width="20" alt=""></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div id="cupload">
+
 
     <div id="upload" class="file-field">
       <div id="ari"></div>
 
       <div id="aba" class="flex-container">
         <span>📷</span>
-        <input type="file" placeholder="subir foto" style="color: transparent">
+        <input type="file" placeholder="subir foto" style="color: transparent" (change)="fileUpload($event)" multiple
+          class="form-control">
 
       </div>
     </div>
   </div>
 
   <div id="cont">
-    <button class="btn text">continuar </button>
+    <button class="btn text" (click)="save()" [disabled]="continueEnable">continuar </button>
   </div>
 
 

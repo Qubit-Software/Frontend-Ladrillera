@@ -12,12 +12,15 @@ import Swal from 'sweetalert2';
 })
 export class PhotographyComponent implements OnInit {
 
+  continueEnable:boolean=true;
   clientName: any;
-  fechaCargue:any;
+  fechaCargue: any;
   product: any;
   public pedidos: PedidoModel;
   idOrder: number;
   private sub: any;
+  images: any = [];
+  allImages: any = [];
   public products = [
     {
       "codigo": "LAD21-MATCO",
@@ -54,7 +57,7 @@ export class PhotographyComponent implements OnInit {
     this.CreateOrderService.getPedidoId(Number(this.idOrder)).subscribe((result: any[]) => {
       Swal.close();
       this.product = result['productos'];
-      this.product=result['productos'];
+      this.product = result['productos'];
       this.pedidos.id = result['id'];
       this.pedidos.idCliente = result['id_cliente'];
       this.pedidos.fechaCargue = result['fecha_cargue'];
@@ -66,13 +69,48 @@ export class PhotographyComponent implements OnInit {
         const produc = this.products.find(prod => prod.codigo === p.codigo_producto);
         p.nombre = produc.nombre;
       });
-      this.clientName = result['cliente'].nombre+" "+result['cliente'].apellido;
-      this.fechaCargue=result['fecha_cargue'];
+      this.clientName = result['cliente'].nombre + " " + result['cliente'].apellido;
+      this.fechaCargue = result['fecha_cargue'];
       console.log(this.clientName);
     });
   }
 
+  public fileUpload(event) {
+    var files = event.target.files;
+    console.log(files);
+    if (files) {
+      if (this.images.length>=3) {
+        this.continueEnable=false;
+      }else{
+        this.continueEnable=true;
+      }
+      for (let i = 0; i < files.length; i++) {
+        const image = {
+          name: '',
+          url: '',
+        };
+        this.allImages.push(files[i]);
+        image.name = files[i].name;
+        image.url = files[i].url;
+        const reader = new FileReader();
+        reader.onload = (filedata) => {
+          image.url = reader.result + '';
+          this.images.push(image);
+        };
+        reader.readAsDataURL(files[i]);
+      }
+    }
+    event.srcElement.value = null;
+  }
 
+  public save() {
+
+  }
+  public deleteImage(image: any) {
+    const index = this.images.indexOf(image);
+    this.images.splice(index,1);
+    this.allImages.splice(index,1);
+  }
 }
 export class PedidoModel {
   id: number;
