@@ -1,0 +1,37 @@
+<div id="mainContainer" class="container-fluid">
+    <div class="row my-4">
+        <h2 class="titles">Montar pedido</h2>
+    </div>
+    <div class="row text-center">
+        <div class="col">
+            <table id="orderTable" class="table table-hover">
+                <thead>
+                    <tr id="tbHead">
+                        <th class="titles" id="tbHeadLeft">Cedula</th>
+                        <th class="titles separator">Nombre</th>
+                        <th class="titles separator">Rol</th>
+                        <th class="titles separator">Correo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="tRow" *ngFor="let employee of employeeData">
+                        <th class="text align-middle" scope="row">
+                            {{employee.cedula_ciudadania}}
+                        </th>
+                        <td class="text">
+                            {{employee.nombre}}
+                        </td>
+                        <td class="text">
+                            {{employee.rol}}
+                        </td>
+                        <td class="text">
+                            <a href="mailto:{{employee.correo}}">
+                                {{employee.correo}}
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

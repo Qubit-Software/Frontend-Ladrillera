@@ -35,7 +35,6 @@ export class CreateOrderService {
       'total': total,
       'productos': this.productos
     };
-    console.log(body);
     return this.http.post(`${this.url}`, body, opts);
   }
   public getPedidos() {

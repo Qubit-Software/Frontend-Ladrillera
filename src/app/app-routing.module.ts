@@ -47,7 +47,10 @@ const routes: Routes = [
   {
     path: 'accounting', component: AccountingComponent, canActivate: [AuthGuard], children: [
       { path: 'request', component: RequestComponent, canActivate: [AuthGuard] },
-      { path: 'create', component: CreateClientComponent, canActivate: [AuthGuard] }
+      { path: 'create', component: CreateClientComponent, canActivate: [AuthGuard] },
+      { path: 'employee', component: CreateEmployeeComponent, canActivate: [AuthGuard] },
+      { path: 'allemployees', component: SearchEmployeeComponent, canActivate: [AuthGuard] },
+      { path: 'modifyemployess', component: CreateClientComponent, canActivate: [AuthGuard] },
     ]
   },
   {

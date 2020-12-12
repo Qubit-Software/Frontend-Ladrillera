@@ -12,12 +12,21 @@ import Swal from 'sweetalert2';
 })
 export class PhotographyComponent implements OnInit {
 
+
+  atras = false;
+  confirm = false;
+  continuar = true;
+  active:boolean= false;
+
+  continueEnable: boolean = false;
   clientName: any;
-  fechaCargue:any;
+  fechaCargue: any;
   product: any;
   public pedidos: PedidoModel;
   idOrder: number;
   private sub: any;
+  images: any = [];
+  allImages: any = [];
   public products = [
     {
       "codigo": "LAD21-MATCO",
@@ -53,9 +62,8 @@ export class PhotographyComponent implements OnInit {
     this.pedidos = new PedidoModel();
     this.CreateOrderService.getPedidoId(Number(this.idOrder)).subscribe((result: any[]) => {
       Swal.close();
-      console.log(result)
       this.product = result['productos'];
-      this.product=result['productos'];
+      this.product = result['productos'];
       this.pedidos.id = result['id'];
       this.pedidos.idCliente = result['id_cliente'];
       this.pedidos.fechaCargue = result['fecha_cargue'];
@@ -67,13 +75,69 @@ export class PhotographyComponent implements OnInit {
         const produc = this.products.find(prod => prod.codigo === p.codigo_producto);
         p.nombre = produc.nombre;
       });
-      console.log(this.pedidos.producto )
-      this.clientName = result['id_cliente'];
-      this.fechaCargue=result['fecha_cargue']
+      this.clientName = result['cliente'].nombre + " " + result['cliente'].apellido;
+      this.fechaCargue = result['fecha_cargue'];
+      console.log(this.clientName);
     });
   }
 
+  public fileUpload(event) {
+    var files = event.target.files;
+    console.log(files);
+    if (files) {
 
+      for (let i = 0; i < files.length; i++) {
+        const image = {
+          name: '',
+          url: '',
+        };
+        this.allImages.push(files[i]);
+        image.name = files[i].name;
+        image.url = files[i].url;
+        const reader = new FileReader();
+        reader.onload = (filedata) => {
+          image.url = reader.result + '';
+          this.images.push(image);
+          this.imagesRequired();
+        };
+        reader.readAsDataURL(files[i]);
+      }
+
+    }
+    event.srcElement.value = null;
+  }
+
+  public save() {
+
+  }
+  public deleteImage(image: any) {
+    const index = this.images.indexOf(image);
+    this.images.splice(index, 1);
+    this.allImages.splice(index, 1);
+    this.imagesRequired();
+  }
+
+  private imagesRequired() {
+    //verify if there is more than 4 images to enable continuar button
+    if (this.images.length >= 4) {
+      this.continueEnable = true;
+    } else {
+      this.continueEnable = false;
+    }
+  }
+
+  verificar(): void {
+    this.continuar = false;
+    this.confirm = true;
+    this.atras = true;
+    this.active = true;
+  }
+  Atras(): void {
+    this.continuar = true;
+    this.confirm = false;
+    this.atras = false;
+    this.active = false;
+  }
 }
 export class PedidoModel {
   id: number;

@@ -4,6 +4,7 @@ import { Calendar } from '@fullcalendar/core'; // include this line
 import { FullCalendarComponent, CalendarOptions } from '@fullcalendar/angular';
 import { CreateOrderService } from 'src/app/Services/Orders/createOrder/create-order.service';
 import interactionPlugin from '@fullcalendar/interaction';
+import esLocale from '@fullcalendar/core/locales/es';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -14,6 +15,7 @@ import Swal from 'sweetalert2';
 export class CronogramaComponent implements OnInit {
 
   @ViewChild('calendar') calendarComponent: FullCalendarComponent;
+
 
   url = window.location.href.slice(0, -9);
   title = 'calendario';
@@ -33,7 +35,7 @@ export class CronogramaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.url);
+
   }
   public render() {
     let calendarApi = this.calendarComponent.getApi();
@@ -43,6 +45,7 @@ export class CronogramaComponent implements OnInit {
         calendarApi.gotoDate(info.dateStr);
         calendarApi.changeView('dayGridDay');
       },
+      locale:esLocale,
       headerToolbar: {
         start: 'prev,next',
         center: 'title',

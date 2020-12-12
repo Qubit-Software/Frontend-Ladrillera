@@ -53,7 +53,7 @@ export class AdminService {
     };
     return this.http.get(`${this.url}/empleados/${id}`, opts);
   }
-  createComunicado(titulo, cuerpo, fecha){
+  createComunicado(titulo, cuerpo, fecha) {
     const opts = {
       headers: new HttpHeaders({
         'Authorization': "Bearer " + this.auth.readToken(),
@@ -74,7 +74,7 @@ export class AdminService {
       })
     );
   }
-  updateEmployee(id,name, lastname, cedula, gender, bornDate, rol, correo, contrasena, fileToUp: File, modulos) {
+  updateEmployee(id, name, lastname, cedula, gender, bornDate, rol, correo, contrasena, fileToUp: File, modulos) {
     const opts = {
       headers: new HttpHeaders({
         'Authorization': "Bearer " + this.auth.readToken(),
@@ -104,5 +104,14 @@ export class AdminService {
         console.log(resp);
       })
     );
+  }
+
+  public getEmployees() {
+    const opts = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + this.auth.readToken(),
+      })
+    };
+    return this.http.get(`${this.url}/empleados`, opts);
   }
 }
