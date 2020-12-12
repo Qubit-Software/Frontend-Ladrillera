@@ -163,3 +163,10 @@
 #comentarios {
   width: 15vw;
 }
+.btnDisable{
+  display: none;
+}
+
+#buttons{
+  margin-top:2rem;
+}

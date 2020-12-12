@@ -12,7 +12,13 @@ import Swal from 'sweetalert2';
 })
 export class PhotographyComponent implements OnInit {
 
-  continueEnable:boolean=true;
+
+  atras = false;
+  confirm = false;
+  continuar = true;
+  active:boolean= false;
+
+  continueEnable: boolean = false;
   clientName: any;
   fechaCargue: any;
   product: any;
@@ -79,11 +85,7 @@ export class PhotographyComponent implements OnInit {
     var files = event.target.files;
     console.log(files);
     if (files) {
-      if (this.images.length>=3) {
-        this.continueEnable=false;
-      }else{
-        this.continueEnable=true;
-      }
+
       for (let i = 0; i < files.length; i++) {
         const image = {
           name: '',
@@ -96,9 +98,11 @@ export class PhotographyComponent implements OnInit {
         reader.onload = (filedata) => {
           image.url = reader.result + '';
           this.images.push(image);
+          this.imagesRequired();
         };
         reader.readAsDataURL(files[i]);
       }
+
     }
     event.srcElement.value = null;
   }
@@ -108,8 +112,31 @@ export class PhotographyComponent implements OnInit {
   }
   public deleteImage(image: any) {
     const index = this.images.indexOf(image);
-    this.images.splice(index,1);
-    this.allImages.splice(index,1);
+    this.images.splice(index, 1);
+    this.allImages.splice(index, 1);
+    this.imagesRequired();
+  }
+
+  private imagesRequired() {
+    //verify if there is more than 4 images to enable continuar button
+    if (this.images.length >= 4) {
+      this.continueEnable = true;
+    } else {
+      this.continueEnable = false;
+    }
+  }
+
+  verificar(): void {
+    this.continuar = false;
+    this.confirm = true;
+    this.atras = true;
+    this.active = true;
+  }
+  Atras(): void {
+    this.continuar = true;
+    this.confirm = false;
+    this.atras = false;
+    this.active = false;
   }
 }
 export class PedidoModel {

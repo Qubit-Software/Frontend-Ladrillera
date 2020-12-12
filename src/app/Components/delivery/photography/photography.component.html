@@ -70,8 +70,8 @@
       <div class="card">
         <div class="card-body">
           <img src="{{image.url}}" alt="" class="img-fluid rounded">
-          <button (click)="deleteImage(image)" class="btn btn-block mt-2"><img
-              src="../../../../assets/Iconos/delete.svg" width="20" alt=""></button>
+          <button [disabled]="active" (click)="deleteImage(image)" class="btn btn-block mt-2"><img
+              src="../../../../assets/Iconos/delete.svg" width="20" alt="" ></button>
         </div>
       </div>
     </div>
@@ -86,14 +86,24 @@
       <div id="aba" class="flex-container">
         <span>📷</span>
         <input type="file" placeholder="subir foto" style="color: transparent" (change)="fileUpload($event)" multiple
-          class="form-control">
+          class="form-control mb-2">
 
       </div>
     </div>
   </div>
+  <div id="buttons" class="row ">
+    <div class="col text-center">
+      <button type="button" [ngClass]="{btnDisable: atras === false } " class="btn btn-danger text"
+        (click)="Atras()">Atras</button>
+      <button type="submit" [ngClass]="{btnDisable: confirm === false } " class="btn btn-danger text"
+        (click)="verificar()">Confirmar</button>
+      <button class="btn text" [ngClass]="{btnDisable: continuar === false } " (click)="verificar()"
+        [disabled]="!continueEnable">Continuar </button>
+    </div>
+  </div>
 
   <div id="cont">
-    <button class="btn text" (click)="save()" [disabled]="continueEnable">continuar </button>
+
   </div>
 
 
