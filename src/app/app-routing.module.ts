@@ -31,9 +31,9 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   {
     path: 'admin', component: CreateEmployeesComponent, canActivate: [AuthGuard], children: [
-      { path: 'create', component: CreateEmployeeComponent, canActivate: [AuthGuard] },
-      { path: 'search', component: SearchEmployeeComponent, canActivate: [AuthGuard] },
-      { path: 'charge/:id', component: ChargeEmployeeComponent, canActivate: [AuthGuard] }
+      { path: 'cronogram', component: CronogramaComponent, canActivate: [AuthGuard] },
+      { path: 'report', component: ReportsComponent, canActivate: [AuthGuard] },
+      { path: 'create', component: CreateClientComponent, canActivate: [AuthGuard] }
     ]
   },
   {

@@ -39,6 +39,7 @@ import { LodgeComponent } from './Pages/lodge/lodge.component';
 import { BillingComponent } from './Pages/billing/billing.component';
 import { SearchEmployeeComponent } from './Components/Employee/search-employee/search-employee.component';
 import { ChargeEmployeeComponent } from './Components/Employee/charge-employee/charge-employee.component';
+import { CronogramAccountingComponent } from './Components/accounting/cronogram-accounting/cronogram-accounting.component';
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import { ChargeEmployeeComponent } from './Components/Employee/charge-employee/c
     LodgeComponent,
     BillingComponent,
     SearchEmployeeComponent,
-    ChargeEmployeeComponent
+    ChargeEmployeeComponent,
+    CronogramAccountingComponent
   ],
   imports: [
     BrowserModule,
