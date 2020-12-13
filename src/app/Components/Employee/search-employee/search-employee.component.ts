@@ -26,7 +26,7 @@ export class SearchEmployeeComponent implements OnInit {
     Swal.showLoading();
     this.admin.searchEmployee(this.id).subscribe(resp => {
       Swal.close();
-      this.router.navigate(['/admin/charge', this.id]);
+      this.router.navigate(['/accounting/charge', this.id]);
     }, (err) => {
       console.log(err);
       Swal.close();

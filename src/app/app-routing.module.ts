@@ -25,15 +25,18 @@ import { BillingComponent } from './Pages/billing/billing.component';
 import { CreateEmployeeComponent } from './Components/Employee/create-employee/create-employee.component';
 import { SearchEmployeeComponent } from './Components/Employee/search-employee/search-employee.component';
 import { ChargeEmployeeComponent } from './Components/Employee/charge-employee/charge-employee.component';
+import { AllEmployeesComponent } from './Components/Employee/all-employees/all-employees.component';
+import { CronogramAccountingComponent } from './Components/accounting/cronogram-accounting/cronogram-accounting.component';
 
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   {
     path: 'admin', component: CreateEmployeesComponent, canActivate: [AuthGuard], children: [
-      { path: 'cronogram', component: CronogramaComponent, canActivate: [AuthGuard] },
+      { path: 'cronogram', component: CronogramAccountingComponent, canActivate: [AuthGuard] },
       { path: 'report', component: ReportsComponent, canActivate: [AuthGuard] },
-      { path: 'create', component: CreateClientComponent, canActivate: [AuthGuard] }
+      { path: 'create', component: CreateClientComponent, canActivate: [AuthGuard] },
+      { path: 'charge/:id', component: ChargeOrderComponent }
     ]
   },
   {
@@ -49,8 +52,9 @@ const routes: Routes = [
       { path: 'request', component: RequestComponent, canActivate: [AuthGuard] },
       { path: 'create', component: CreateClientComponent, canActivate: [AuthGuard] },
       { path: 'employee', component: CreateEmployeeComponent, canActivate: [AuthGuard] },
-      { path: 'allemployees', component: SearchEmployeeComponent, canActivate: [AuthGuard] },
-      { path: 'modifyemployess', component: CreateClientComponent, canActivate: [AuthGuard] },
+      { path: 'allemployees', component: AllEmployeesComponent, canActivate: [AuthGuard] },
+      { path: 'search', component: SearchEmployeeComponent, canActivate: [AuthGuard] },
+      { path: 'charge/:id', component: ChargeEmployeeComponent, canActivate: [AuthGuard] },
     ]
   },
   {
