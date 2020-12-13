@@ -27,7 +27,7 @@ export class WebSocketService {
       broadcaster: "pusher",
       key: "pusher_app_key",
       cluster: "mt1",
-      wsHost: 'cd8d0cd57a8b.ngrok.io',
+      wsHost: 'b9b6271f30c7.ngrok.io',
       forceTLS: false,
       encrypted: false,
       disableStats: true,
@@ -38,7 +38,7 @@ export class WebSocketService {
   }
   listen() {
     this.echo.channel('notificaciones')
-      .listen('EventoNotificacionGeneral', (data) => {
+      .listen('EventoNotificacionGeneral', async (data) => {
         this.notificationData.unshift(data);
 
         let audio = new Audio();

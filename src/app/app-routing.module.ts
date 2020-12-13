@@ -25,16 +25,15 @@ import { BillingComponent } from './Pages/billing/billing.component';
 import { CreateEmployeeComponent } from './Components/Employee/create-employee/create-employee.component';
 import { SearchEmployeeComponent } from './Components/Employee/search-employee/search-employee.component';
 import { ChargeEmployeeComponent } from './Components/Employee/charge-employee/charge-employee.component';
-import { AllEmployeesComponent } from './Components/Employee/all-employees/all-employees.component';
 
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   {
     path: 'admin', component: CreateEmployeesComponent, canActivate: [AuthGuard], children: [
-      { path: 'create', component: CreateEmployeeComponent, canActivate: [AuthGuard] },
-      { path: 'employeesList', component: AllEmployeesComponent, canActivate: [AuthGuard] },
-      { path: 'charge/:id', component: ChargeEmployeeComponent, canActivate: [AuthGuard] },
+      { path: 'cronogram', component: CronogramaComponent, canActivate: [AuthGuard] },
+      { path: 'report', component: ReportsComponent, canActivate: [AuthGuard] },
+      { path: 'create', component: CreateClientComponent, canActivate: [AuthGuard] }
     ]
   },
   {
@@ -48,7 +47,10 @@ const routes: Routes = [
   {
     path: 'accounting', component: AccountingComponent, canActivate: [AuthGuard], children: [
       { path: 'request', component: RequestComponent, canActivate: [AuthGuard] },
-      { path: 'create', component: CreateClientComponent, canActivate: [AuthGuard] }
+      { path: 'create', component: CreateClientComponent, canActivate: [AuthGuard] },
+      { path: 'employee', component: CreateEmployeeComponent, canActivate: [AuthGuard] },
+      { path: 'allemployees', component: SearchEmployeeComponent, canActivate: [AuthGuard] },
+      { path: 'modifyemployess', component: CreateClientComponent, canActivate: [AuthGuard] },
     ]
   },
   {

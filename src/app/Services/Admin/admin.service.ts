@@ -65,7 +65,7 @@ export class AdminService {
     fd.append('fecha', fecha);
     console.log(fd);
     return this.http.post(
-      `https://2c071f848671.ngrok.io/api/actualizaciones`,
+      `https://4202e8fe770f.ngrok.io/api/actualizaciones`,
       fd,
       opts
     ).pipe(
