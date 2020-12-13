@@ -1,15 +1,15 @@
 <div *ngIf="!(router.url == '/login' || router.url == '/')" class="row">
     <div id="containerNav" class="col-lg-12">
-        <nav id="nav"  class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav id="nav" class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand px-5 py-2" href="#">
                 <img src="../../../assets/Logo.png" width="100" height="ms-auto" class="d-inline-block align-top" alt=""
                     loading="lazy">
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
-                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarText">
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item  pr-3">
                         <a routerLink="/home" routerLinkActive="active" class="nav-link titles" href="#">Inicio <span
@@ -32,7 +32,6 @@
                         <a (click)="logOut()" class="nav-link titles text-danger" href="#">Cerrar Sesión</a>
                     </li>
                 </ul>
-
                 <li id="searchButton" class="nav-item dropdown navbar-text">
                     <a class="nav-link dropdown-toggle titles" href="http://example.com" id="navbarDropdownMenuLink"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -76,36 +75,33 @@
                         </li>
                     </ul>
                 </li>
-
                 <!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
                 <li class="right pl-3">
                     <!--span class="notification-label"></span-->
                     <div class="dropdown-container">
                         <a href="#" data-dropdown="notificationMenu" class="menu-link has-notifications circle">
-                            <img src="../../../assets/Iconos/notifications_none-24px.svg" class="img-fluid" alt="puede contener una campana">
-                            <span *ngIf="notificationAmount>=1" id="amountNotification" class="rounded-circle">{{notificationAmount}}</span>
+                            <img src="../../../assets/Iconos/notifications_none-24px.svg" class="img-fluid"
+                                alt="puede contener una campana">
+                            <span *ngIf="notificationAmount>=1" id="amountNotification"
+                                class="rounded-circle">{{notificationAmount}}</span>
                         </a>
                         <ul class="dropdown" name="notificationMenu" id="notificationMenu">
                             <li class="notification-group">
-                                <div >
+                                <div>
                                     <ul class="list-group list-group-flush">
-                                        <li  *ngFor="let item of notificationData; index as i;" class="list-group-item d-flex justify-content-between align-items-center">
-                                         {{item.body}}
-                                          <span class="badge badge-danger badge-pill">14</span>
+                                        <li *ngFor="let item of notificationData; index as i;"
+                                            class="list-group-item d-flex justify-content-between align-items-center">
+                                            {{item.body}}
+                                            <span class="badge badge-danger badge-pill">14</span>
                                         </li>
-                                      </ul>
+                                    </ul>
                                 </div>
                                 <!-- tab -->
                             </li>
                         </ul>
                     </div>
                 </li>
-
-
                 <!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-
-
-
                 <picture>
                     <img id="userLogo" src="../../../assets/Iconos/people.svg" width="45" height="45"
                         class="d-inline-block align-top mx-4" alt="" loading="lazy">

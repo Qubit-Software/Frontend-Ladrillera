@@ -49,6 +49,10 @@
         margin-top: 10px;
         margin-left: 15px !important;
     }
+    #navbarNav{
+    z-index: 2;
+    background-color: white;
+    }
 }
 
 /*Nav bar styles ends*/
