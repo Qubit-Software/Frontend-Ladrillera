@@ -32,52 +32,9 @@
                         <a (click)="logOut()" class="nav-link titles text-danger" href="#">Cerrar Sesión</a>
                     </li>
                 </ul>
-                <li id="searchButton" class="nav-item dropdown navbar-text">
-                    <a class="nav-link dropdown-toggle titles" href="http://example.com" id="navbarDropdownMenuLink"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Buscar
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-lg-right text-center"
-                        aria-labelledby="navbarDropdownMenuLink">
-                        <li class="dropdown-submenu dropleft"><a class="dropdown-item dropdown-toggle titles"
-                                data-toggle="dropdown" href="#">Empleados</a>
-                            <ul class="dropdown-menu">
-                                <a routerLink="/employees" routerLinkActive="active" class="dropdown-item titles"
-                                    href="#">Crear Empleado</a>
-                                <a routerLink="/employees" routerLinkActive="active" class="dropdown-item titles"
-                                    href="#">Ver Empleado</a>
-                                <a routerLink="/employees" routerLinkActive="active" class="dropdown-item titles"
-                                    href="#">Modificar</a>
-                                <a routerLink="/employees" routerLinkActive="active" class="dropdown-item titles"
-                                    href="#">Eliminar*</a>
-                            </ul>
-                        </li>
-                        <li>
-                            <a class="dropdown-item titles" href="#">Pedidos</a>
-                        </li>
-                        <li class="dropdown-submenu dropleft"><a class="dropdown-item dropdown-toggle titles"
-                                data-toggle="dropdown" href="#">Finanzas</a>
-                            <ul class="dropdown-menu">
-                                <a routerLink="/employees" routerLinkActive="active" class="dropdown-item titles"
-                                    href="#">Finanzas</a>
-                                <a routerLink="/employees" routerLinkActive="active" class="dropdown-item titles"
-                                    href="#">Registro</a>
-                            </ul>
-                        </li>
-                        <li class="dropdown-submenu dropleft">
-                            <a class="dropdown-item dropdown-toggle titles" data-toggle="dropdown" href="#">Despacho</a>
-                            <ul class="dropdown-menu">
-                                <a routerLink="/employees" routerLinkActive="active" class="dropdown-item titles"
-                                    href="#">A</a>
-                                <a routerLink="/employees" routerLinkActive="active" class="dropdown-item titles"
-                                    href="#">b</a>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
+              
                 <!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-                <li class="right pl-3">
-                    <!--span class="notification-label"></span-->
+                <li class="right pl-3">                 
                     <div class="dropdown-container">
                         <a href="#" data-dropdown="notificationMenu" class="menu-link has-notifications circle">
                             <img src="../../../assets/Iconos/notifications_none-24px.svg" class="img-fluid"
@@ -85,7 +42,7 @@
                             <span *ngIf="notificationAmount>=1" id="amountNotification"
                                 class="rounded-circle">{{notificationAmount}}</span>
                         </a>
-                        <ul class="dropdown" name="notificationMenu" id="notificationMenu">
+                        <ul class="dropdown" id="test" name="notificationMenu" id="notificationMenu">
                             <li class="notification-group">
                                 <div>
                                     <ul class="list-group list-group-flush">

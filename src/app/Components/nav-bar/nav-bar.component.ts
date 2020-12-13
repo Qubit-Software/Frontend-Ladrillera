@@ -31,32 +31,7 @@ export class NavBarComponent implements OnInit {
     // Open the connection between web socket and web app
     this.webSocket.setupWithToken(this.apiToken);
 
-    //DIRECTION NAVBAR
-    var size;
-    var elemento = document.getElementsByClassName("dropdown-submenu");
-    size = window.innerWidth;
-    if (size <= 990) {
-      for (let i = 0; i < elemento.length; i++) {
-        elemento[i].className = "dropdown-submenu dropright"
-      }
-    } else {
-      for (let i = 0; i < elemento.length; i++) {
-        elemento[i].className = "dropdown-submenu dropleft"
-      }
-    }
-    function reportWindowSize() {
-      size = window.innerWidth;
-      if (size <= 990) {
-        for (let i = 0; i < elemento.length; i++) {
-          elemento[i].className = "dropdown-submenu dropright"
-        }
-      } else {
-        for (let i = 0; i < elemento.length; i++) {
-          elemento[i].className = "dropdown-submenu dropleft"
-        }
-      }
-    }
-    window.onresize = reportWindowSize;
+    
 
     //Notify starts
 
@@ -77,9 +52,7 @@ export class NavBarComponent implements OnInit {
 
       var anchorOffset = $(e.currentTarget).offset();
 
-      dropdown.css({
-        right: containerWidth / 2 + "px"
-      });
+  
 
       container.toggleClass("expanded");
     });
