@@ -9,10 +9,11 @@ import Swal from 'sweetalert2';
 })
 export class AllEmployeesComponent implements OnInit {
 
-  employeeData;any;
+  employeeData:any;
   constructor(private employeeServ: AdminService) { }
 
   ngOnInit(): void {
+    this.employeeData=new Array();
     this.getEmployees();
   }
 
@@ -26,6 +27,9 @@ export class AllEmployeesComponent implements OnInit {
     this.employeeServ.getEmployees().subscribe((res) => {
       Swal.close();
       this.employeeData=res;
+      for(let em of this.employeeData){
+        console.log(em);
+      }
     },error=>{
       Swal.fire({
         icon: 'error',

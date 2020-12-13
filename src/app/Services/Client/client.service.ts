@@ -46,6 +46,21 @@ export class ClientService {
     return this.http.post(`${this.url}` + '/solicitud_clientes',
       authData, opts);
   }
+  public updateRequest(res){
+    const authData = {
+      id: res.id,
+      nombre: res.nombre,
+      telefono: res.telefono,
+      creado: true
+    };
+    const opts = {
+      headers: new HttpHeaders({
+        'Authorization': "Bearer " + this.auth.readToken(),
+      })
+    }
+    return this.http.put(`${this.url}` + '/solicitud_clientes/'+res.id,
+      authData, opts);
+  }
   getClientByCCNIT(id) {
     const opts = {
       headers: new HttpHeaders({

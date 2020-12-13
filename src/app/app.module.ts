@@ -40,6 +40,7 @@ import { BillingComponent } from './Pages/billing/billing.component';
 import { SearchEmployeeComponent } from './Components/Employee/search-employee/search-employee.component';
 import { ChargeEmployeeComponent } from './Components/Employee/charge-employee/charge-employee.component';
 import { CronogramAccountingComponent } from './Components/accounting/cronogram-accounting/cronogram-accounting.component';
+import { AllEmployeesComponent } from './Components/Employee/all-employees/all-employees.component';
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import { CronogramAccountingComponent } from './Components/accounting/cronogram-
     BillingComponent,
     SearchEmployeeComponent,
     ChargeEmployeeComponent,
-    CronogramAccountingComponent
+    CronogramAccountingComponent,
+    AllEmployeesComponent
   ],
   imports: [
     BrowserModule,
