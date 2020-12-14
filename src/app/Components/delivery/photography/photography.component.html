@@ -102,18 +102,14 @@
   </div>
 
   <div id="cont">
-
   </div>
-
-
-
 </div>
 
 
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog ">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
@@ -122,11 +118,36 @@
         </button>
       </div>
       <div class="modal-body">
-        ...
+        <div class="container">
+          <div class="row">
+            <div class="col" id="htmlData">
+              <div class="col text-center">
+                <img src="../../../../assets/Logo.png" class="img-fluid" alt="">
+              </div>
+              <p>FECHA: dd/mm/aa</p>
+              <p>HORA DE IMPRESIÓN: 00:00 am/m/pm</p>
+              <p style="margin-bottom: 32px;">CÓDIGO DEL PEDIDO:</p>
+              <hr style="border-top: 1px solid rgb(0 0 0);">
+              <p style="margin-bottom: 40px;">NOMBRE DEL CONDUCTOR:</p>
+              <hr style="border-top: 1px solid rgb(0 0 0);">
+              <table class="table" style="text-align: center; border: 2px solid black; border-collapse: initial;">
+                <tr>
+                  <th scope="col" class="w-50" style="border-right: 2px solid black;">NO</th>
+                  <th scope="col" class="w-50">REALIZADO</th>
+                </tr>
+              </table>
+              <p style="margin-bottom: 40px;">APROBADO:</p>
+              <hr style="border-top: 1px solid rgb(0 0 0);">
+              <p style="margin-bottom: 32px;">NOTA:</p>
+              <hr style="border-top: 1px solid rgb(0 0 0);">
+              <p class="text-center">ESPACIO PARA EL QR</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+      <div class="modal-footer text-center">
+
+        <button type="button" class="btn btn-block" (click)="downloadPDF()">Descargar Ticket</button>
       </div>
     </div>
   </div>

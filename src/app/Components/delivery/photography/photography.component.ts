@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { product } from 'src/app/models/products.model';
 import { ClientService } from 'src/app/Services/Client/client.service';
 import { CreateOrderService } from 'src/app/Services/Orders/createOrder/create-order.service';
 import Swal from 'sweetalert2';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-photography',
@@ -16,8 +17,7 @@ export class PhotographyComponent implements OnInit {
   atras = false;
   confirm = false;
   continuar = true;
-  active:boolean= false;
-
+  active: boolean = false;
   continueEnable: boolean = false;
   clientName: any;
   fechaCargue: any;
@@ -53,6 +53,12 @@ export class PhotographyComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.mainConfig();
+  }
+
+  public mainConfig() {
+
     Swal.fire({
       allowOutsideClick: false,
       icon: 'info',
@@ -137,6 +143,33 @@ export class PhotographyComponent implements OnInit {
     this.confirm = false;
     this.atras = false;
     this.active = false;
+  }
+
+  //descarga un pdf
+  downloadPDF() {
+    // Extraemos el
+    const DATA = document.getElementById('htmlData');
+    const doc = new jsPDF('p', 'pt', 'a4');
+    const options = {
+      background: 'white',
+      scale: 3,
+      scrollX: 0,
+      scrollY: 0
+    };
+    html2canvas(DATA, options).then((canvas) => {
+
+      const img = canvas.toDataURL('image/PNG');
+      // Add image Canvas to PDF
+      const bufferX = 15;
+      const bufferY = 15;
+      const imgProps = (doc as any).getImageProperties(img);
+      const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+      doc.addImage(img, 'JPEG', 15, 15, pdfWidth, pdfHeight, "a", "FAST");
+      return doc;
+    }).then((docResult) => {
+      docResult.save(`${new Date().toISOString()}_tutorial.pdf`);
+    });
   }
 }
 export class PedidoModel {
