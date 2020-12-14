@@ -71,15 +71,13 @@
         <div class="card-body">
           <img src="{{image.url}}" alt="" class="img-fluid rounded">
           <button [disabled]="active" (click)="deleteImage(image)" class="btn btn-block mt-2"><img
-              src="../../../../assets/Iconos/delete.svg" width="20" alt="" ></button>
+              src="../../../../assets/Iconos/delete.svg" width="20" alt=""></button>
         </div>
       </div>
     </div>
   </div>
 
   <div id="cupload">
-
-
     <div id="upload" class="file-field">
       <div id="ari"></div>
 
@@ -95,8 +93,9 @@
     <div class="col text-center">
       <button type="button" [ngClass]="{btnDisable: atras === false } " class="btn btn-danger text"
         (click)="Atras()">Atras</button>
-      <button type="submit" [ngClass]="{btnDisable: confirm === false } " class="btn btn-danger text"
-        (click)="verificar()">Confirmar</button>
+      <!-- Button trigger modal -->
+      <button type="button" [ngClass]="{btnDisable: confirm === false } " class="btn btn-danger text"
+        data-toggle="modal" data-target="#exampleModal">Confirmar</button>
       <button class="btn text" [ngClass]="{btnDisable: continuar === false } " (click)="verificar()"
         [disabled]="!continueEnable">Continuar </button>
     </div>
@@ -108,4 +107,27 @@
 
 
 
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>
