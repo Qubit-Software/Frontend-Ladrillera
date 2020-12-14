@@ -7,6 +7,7 @@ import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels } from '@techiediaries/ngx-qrcode';
 import { ThrowStmt } from '@angular/compiler';
+import { delay } from 'rxjs/operators';
 declare var $: any;
 
 @Component({
@@ -55,7 +56,7 @@ export class PhotographyComponent implements OnInit {
     }
   ];
 
-  constructor(private CreateOrderService: CreateOrderService, private route: ActivatedRoute, private clientServ: ClientService, private router: Router) {
+  constructor(private CreateOrderService: CreateOrderService, private route: ActivatedRoute, private clientServ: ClientService, private router: Router, private sendPicturesServ: CreateOrderService) {
     this.idOrder = parseInt(this.route.snapshot.paramMap.get("id").slice(1, 99));
     this.value = window.location.href.slice(0, -24) + "lodge/charge/" + this.idOrder;
     this.getActualDate();
@@ -121,9 +122,7 @@ export class PhotographyComponent implements OnInit {
     event.srcElement.value = null;
   }
 
-  public save() {
 
-  }
   public deleteImage(image: any) {
     const index = this.images.indexOf(image);
     this.images.splice(index, 1);
@@ -185,6 +184,35 @@ export class PhotographyComponent implements OnInit {
     var test = new Date();
     var ampm = test.getHours() >= 12 ? 'pm' : 'am';
     this.hour = test.getHours() % 12 + ":" + test.getMinutes() + " " + ampm
+  }
+  public sendPics() {
+
+    Swal.fire({
+      allowOutsideClick: false,
+      icon: 'info',
+      text: 'Espere por favor'
+    });
+    Swal.showLoading();
+
+    for (let i = 0; i < this.images.length; i++) {
+      this.CreateOrderService.sendPics(this.idOrder, this.images[i]).subscribe((res) => {
+        Swal.close();
+        Swal.fire('Registro realizado',
+          'El usuario se ha registrado',
+          'success');
+        delay(20);
+        $("#exampleModal").modal('show');
+      }, error => {
+        Swal.close();
+        Swal.fire({
+          icon: 'error',
+          title: 'Error al registrar el empleado',
+          text: error
+        });
+      });
+
+    }
+   
   }
 }
 export class PedidoModel {

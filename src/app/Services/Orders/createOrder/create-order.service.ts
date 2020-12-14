@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
 import { AuthService } from '../../Auth/auth.service';
 
 @Injectable({
@@ -11,6 +12,26 @@ export class CreateOrderService {
   productos: any[] = [];
 
   constructor(private http: HttpClient, private auth: AuthService) { }
+
+  public sendPics(idPedido, fileToUpload) {
+    const opts = {
+      headers: new HttpHeaders({
+        'Authorization': "Bearer " + this.auth.readToken(),
+      })
+    };
+    const fd = new FormData();
+    fd.append('id_pedido', idPedido);
+    fd.append('foto', fileToUpload);
+    return this.http.post(
+      `https://e57779089ae4.ngrok.io/api/empleados/despachos/fotografias`,
+      fd,
+      opts
+    ).pipe(
+      map(resp => {
+        console.log(resp);
+      })
+    );
+  }
 
   public createOrder(productos: any[], fecha: string, total: string) {
     productos.forEach(p => {

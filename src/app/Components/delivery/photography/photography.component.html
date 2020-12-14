@@ -94,8 +94,7 @@
       <button type="button" [ngClass]="{btnDisable: atras === false } " class="btn btn-danger text"
         (click)="Atras()">Atras</button>
       <!-- Button trigger modal -->
-      <button type="button" [ngClass]="{btnDisable: confirm === false } " class="btn btn-danger text"
-        data-toggle="modal" data-target="#exampleModal">Confirmar</button>
+      <button type="button" [ngClass]="{btnDisable: confirm === false } " class="btn btn-danger text" (click)="sendPics()">Confirmar</button>
       <button class="btn text" [ngClass]="{btnDisable: continuar === false } " (click)="verificar()"
         [disabled]="!continueEnable">Continuar </button>
     </div>
