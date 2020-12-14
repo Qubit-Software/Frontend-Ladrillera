@@ -41,6 +41,7 @@ import { SearchEmployeeComponent } from './Components/Employee/search-employee/s
 import { ChargeEmployeeComponent } from './Components/Employee/charge-employee/charge-employee.component';
 import { CronogramAccountingComponent } from './Components/accounting/cronogram-accounting/cronogram-accounting.component';
 import { AllEmployeesComponent } from './Components/Employee/all-employees/all-employees.component';
+import { ModifyNewsComponent } from './Components/News/modify-news/modify-news.component';
 
 
 @NgModule({
@@ -72,7 +73,8 @@ import { AllEmployeesComponent } from './Components/Employee/all-employees/all-e
     SearchEmployeeComponent,
     ChargeEmployeeComponent,
     CronogramAccountingComponent,
-    AllEmployeesComponent
+    AllEmployeesComponent,
+    ModifyNewsComponent
   ],
   imports: [
     BrowserModule,

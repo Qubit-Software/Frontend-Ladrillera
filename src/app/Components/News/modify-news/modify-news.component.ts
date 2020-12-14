@@ -1,23 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import Swal from 'sweetalert2';
-import { ModulesService } from 'src/app/Services/Modulos/modules.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AdminService } from 'src/app/Services/Admin/admin.service';
-
+import { ModulesService } from 'src/app/Services/Modulos/modules.service';
+import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-create-new-release',
-  templateUrl: './create-new-release.component.html',
-  styleUrls: ['./create-new-release.component.css']
+  selector: 'app-modify-news',
+  templateUrl: './modify-news.component.html',
+  styleUrls: ['./modify-news.component.css']
 })
-export class CreateNewReleaseComponent implements OnInit {
+export class ModifyNewsComponent implements OnInit {
 
   form: FormGroup;
   fileToUpload: File = null;
 
   constructor(private admin: AdminService, private moduleService: ModulesService, private fb: FormBuilder) { this.createForm(); }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.admin.getComunicado().subscribe(res =>{
+      this.form.patchValue({
+        title:res['titulo'],
+        paragraph:res['descripcion']
+      });
+    });
+
+  }
   //Nombres validation
   get invalidTitle() {
     return this.form.get("title").invalid && this.form.get('title').touched;

@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/Services/Auth/auth.service';
 
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { AdminService } from 'src/app/Services/Admin/admin.service';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   usuario: UsuarioModel = new UsuarioModel();
   isChecked: boolean = false;
-  constructor(private auth: AuthService, private router: Router) { }
+  constructor(private auth: AuthService, private router: Router,private admin: AdminService) { }
 
   ngOnInit(): void { }
 
@@ -36,7 +37,10 @@ export class LoginComponent implements OnInit {
     localStorage.setItem('rol', resp['empleado']['rol']);
     localStorage.setItem('name', name);
       Swal.close();
-      this.router.navigate([]).then(result => { window.location.href = "/home"; });
+      this.admin.getEmployInitial(resp['empleado']['id']).subscribe(res=>{
+        localStorage.setItem('foto', res['foto']);
+        this.router.navigate([]).then(result => { window.location.href = "/home"; });
+      })
     }, (err) => {
       Swal.close();
       Swal.fire({

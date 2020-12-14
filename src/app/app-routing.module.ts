@@ -27,6 +27,7 @@ import { SearchEmployeeComponent } from './Components/Employee/search-employee/s
 import { ChargeEmployeeComponent } from './Components/Employee/charge-employee/charge-employee.component';
 import { AllEmployeesComponent } from './Components/Employee/all-employees/all-employees.component';
 import { CronogramAccountingComponent } from './Components/accounting/cronogram-accounting/cronogram-accounting.component';
+import { ModifyNewsComponent } from './Components/News/modify-news/modify-news.component';
 
 
 const routes: Routes = [
@@ -60,7 +61,9 @@ const routes: Routes = [
   {
     path: 'release', component: NewsComponent, canActivate: [AuthGuard], children: [
       { path: 'create', component: CreateNewReleaseComponent, canActivate: [AuthGuard] },
-      { path: 'report', component: ReportsComponent, canActivate: [AuthGuard] }
+      { path: 'report', component: ReportsComponent, canActivate: [AuthGuard] },
+      { path: 'modify', component: ModifyNewsComponent, canActivate: [AuthGuard] }
+
     ]
   },
   {

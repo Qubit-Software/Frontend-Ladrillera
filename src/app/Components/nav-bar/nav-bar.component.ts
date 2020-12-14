@@ -15,14 +15,20 @@ export class NavBarComponent implements OnInit {
   apiToken: any = localStorage.getItem('token');;
   public notificationData = this.webSocket.notificationData;
   public notificationState: boolean = false;
+  fotoUrl : string;
 
   constructor(private auth: AuthService, public router: Router, public webSocket: WebSocketService) { }
 
   ngOnInit() {
+    if(localStorage.getItem('foto')=='null'){
+      this.fotoUrl='../../../assets/Iconos/people.svg';
+    }else{
+      this.fotoUrl=localStorage.getItem('foto');
+    }
     // observable amount of notifications
     this.webSocket.notificationAmount$.subscribe(
-      () =>{
-        this.notificationAmount+=1;
+      () => {
+        this.notificationAmount += 1;
         console.log(this.notificationAmount);
         console.log(this.webSocket.notificationData);
       }
@@ -31,7 +37,7 @@ export class NavBarComponent implements OnInit {
     // Open the connection between web socket and web app
     this.webSocket.setupWithToken(this.apiToken);
 
-    
+
 
     //Notify starts
 
@@ -52,7 +58,7 @@ export class NavBarComponent implements OnInit {
 
       var anchorOffset = $(e.currentTarget).offset();
 
-  
+
 
       container.toggleClass("expanded");
     });

@@ -53,8 +53,10 @@ export class PhotographyComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    this.mainConfig();
+    this.CreateOrderService.changeStatus(this.idOrder, 3).subscribe((result) => {
+      console.log(result);
+      this.mainConfig();
+    });
   }
 
   public mainConfig() {

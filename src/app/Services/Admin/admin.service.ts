@@ -53,25 +53,36 @@ export class AdminService {
     };
     return this.http.get(`${this.url}/empleados/${id}`, opts);
   }
-  createComunicado(titulo, cuerpo, fecha) {
+  createComunicado(titulo, descripcion, fecha) {
     const opts = {
       headers: new HttpHeaders({
         'Authorization': "Bearer " + this.auth.readToken(),
       })
     };
-    const fd = new FormData();
-    fd.append('titulo', titulo);
-    fd.append('descripcion', cuerpo);
-    fd.append('fecha', fecha);
-    console.log(fd);
-    return this.http.post(
-      `https://4202e8fe770f.ngrok.io/api/actualizaciones`,
-      fd,
+    console.log(titulo);
+    const authData = {
+      titulo,
+      descripcion,
+      fecha
+    };
+    return this.http.put(
+      `https://e57779089ae4.ngrok.io/api/actualizaciones/1`,
+      authData,
       opts
     ).pipe(
       map(resp => {
         console.log(resp);
       })
+    );
+  }
+  getComunicado() {
+    const opts = {
+      headers: new HttpHeaders({
+        'Authorization': "Bearer " + this.auth.readToken(),
+      })
+    };
+    return this.http.get(
+      `https://e57779089ae4.ngrok.io/api/actualizaciones/1`, opts
     );
   }
   updateEmployee(id, name, lastname, cedula, gender, bornDate, rol, correo, contrasena, fileToUp: File, modulos) {
@@ -113,5 +124,14 @@ export class AdminService {
       })
     };
     return this.http.get(`${this.url}/empleados`, opts);
+  }
+
+  getEmployInitial(id) {
+    const opts = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + this.auth.readToken(),
+      })
+    };
+    return this.http.get(`${this.url}/empleados/${id}?type=link`, opts);
   }
 }
