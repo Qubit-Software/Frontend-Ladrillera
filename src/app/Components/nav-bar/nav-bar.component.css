@@ -114,6 +114,9 @@ li.right {
         margin-top: 55px;
         width: 80vw;
     }
+    #navbarNav{
+        border-bottom: 1px solid black;
+    }
 }
 @media (min-width: 992px) {
     #notificationMenu {

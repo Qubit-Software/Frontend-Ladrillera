@@ -18,7 +18,6 @@
 .card{
     display: inline-block;
     width: 100%;
-    z-index: -1;
 }
 .list-group-item{
     background: transparent;
@@ -37,6 +36,7 @@
 .scrollable{
     overflow-y: auto;
     height: 100vh;
+    z-index: 1;
 }
 
 /*Scroll styles**************************************/
