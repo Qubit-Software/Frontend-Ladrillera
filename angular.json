@@ -14,7 +14,8 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "allowedCommonJsDependencies": [
-              "jspdf"
+              "jspdf",
+              "qrcode"
             ],
             "outputPath": "dist/Ladrillera21",
             "index": "src/index.html",
