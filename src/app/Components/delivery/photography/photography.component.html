@@ -83,7 +83,7 @@
 
       <div id="aba" class="flex-container">
         <span>📷</span>
-        <input type="file" placeholder="subir foto" style="color: transparent" (change)="fileUpload($event)" multiple
+        <input type="file" placeholder="subir foto" style="color: transparent" (change)="fileUpload($event,$event.target.files)" multiple
           class="form-control mb-2">
 
       </div>

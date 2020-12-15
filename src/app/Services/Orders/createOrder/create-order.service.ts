@@ -15,7 +15,6 @@ export class CreateOrderService {
   constructor(private http: HttpClient, private auth: AuthService) { }
 
   public sendPics(idPedido, fileToUpload: File) {
-    console.log(fileToUpload);
     const opts = {
       headers: new HttpHeaders({
         'Authorization': "Bearer " + this.auth.readToken(),
@@ -24,7 +23,6 @@ export class CreateOrderService {
     const fd = new FormData();
     fd.append('id_pedido', idPedido);
     fd.append('foto', fileToUpload);
-    console.log(fd);
     return this.http.post(
       `${environment.apiUrl}/despachos/fotografias`,
       fd,
@@ -89,7 +87,6 @@ export class CreateOrderService {
       'id_pedido': idPedido,
       'estatus': status
     };
-    console.log(body);
     return this.http.put(`${this.url}/${idPedido}`, body, opts);
   }
   public cronogramItems() {

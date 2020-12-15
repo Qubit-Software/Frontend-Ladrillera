@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClientService } from 'src/app/Services/Client/client.service';
 import { CreateOrderService } from 'src/app/Services/Orders/createOrder/create-order.service';
@@ -6,8 +6,7 @@ import Swal from 'sweetalert2';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels } from '@techiediaries/ngx-qrcode';
-import { ThrowStmt } from '@angular/compiler';
-import { delay } from 'rxjs/operators';
+import { forkJoin } from 'rxjs';
 declare var $: any;
 
 @Component({
@@ -17,6 +16,11 @@ declare var $: any;
 })
 export class PhotographyComponent implements OnInit {
 
+  @HostListener('window:beforeunload', ['$event'])
+  beforeunloadHandler(event) {
+    return false;
+    //I have used return false but you can your other functions or any query or condition
+  }
   elementType = NgxQrcodeElementTypes.URL;
   correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
   value;
@@ -34,6 +38,7 @@ export class PhotographyComponent implements OnInit {
   public pedidos: PedidoModel;
   idOrder: number;
   images: any = [];
+  imagesToUpload: any[] = [];
   allImages: any = [];
   public products = [
     {
@@ -63,20 +68,18 @@ export class PhotographyComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.CreateOrderService.changeStatus(this.idOrder, 3).subscribe((result) => {
-      console.log(result);
-      this.mainConfig();
-    });
-  }
-
-  public mainConfig() {
-
     Swal.fire({
       allowOutsideClick: false,
       icon: 'info',
       text: 'Espere por favor'
     });
     Swal.showLoading();
+    this.CreateOrderService.changeStatus(this.idOrder, 3).subscribe((result) => {
+      this.mainConfig();
+    });
+  }
+
+  public mainConfig() {
     this.pedidos = new PedidoModel();
     this.CreateOrderService.getPedidoId(Number(this.idOrder)).subscribe((result: any[]) => {
       Swal.close();
@@ -95,15 +98,15 @@ export class PhotographyComponent implements OnInit {
       });
       this.clientName = result['cliente'].nombre + " " + result['cliente'].apellido;
       this.fechaCargue = result['fecha_cargue'];
-      console.log(result);
     });
   }
 
-  public fileUpload(event) {
+  public fileUpload(event, file: FileList) {
+    for (let i = 0; i < file.length; i++) {
+      this.imagesToUpload.push(file.item(i));
+    }
     var files = event.target.files;
-    console.log(files);
     if (files) {
-
       for (let i = 0; i < files.length; i++) {
         const image = {
           name: '',
@@ -189,44 +192,40 @@ export class PhotographyComponent implements OnInit {
     this.hour = test.getHours() % 12 + ":" + test.getMinutes() + " " + ampm
   }
   public sendPics() {
-
     Swal.fire({
       allowOutsideClick: false,
       icon: 'info',
       text: 'Espere por favor'
     });
     Swal.showLoading();
-    let pasa: Boolean;
-    // for (let i = 0; i < this.images.length; i++) {
-    //   this.CreateOrderService.sendPics(this.idOrder, this.images[i]).subscribe((res) => {
-    //     Swal.close();
-    //     Swal.fire('Registro realizado',
-    //       'El usuario se ha registrado',
-    //       'success');
-    //     delay(20);
-    //     pasa = true;
-    //   }, error => {
-    //     Swal.close();
-    //     pasa = false;
-    //     Swal.fire({
-    //       icon: 'error',
-    //       title: 'Error al registrar el empleado',
-    //       text: error
-    //     });
-    //     console.log(error);
-    //   });
-    // }
-    Swal.close();
-    Swal.fire('Registro realizado',
-      'Las fotos se han registrado',
-      'success');
-    delay(20);
-    pasa = true;
-    if (pasa === true) {
-      this.CreateOrderService.changeStatus(this.idOrder, 1).subscribe((result) => {
-        $("#exampleModal").modal('show');
-      });
+    var pasa: Boolean;
+    var peticiones: any[] = [];
+
+    for (let i = 0; i < this.imagesToUpload.length; i++) {
+      var peticion = this.CreateOrderService.sendPics(this.idOrder, this.imagesToUpload[i]);
+      peticiones.push(peticion);
     }
+    peticiones.push(this.CreateOrderService.changeStatus(this.idOrder, 1))
+    forkJoin(peticiones).subscribe(() => {
+      Swal.close();
+      Swal.fire({
+        allowOutsideClick: false,
+        showCloseButton: false,
+        allowEscapeKey: false,
+        title: 'Registro realizado',
+        icon: 'success',
+        html: 'Las imagenes se han registrado',
+        confirmButtonText:
+          '<btn (click)="test"> <i class="fa fa-thumbs-up"></i> Generar ticket <a/>',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          $("#exampleModal").modal('show');
+        }
+      });
+    }, (err) => {
+      Swal.close();
+      console.log(err);
+    });
 
   }
 }
