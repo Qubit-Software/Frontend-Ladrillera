@@ -25,6 +25,7 @@
     "@fullcalendar/daygrid": "^5.4.0",
     "@fullcalendar/interaction": "^5.4.0",
     "@popperjs/core": "^2.5.4",
+    "@techiediaries/ngx-qrcode": "^9.1.0",
     "bootstrap": "^4.5.3",
     "g": "^2.0.1",
     "html2canvas": "^1.0.0-rc.7",

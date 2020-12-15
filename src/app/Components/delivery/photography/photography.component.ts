@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ClientService } from 'src/app/Services/Client/client.service';
 import { CreateOrderService } from 'src/app/Services/Orders/createOrder/create-order.service';
 import Swal from 'sweetalert2';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels } from '@techiediaries/ngx-qrcode';
+import { ThrowStmt } from '@angular/compiler';
+import { delay } from 'rxjs/operators';
+declare var $: any;
 
 @Component({
   selector: 'app-photography',
@@ -13,6 +17,11 @@ import html2canvas from 'html2canvas';
 })
 export class PhotographyComponent implements OnInit {
 
+  elementType = NgxQrcodeElementTypes.URL;
+  correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
+  value;
+  today;
+  hour;
 
   atras = false;
   confirm = false;
@@ -24,7 +33,6 @@ export class PhotographyComponent implements OnInit {
   product: any;
   public pedidos: PedidoModel;
   idOrder: number;
-  private sub: any;
   images: any = [];
   allImages: any = [];
   public products = [
@@ -48,8 +56,10 @@ export class PhotographyComponent implements OnInit {
     }
   ];
 
-  constructor(private CreateOrderService: CreateOrderService, private route: ActivatedRoute, private clientServ: ClientService) {
+  constructor(private CreateOrderService: CreateOrderService, private route: ActivatedRoute, private clientServ: ClientService, private router: Router, private sendPicturesServ: CreateOrderService) {
     this.idOrder = parseInt(this.route.snapshot.paramMap.get("id").slice(1, 99));
+    this.value = window.location.href.slice(0, -24) + "lodge/charge/" + this.idOrder;
+    this.getActualDate();
   }
 
   ngOnInit(): void {
@@ -85,7 +95,7 @@ export class PhotographyComponent implements OnInit {
       });
       this.clientName = result['cliente'].nombre + " " + result['cliente'].apellido;
       this.fechaCargue = result['fecha_cargue'];
-      console.log(this.clientName);
+      console.log(result);
     });
   }
 
@@ -115,9 +125,7 @@ export class PhotographyComponent implements OnInit {
     event.srcElement.value = null;
   }
 
-  public save() {
 
-  }
   public deleteImage(image: any) {
     const index = this.images.indexOf(image);
     this.images.splice(index, 1);
@@ -149,7 +157,6 @@ export class PhotographyComponent implements OnInit {
 
   //descarga un pdf
   downloadPDF() {
-    // Extraemos el
     const DATA = document.getElementById('htmlData');
     const doc = new jsPDF('p', 'pt', 'a4');
     const options = {
@@ -159,7 +166,6 @@ export class PhotographyComponent implements OnInit {
       scrollY: 0
     };
     html2canvas(DATA, options).then((canvas) => {
-
       const img = canvas.toDataURL('image/PNG');
       // Add image Canvas to PDF
       const bufferX = 15;
@@ -170,8 +176,58 @@ export class PhotographyComponent implements OnInit {
       doc.addImage(img, 'JPEG', 15, 15, pdfWidth, pdfHeight, "a", "FAST");
       return doc;
     }).then((docResult) => {
-      docResult.save(`${new Date().toISOString()}_tutorial.pdf`);
+      docResult.save(`${new Date().toISOString()}_Lad21.pdf`);
     });
+    $("#exampleModal").modal('hide');
+    this.router.navigateByUrl("/home");
+  }
+
+  public getActualDate() {
+    this.today = new Date().toLocaleDateString();
+    var test = new Date();
+    var ampm = test.getHours() >= 12 ? 'pm' : 'am';
+    this.hour = test.getHours() % 12 + ":" + test.getMinutes() + " " + ampm
+  }
+  public sendPics() {
+
+    Swal.fire({
+      allowOutsideClick: false,
+      icon: 'info',
+      text: 'Espere por favor'
+    });
+    Swal.showLoading();
+    let pasa: Boolean;
+    // for (let i = 0; i < this.images.length; i++) {
+    //   this.CreateOrderService.sendPics(this.idOrder, this.images[i]).subscribe((res) => {
+    //     Swal.close();
+    //     Swal.fire('Registro realizado',
+    //       'El usuario se ha registrado',
+    //       'success');
+    //     delay(20);
+    //     pasa = true;
+    //   }, error => {
+    //     Swal.close();
+    //     pasa = false;
+    //     Swal.fire({
+    //       icon: 'error',
+    //       title: 'Error al registrar el empleado',
+    //       text: error
+    //     });
+    //     console.log(error);
+    //   });
+    // }
+    Swal.close();
+    Swal.fire('Registro realizado',
+      'Las fotos se han registrado',
+      'success');
+    delay(20);
+    pasa = true;
+    if (pasa === true) {
+      this.CreateOrderService.changeStatus(this.idOrder, 1).subscribe((result) => {
+        $("#exampleModal").modal('show');
+      });
+    }
+
   }
 }
 export class PedidoModel {

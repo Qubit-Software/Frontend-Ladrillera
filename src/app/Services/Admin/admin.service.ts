@@ -3,12 +3,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from "rxjs/operators";
 import { NgModuleResolver } from '@angular/compiler';
 import { AuthService } from '../Auth/auth.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminService {
-  private url = 'https://e57779089ae4.ngrok.io/api/administracion';
+  private url = `${environment.apiUrl}/administracion`;
 
   constructor(private http: HttpClient, private auth: AuthService) { }
 
@@ -66,7 +67,7 @@ export class AdminService {
       fecha
     };
     return this.http.put(
-      `https://e57779089ae4.ngrok.io/api/actualizaciones/1`,
+      `${environment.apiUrl}/actualizaciones/1`,
       authData,
       opts
     ).pipe(
@@ -82,7 +83,7 @@ export class AdminService {
       })
     };
     return this.http.get(
-      `https://e57779089ae4.ngrok.io/api/actualizaciones/1`, opts
+      `${environment.apiUrl}/actualizaciones/1`, opts
     );
   }
   updateEmployee(id, name, lastname, cedula, gender, bornDate, rol, correo, contrasena, fileToUp: File, modulos) {

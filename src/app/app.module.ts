@@ -22,6 +22,8 @@ import { CronogramaComponent } from './Components/delivery/cronograma/cronograma
 import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
+
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
   interactionPlugin
@@ -83,7 +85,8 @@ import { ModifyNewsComponent } from './Components/News/modify-news/modify-news.c
     HttpClientModule,
     ReactiveFormsModule,
     TooltipModule,
-    FullCalendarModule
+    FullCalendarModule,
+    NgxQRCodeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

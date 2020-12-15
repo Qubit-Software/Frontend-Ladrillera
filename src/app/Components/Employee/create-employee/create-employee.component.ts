@@ -124,7 +124,6 @@ export class CreateEmployeeComponent implements OnInit {
         text: 'Espere por favor'
       });
       Swal.showLoading();
-      // name, lastname, cedula, gender, bornDate, rol,correo,contrasena, fileToUp: File
       this.admin.createEmployee(this.form.get("nombres").value, this.form.get("apellidos").value, this.form.get("cedula_ciudadania").value,
       this.form.get("genero").value, this.form.get("fecha_nacimiento").value, this.form.get("rol").value, this.form.get("email").value,
       'Hola', this.fileToUpload, JSON.stringify(modulos)).subscribe(resp => {

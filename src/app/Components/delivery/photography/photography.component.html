@@ -94,8 +94,7 @@
       <button type="button" [ngClass]="{btnDisable: atras === false } " class="btn btn-danger text"
         (click)="Atras()">Atras</button>
       <!-- Button trigger modal -->
-      <button type="button" [ngClass]="{btnDisable: confirm === false } " class="btn btn-danger text"
-        data-toggle="modal" data-target="#exampleModal">Confirmar</button>
+      <button type="button" [ngClass]="{btnDisable: confirm === false } " class="btn btn-danger text" (click)="sendPics()">Confirmar</button>
       <button class="btn text" [ngClass]="{btnDisable: continuar === false } " (click)="verificar()"
         [disabled]="!continueEnable">Continuar </button>
     </div>
@@ -108,15 +107,9 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog ">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
       <div class="modal-body">
         <div class="container">
           <div class="row">
@@ -124,13 +117,14 @@
               <div class="col text-center">
                 <img src="../../../../assets/Logo.png" class="img-fluid" alt="">
               </div>
-              <p>FECHA: dd/mm/aa</p>
-              <p>HORA DE IMPRESIÓN: 00:00 am/m/pm</p>
-              <p style="margin-bottom: 32px;">CÓDIGO DEL PEDIDO:</p>
-              <hr style="border-top: 1px solid rgb(0 0 0);">
+              <span>FECHA: <span style="font-weight: bold;">{{today}}</span></span>
+              <p>HORA DE IMPRESIÓN: <span style="font-weight: bold;">{{hour}}</span> </p>
+              <p>CÓDIGO DEL PEDIDO: <span
+                  style="font-weight: bold;">Lad21-{{idOrder}}</span> </p>
               <p style="margin-bottom: 40px;">NOMBRE DEL CONDUCTOR:</p>
               <hr style="border-top: 1px solid rgb(0 0 0);">
-              <table class="table" style="text-align: center; border: 2px solid black; border-collapse: initial;">
+              <table class="table"
+                style="text-align: center; border: 2px solid black; border-collapse: initial;">
                 <tr>
                   <th scope="col" class="w-50" style="border-right: 2px solid black;">NO</th>
                   <th scope="col" class="w-50">REALIZADO</th>
@@ -139,8 +133,9 @@
               <p style="margin-bottom: 40px;">APROBADO:</p>
               <hr style="border-top: 1px solid rgb(0 0 0);">
               <p style="margin-bottom: 32px;">NOTA:</p>
-              <hr style="border-top: 1px solid rgb(0 0 0);">
-              <p class="text-center">ESPACIO PARA EL QR</p>
+              <hr style="border-top: 1px solid rgb(0 0 0); margin-bottom: 0px;">
+              <ngx-qrcode [elementType]="elementType" [errorCorrectionLevel]="correctionLevel" [value]="value"
+                cssClass="text-center"></ngx-qrcode>
             </div>
           </div>
         </div>

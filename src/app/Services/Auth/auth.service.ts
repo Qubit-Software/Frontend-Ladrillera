@@ -3,12 +3,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { map } from "rxjs/operators";
 import { UsuarioModel } from 'src/app/models/usuario.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private url = 'https://e57779089ae4.ngrok.io/api/auth';
+  private url = `${environment.apiUrl}/auth`;
 
   userToken: string;
   expiresAt: string;
