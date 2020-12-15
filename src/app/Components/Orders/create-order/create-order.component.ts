@@ -50,7 +50,7 @@ export class CreateOrderComponent implements OnInit {
   constructor(private fb: FormBuilder, private CreateOrderService: CreateOrderService, private router: Router) {
 
   }
-  
+
 
   ngOnInit(): void {
     this.product = new product();
@@ -93,6 +93,7 @@ export class CreateOrderComponent implements OnInit {
           icon: 'error',
           title: 'Error al registrar la pedido',
         });
+        console.log(err);
         this.dataArray = [];
       });
     } else {
