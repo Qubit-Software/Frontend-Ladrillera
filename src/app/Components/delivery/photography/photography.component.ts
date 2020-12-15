@@ -41,6 +41,7 @@ export class PhotographyComponent implements OnInit {
   imagesToUpload: any[] = [];
   allImages: any = [];
   public products = [
+    
     {
       "codigo": "LAD21-MATCO",
       "nombre": ["Bloquelon MATCO"],

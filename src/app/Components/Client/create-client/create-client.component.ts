@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { forkJoin } from 'rxjs';
 import { AdminService } from 'src/app/Services/Admin/admin.service';
 import { ClientService } from 'src/app/Services/Client/client.service';
 import { ModulesService } from 'src/app/Services/Modulos/modules.service';
@@ -12,8 +13,8 @@ import Swal from 'sweetalert2';
 })
 export class CreateClientComponent implements OnInit {
 
+  imagesToUpload: any[] = [];
   form: FormGroup;
-  fileToUpload: File = null;
   modulesName = [];
   modulesModel = [];
   constructor(private client: ClientService, private moduleService: ModulesService, private fb: FormBuilder) { this.createForm(); }
@@ -94,11 +95,12 @@ export class CreateClientComponent implements OnInit {
   }
 
   handleFileInput(file: FileList) {
-    this.fileToUpload = file.item(0);
+    for (let i = 0; i < file.length; i++) {
+      this.imagesToUpload.push(file.item(i));
+    }
   }
-  // Create Employee
-  createEmployee() {
-    const modulos = '';
+
+  public sendDocs() {
     if (this.form.invalid) {
       return Object.values(this.form.controls).forEach(control => { control.markAsTouched() });
     } else {
@@ -108,24 +110,26 @@ export class CreateClientComponent implements OnInit {
         text: 'Espere por favor'
       });
       Swal.showLoading();
-      // name, lastname, cedula, gender, bornDate, rol,correo,contrasena, fileToUp: File
-      this.client.createClient('1', this.form.get("nombres").value, this.form.get("apellidos").value, this.form.get("cedula_ciudadania").value, this.form.get("tipo").value, this.form.get("city").value, this.form.get("email").value, this.form.get("phone").value).subscribe(resp => {
-        Swal.close();
-        Swal.fire('Registro realizado',
-          'El cliente se ha registrado',
-          'success');
-        //cleaning the form after a post
-        this.form.reset();
-      }, (err) => {
-        Swal.close();
-        Swal.fire({
-          icon: 'error',
-          title: 'Error al registrar el cliente',
-          text: err
+      this.client.createClient('1', this.form.get("nombres").value, this.form.get("apellidos").value, this.form.get("cedula_ciudadania").value, this.form.get("tipo").value, this.form.get("city").value, this.form.get("email").value, this.form.get("phone").value).toPromise().then(res => {
+        console.log(this.imagesToUpload);
+        var peticiones: any[] = [];
+        for (let i = 0; i < this.imagesToUpload.length; i++) {
+          var peticion = this.client.sendDocs(res['id'], this.imagesToUpload[i], this.form.get("tipo").value);
+          peticiones.push(peticion);
+        }
+        forkJoin(peticiones).subscribe(() => {
+          Swal.close();
+          Swal.fire({
+            title: 'Registro realizado',
+            icon: 'success',
+            html: 'El usuario se ha registrado',
+          })
+        }, (err) => {
+          Swal.close();
+          console.log(err);
         });
-        console.log(err);
-      });
+      }
+      );
     }
-
   }
 }

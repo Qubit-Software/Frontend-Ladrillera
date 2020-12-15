@@ -5,7 +5,7 @@
         <h1 id="titleCreateEmployee" class="titles">Cear cliente</h1>
         <!--Form Starts-->
         <div id="contenedorf">
-          <form autocomplete="off" [formGroup]="form" (ngSubmit)="createEmployee()" class="">
+          <form autocomplete="off" [formGroup]="form" (ngSubmit)="sendDocs()" class="">
             <div class="input-group mb-4 px-5">
               <div class="form-row align-items-center">
                 <div class="col-12 my-1">
@@ -44,14 +44,14 @@
                 </div>
                 <div class="col-12 my-1">
                   <label for="photoFile" class="text-center text"> Documentos adjuntos</label>
-                  <input type="file" formControlName="photoFile" class="form-control titles-file titles text-wrap"
+                  <input type="file" formControlName="photoFile" class="form-control titles-file titles text-wrap" multiple
                     (change)="handleFileInput($event.target.files)" [class.is-invalid]="photoFiledNoValido"
                     [class.is-valid]="photoFileValido">
                 </div>
               </div>
             </div>
             <div id="button" class=" text-center">
-              <button class="btn my-5 titles" type="submit">
+              <button type="submit" class="btn my-5 titles" type="submit">
                 Continuar
               </button>
             </div>

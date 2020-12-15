@@ -1,7 +1,7 @@
 <div *ngIf="!(router.url == '/login' || router.url == '/')" class="row">
     <div id="containerNav" class="col-lg-12">
         <nav id="nav" class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand px-5 py-2" href="#">
+            <a class="navbar-brand px-5 py-2"routerLink="/home">
                 <img src="../../../assets/Logo.png" width="100" height="ms-auto" class="d-inline-block align-top" alt=""
                     loading="lazy">
             </a>
@@ -11,13 +11,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item  pr-3">
-                        <a routerLink="/home" routerLinkActive="active" class="nav-link titles" href="#">Inicio <span
-                                class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item px-3">
-                        <a (click)="logOut()" class="nav-link titles text-danger" href="#">Cerrar Sesión</a>
-                    </li>
+        
                 </ul>
 
                 <!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
@@ -47,9 +41,10 @@
                 </li>
                 <!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
                 <picture>
-                    <img id="userLogo" src="{{fotoUrl}}" width="45" height="45"
-                        class="d-inline-block align-top mx-4" alt="" loading="lazy">
+                    <img id="userLogo" src="{{fotoUrl}}" width="45" height="45" class="d-inline-block align-top ml-4"
+                        alt="" loading="lazy">
                 </picture>
+                <a (click)="logOut()" class="nav-link titles text-danger" href="#">Cerrar Sesión</a>
             </div>
         </nav>
     </div>
