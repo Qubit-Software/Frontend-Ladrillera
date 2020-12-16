@@ -15,12 +15,15 @@ export class SearchOrderComponent implements OnInit {
   id: number;
   form: FormGroup;
   parent: string;
+  rol:string;
 
   constructor(private CreateOrderService: CreateOrderService, private router: Router) { }
 
   ngOnInit(): void {
     const route = this.router.url.split('/');
     this.parent = route[1];
+    this.rol = localStorage.getItem('rol');
+
   }
 
   prueba() {
@@ -33,7 +36,11 @@ export class SearchOrderComponent implements OnInit {
 
     this.CreateOrderService.getPedidoId(this.id).subscribe(resp => {
       Swal.close();
-      this.router.navigate([`${this.parent}/charge`, this.id]);
+      if(this.rol==='Despacho'){
+        this.router.navigate([`${this.parent}/photography`, this.id]);
+      }else{
+        this.router.navigate([`${this.parent}/charge`, this.id]);
+      }
     }, (err) => {
       Swal.close();
       Swal.fire({
