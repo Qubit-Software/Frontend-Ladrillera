@@ -98,7 +98,7 @@ export class ChargeOrderComponent implements OnInit {
       this.btnDisable = true;
       this.status = 4;
     }
-    if ((this.rol === 'Porteria' || this.rol === 'Administrador') && this.pedidos.status === 'Factura no generada') {
+    if ((this.rol === 'Porteria' || this.rol === 'Administrador') && this.pedidos.status === 'Despacho finalizado') {
       this.btnDisable = true;
       this.status = 5;
     }
