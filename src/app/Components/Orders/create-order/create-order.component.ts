@@ -65,7 +65,7 @@ export class CreateOrderComponent implements OnInit {
       this.date = new Date(this.date);
       const fechaCargue = `${this.date.getDate() + 1}/${this.date.getMonth() + 1}/${this.date.getFullYear()}`;
       const num = String(this.totalSell);
-
+      console.log(fechaCargue);
       Swal.fire({
         allowOutsideClick: false,
         icon: 'info',

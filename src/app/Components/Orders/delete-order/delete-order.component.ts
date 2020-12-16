@@ -74,6 +74,7 @@ export class DeleteOrderComponent implements OnInit {
             });
           }
         }
+        Swal.close();
       });
       console.log(resp);
     }, (err) => {
