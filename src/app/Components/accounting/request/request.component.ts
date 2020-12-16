@@ -22,7 +22,9 @@ export class RequestComponent implements OnInit {
   }
 
   change(id) {
-    this.clientServ.updateRequest(this.clients[id]).subscribe(res => {
+    const cli=this.clients.find(prod => prod.id === id);
+    console.log(cli);
+    this.clientServ.updateRequest(cli).subscribe(res => {
       this.router.navigate(['/accounting/create']);
     }, (err) => {
       console.log(err);
