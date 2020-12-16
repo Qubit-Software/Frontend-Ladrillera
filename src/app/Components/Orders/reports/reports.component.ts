@@ -19,7 +19,6 @@ export class ReportsComponent implements OnInit {
         ped.id =  `LAD21-${p.id}`;
         ped.status = p.estatus;
         ped.total = p.total;
-        console.log(ped);
         if (ped !== null) {
           this.pedidos.push(ped);
         }

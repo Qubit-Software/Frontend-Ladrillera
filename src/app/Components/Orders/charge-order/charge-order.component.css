@@ -101,9 +101,6 @@
 .btnDisable{
   display: none;
 }
-#statusOrder {
-  z-index: -20;
-  position: absolute;
-  top: 60%;
-  left: 41%;
+#imagesCont {
+  margin-bottom: 15vh;
 }

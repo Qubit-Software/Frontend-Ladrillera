@@ -98,4 +98,12 @@ export class CreateOrderService {
     return this.http.get(`${this.url}/tipo/cronograma`, opts);
   }
 
+  public getImagesOrder(idOrder){
+    const opts = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + this.auth.readToken(),
+      })
+    };
+    return this.http.get(`${environment.apiUrl}/despachos/fotografias/pedidos/`+idOrder+`?type=LINK`, opts);
+  }
 }

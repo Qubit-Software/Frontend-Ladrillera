@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
 })
 export class ChargeOrderComponent implements OnInit {
 
+  imagesOrder: any;
   totalSell = 0;
   public pedidos: PedidoModel;
   id: number;
@@ -50,6 +51,16 @@ export class ChargeOrderComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
+    
+    this.mainConfig();
+  }
+  public mainConfig() {
+    Swal.fire({
+      allowOutsideClick: false,
+      icon: 'info',
+      text: 'Espere por favor'
+    });
+    Swal.showLoading();
     this.rol = localStorage.getItem('rol');
     this.getConfigbtn();
     this.sub = this.route.params.subscribe(params => {
@@ -61,6 +72,10 @@ export class ChargeOrderComponent implements OnInit {
       this.clientServ.getClientByid(result['id_cliente']).subscribe(res => {
         const name = `${res['nombre']} ${res['apellido']}`;
         this.nombreCliente = name;
+      });
+      this.CreateOrderService.getImagesOrder(this.id).subscribe((res) => {
+        this.imagesOrder = res;
+        Swal.close();
       });
       this.pedidos.id = result['id'];
       this.pedidos.idCliente = result['id_cliente'];
@@ -74,10 +89,9 @@ export class ChargeOrderComponent implements OnInit {
         const produc = this.products.find(prod => prod.codigo === p.codigo_producto);
         p.nombre = produc.nombre;
       });
-      console.log(this.pedidos.producto);
+     
     });
   }
-
   getConfigbtn() {
     if (this.rol === 'Facturacion' || this.rol === 'Administrador') {
       this.nameBtn = 'Factura Generada';
