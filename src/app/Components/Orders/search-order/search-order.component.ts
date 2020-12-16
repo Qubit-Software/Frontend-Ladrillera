@@ -45,8 +45,8 @@ export class SearchOrderComponent implements OnInit {
       Swal.close();
       Swal.fire({
         icon: 'error',
-        title: 'Error al autenticar',
-        text: 'Revisa tus credenciales antes de acceder'
+        title: 'Error al buscar',
+        text: 'Revisa los datos que estas buscando'
       });
       console.log(err);
     });

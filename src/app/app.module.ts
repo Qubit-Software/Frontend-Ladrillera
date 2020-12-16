@@ -44,6 +44,7 @@ import { ChargeEmployeeComponent } from './Components/Employee/charge-employee/c
 import { CronogramAccountingComponent } from './Components/accounting/cronogram-accounting/cronogram-accounting.component';
 import { AllEmployeesComponent } from './Components/Employee/all-employees/all-employees.component';
 import { ModifyNewsComponent } from './Components/News/modify-news/modify-news.component';
+import { DeleteOrderComponent } from './Components/Orders/delete-order/delete-order.component';
 
 
 @NgModule({
@@ -76,7 +77,8 @@ import { ModifyNewsComponent } from './Components/News/modify-news/modify-news.c
     ChargeEmployeeComponent,
     CronogramAccountingComponent,
     AllEmployeesComponent,
-    ModifyNewsComponent
+    ModifyNewsComponent,
+    DeleteOrderComponent
   ],
   imports: [
     BrowserModule,

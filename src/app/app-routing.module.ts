@@ -28,6 +28,7 @@ import { ChargeEmployeeComponent } from './Components/Employee/charge-employee/c
 import { AllEmployeesComponent } from './Components/Employee/all-employees/all-employees.component';
 import { CronogramAccountingComponent } from './Components/accounting/cronogram-accounting/cronogram-accounting.component';
 import { ModifyNewsComponent } from './Components/News/modify-news/modify-news.component';
+import { DeleteOrderComponent } from './Components/Orders/delete-order/delete-order.component';
 
 
 const routes: Routes = [
@@ -45,7 +46,8 @@ const routes: Routes = [
       { path: 'client', component: SearchClientComponent, canActivate: [AuthGuard] },
       { path: 'ording', component: CreateOrderComponent, canActivate: [AuthGuard] },
       { path: 'search', component: SearchOrderComponent, canActivate: [AuthGuard] },
-      { path: 'charge/:id', component: ChargeOrderComponent }
+      { path: 'charge/:id', component: ChargeOrderComponent },
+      { path: 'delete', component: DeleteOrderComponent }
     ]
   },
   {

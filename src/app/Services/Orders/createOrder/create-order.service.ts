@@ -98,12 +98,21 @@ export class CreateOrderService {
     return this.http.get(`${this.url}/tipo/cronograma`, opts);
   }
 
-  public getImagesOrder(idOrder){
+  public getImagesOrder(orderId){
     const opts = {
       headers: new HttpHeaders({
         'Authorization': 'Bearer ' + this.auth.readToken(),
       })
     };
-    return this.http.get(`${environment.apiUrl}/despachos/fotografias/pedidos/`+idOrder+`?type=LINK`, opts);
+    return this.http.get(`${environment.apiUrl}/despachos/fotografias/pedidos/`+orderId+`?type=LINK`, opts);
+  }
+
+  public deleteOrderById(orderId){
+    const opts = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + this.auth.readToken(),
+      })
+    };
+    return this.http.delete(`${environment.apiUrl}/ventas/pedidos/${orderId}`, opts);
   }
 }
