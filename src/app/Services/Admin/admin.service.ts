@@ -86,7 +86,7 @@ export class AdminService {
       `${environment.apiUrl}/actualizaciones/1`, opts
     );
   }
-  updateEmployee(id, name, lastname, cedula, gender, bornDate, rol, correo, contrasena, fileToUp: File, modulos) {
+  updateEmployee(id, name, lastname, cedula, gender, bornDate, rol, correo, contrasena, modulos) {
     const opts = {
       headers: new HttpHeaders({
         'Authorization': "Bearer " + this.auth.readToken(),
@@ -102,7 +102,7 @@ export class AdminService {
     fd.append('rol', rol);
     fd.append('email', correo);
     fd.append('password', contrasena);
-    fd.append('foto', fileToUp);
+    // fd.append('foto', fileToUp);
     fd.append('modulo_ids', '[1]');
     //
 

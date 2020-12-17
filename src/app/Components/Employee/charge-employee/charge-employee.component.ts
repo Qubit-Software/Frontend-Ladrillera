@@ -98,13 +98,13 @@ export class ChargeEmployeeComponent implements OnInit {
     return this.form.get("password").valid && this.form.get('password').touched;
   }
 
-  //foto validation
-  get photoFiledNoValido() {
-    return this.form.get("photoFile").invalid && this.form.get('photoFile').touched;
-  }
-  get photoFileValido() {
-    return this.form.get("photoFile").valid && this.form.get('photoFile').touched;
-  }
+  // //foto validation
+  // get photoFiledNoValido() {
+  //   return this.form.get("photoFile").invalid && this.form.get('photoFile').touched;
+  // }
+  // get photoFileValido() {
+  //   return this.form.get("photoFile").valid && this.form.get('photoFile').touched;
+  // }
   //Validations ends
 
   //Get modulos
@@ -121,7 +121,7 @@ export class ChargeEmployeeComponent implements OnInit {
       rol: ['', [Validators.required,]],
       email: ['', [Validators.required, Validators.email]],
       password: [''],
-      photoFile: ['', [Validators.required,]],
+      // photoFile: ['', [Validators.required,]],
       modulos: this.fb.array(['1'])
     });
   }
@@ -144,7 +144,7 @@ export class ChargeEmployeeComponent implements OnInit {
       // name, lastname, cedula, gender, bornDate, rol,correo,contrasena, fileToUp: File
       this.admin.updateEmployee(this.idE, this.form.get("nombres").value, this.form.get("apellidos").value, this.form.get("cedula_ciudadania").value,
         this.form.get("genero").value, this.form.get("fecha_nacimiento").value, this.form.get("rol").value, this.form.get("email").value,
-        'Hola', this.fileToUpload, JSON.stringify(modulos)).subscribe(resp => {
+        'Hola', JSON.stringify(modulos)).subscribe(resp => {
           Swal.close();
           console.log(resp);
           Swal.fire('Actualizacion realizada',
