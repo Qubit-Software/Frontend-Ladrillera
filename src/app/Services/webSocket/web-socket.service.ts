@@ -27,7 +27,7 @@ export class WebSocketService {
       broadcaster: "pusher",
       key: "pusher_app_key",
       cluster: "mt1",
-      wsHost: '2d26b61625c5.ngrok.io',
+      wsHost: '3.239.114.33',
       forceTLS: false,
       encrypted: false,
       disableStats: true,
