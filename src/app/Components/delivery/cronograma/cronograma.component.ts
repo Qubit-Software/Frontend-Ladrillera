@@ -71,7 +71,7 @@ export class CronogramaComponent implements OnInit {
             end: res[i][h].fecha_cargue,
             editable: false,
             color: 'red',
-            url: `${this.url + `photography/:` + res[i][h].id}`
+            url: `${this.url + `photography/` + res[i][h].id}`
           });
         }
       }

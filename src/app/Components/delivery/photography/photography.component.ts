@@ -41,7 +41,7 @@ export class PhotographyComponent implements OnInit {
   imagesToUpload: any[] = [];
   allImages: any = [];
   public products = [
-    
+
     {
       "codigo": "LAD21-MATCO",
       "nombre": ["Bloquelon MATCO"],
@@ -63,7 +63,7 @@ export class PhotographyComponent implements OnInit {
   ];
 
   constructor(private CreateOrderService: CreateOrderService, private route: ActivatedRoute, private clientServ: ClientService, private router: Router, private sendPicturesServ: CreateOrderService) {
-    this.idOrder = parseInt(this.route.snapshot.paramMap.get("id").slice(1, 99));
+    this.idOrder = parseInt(this.route.snapshot.paramMap.get("id").slice(0, 99));
     this.value = window.location.href.slice(0, -24) + "lodge/charge/" + this.idOrder;
     this.getActualDate();
   }

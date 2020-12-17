@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { AuthService } from '../Auth/auth.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ModulesService {
-  private url = 'https://e57779089ae4.ngrok.io/api/administracion';
+  private url = `${environment.apiUrl}/administracion`;
 
   constructor( private http: HttpClient, private auth: AuthService ) { }
 

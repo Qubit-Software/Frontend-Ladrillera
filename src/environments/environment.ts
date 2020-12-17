@@ -4,7 +4,7 @@
 
 export const environment = {
 
-  apiUrl: 'https://ec2-3-215-77-185.compute-1.amazonaws.com/api',
+  apiUrl: 'http://ec2-3-215-77-185.compute-1.amazonaws.com/api',
   // apiUrl: 'http://f6a3967fc83a.ngrok.io/api',
   production: false
 };

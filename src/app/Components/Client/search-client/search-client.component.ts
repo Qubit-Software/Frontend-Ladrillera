@@ -12,7 +12,7 @@ declare var $: any;
 export class SearchClientComponent implements OnInit {
 
   form: FormGroup;
-  id: number;
+  id: string;
   constructor(private router: Router, private fb: FormBuilder, public clientServ: ClientService) { this.createForm(); }
 
   ngOnInit(): void {
@@ -43,6 +43,7 @@ export class SearchClientComponent implements OnInit {
 
   //Search client
   public searchClient() {
+    console.log(this.id);
     Swal.fire({
       allowOutsideClick: false,
       icon: 'info',

@@ -64,6 +64,7 @@ export class ClientService {
       authData, opts);
   }
   getClientByCCNIT(id) {
+    console.log(id);
     const opts = {
       headers: new HttpHeaders({
         'Authorization': "Bearer " + this.auth.readToken(),
