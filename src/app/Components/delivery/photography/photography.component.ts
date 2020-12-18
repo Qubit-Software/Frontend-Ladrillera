@@ -64,7 +64,7 @@ export class PhotographyComponent implements OnInit {
 
   constructor(private CreateOrderService: CreateOrderService, private route: ActivatedRoute, private clientServ: ClientService, private router: Router, private sendPicturesServ: CreateOrderService) {
     this.idOrder = parseInt(this.route.snapshot.paramMap.get("id").slice(0, 99));
-    this.value = window.location.href.slice(0, -24) + "lodge/charge/" + this.idOrder;
+    this.value = "http://ladrillera21.s3-website-us-east-1.amazonaws.com/lodge/charge/" + this.idOrder;
     this.getActualDate();
   }
 
@@ -177,7 +177,7 @@ export class PhotographyComponent implements OnInit {
       const imgProps = (doc as any).getImageProperties(img);
       const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
       const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-      doc.addImage(img, 'JPEG', 15, 15, pdfWidth, pdfHeight, "a", "FAST");
+      doc.addImage(img, 'JPEG', 15, 15, pdfWidth, (pdfHeight - 60), "a", "FAST");
       return doc;
     }).then((docResult) => {
       docResult.save(`${new Date().toISOString()}_Lad21.pdf`);
