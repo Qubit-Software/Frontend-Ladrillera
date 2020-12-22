@@ -4,7 +4,7 @@
 
 export const environment = {
 
-  apiUrl: ' https://api.intranet-ladrillera21.com',
+  apiUrl: ' https://api.intranet-ladrillera21.com/api',
   // apiUrl: 'http://f6a3967fc83a.ngrok.io/api',
   production: false
 };
