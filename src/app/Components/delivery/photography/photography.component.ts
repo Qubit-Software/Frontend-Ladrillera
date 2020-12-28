@@ -130,11 +130,15 @@ export class PhotographyComponent implements OnInit {
   }
 
 
-  public deleteImage(image: any) {
+  public deleteImage(image: any, element) {
     const index = this.images.indexOf(image);
     this.images.splice(index, 1);
     this.allImages.splice(index, 1);
     this.imagesRequired();
+
+    //deletes image from arroy to send
+    this.imagesToUpload.splice(element, 1);
+    console.log(this.imagesToUpload);
   }
 
   private imagesRequired() {

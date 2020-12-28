@@ -66,11 +66,11 @@
     </div>
   </div>
   <div class="row">
-    <div *ngFor="let image of images" class="col-sm-3 my-2">
+    <div *ngFor="let image of images;index as i " class="col-sm-3 my-2">
       <div class="card">
         <div class="card-body">
           <img src="{{image.url}}" alt="" class="img-fluid rounded">
-          <button [disabled]="active" (click)="deleteImage(image)" class="btn btn-block mt-2"><img
+          <button [disabled]="active" (click)="deleteImage(image,i)" class="btn btn-block mt-2"><img
               src="../../../../assets/Iconos/delete.svg" width="20" alt=""></button>
         </div>
       </div>
