@@ -1,6 +1,14 @@
 <div id="mainContainer" class="container-fluid">
-  <div class="row my-4">
+  <div class="row d-flex justify-content-between my-4">
     <h2 class="titles">Reportes</h2>
+    <!-- Rounded switch -->
+    <div class="">
+      <p class="d-inline titles mr-3">Filtrar finalizados</p>
+      <label class="switch">
+        <input (change)=test() [(ngModel)]="isChecked" type="checkbox">
+        <span class="slider round"></span>
+      </label>
+    </div>
   </div>
   <div class="row text-center">
     <div class="col">
