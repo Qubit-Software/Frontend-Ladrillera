@@ -14,8 +14,10 @@ import { product } from "../../../models/products.model";
 export class CreateOrderComponent implements OnInit {
 
   minDate = moment(new Date()).format('YYYY-MM-DD');
-  ladId:any;
+  ladId: any;
   public totalSell = 0;
+  public total=0;
+  public totalIva = 0;
   public product = new product();
   public dataArray = [];
   public measure = [];
@@ -74,11 +76,11 @@ export class CreateOrderComponent implements OnInit {
       Swal.showLoading();
       this.CreateOrderService.createOrder(this.dataArray, fechaCargue, num).subscribe((result) => {
         this.dataArray = [];
-        this.ladId=result['pedido'].id;
+        this.ladId = result['pedido'].id;
         Swal.close();
         Swal.fire({
           title: '',
-          text: "El codigo del pedido es: Lad21-"+this.ladId,
+          text: "El codigo del pedido es: Lad21-" + this.ladId,
           icon: 'warning',
           confirmButtonColor: '#3085d6',
           confirmButtonText: 'Confirmar'
@@ -108,10 +110,13 @@ export class CreateOrderComponent implements OnInit {
 
   public addForm() {
     this.product = new product();
+    this.product.iva=0;
     this.dataArray.push(this.product);
+    console.log(this.dataArray)
   }
   public deleteProduct(element) {
     this.dataArray.splice(element);
+    this.onChange();
   }
   verificar(): void {
     this.continuar = false;
@@ -146,13 +151,28 @@ export class CreateOrderComponent implements OnInit {
 
   public onChange() {
     var test = 0;
+    var iva = 0;
     this.totalSell = 0;
+    this.totalIva = 0;
+    this.total=0;
     for (let i = 0; i < this.dataArray.length; i++) {
+      if (this.dataArray[i].valor==null) {
+        test += 0;
+      }
+      if (this.dataArray[i].iva==null) {
+        iva += 0;
+      }
       test += this.dataArray[i].valor;
+      iva += this.dataArray[i].iva;
+    }
+    this.totalIva += iva;
+    if (isNaN(this.totalIva)) {
+      this.totalIva = 0;
     }
     this.totalSell += test;
     if (isNaN(this.totalSell)) {
       this.totalSell = 0;
     }
+    this.total=Number(this.totalSell+this.totalIva);
   }
 }

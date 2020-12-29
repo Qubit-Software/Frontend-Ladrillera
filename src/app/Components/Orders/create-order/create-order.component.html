@@ -1,5 +1,5 @@
 <div id="mainContainer" class="container-fluid">
-  <form  (ngSubmit)="generateOrder()">
+  <form (ngSubmit)="generateOrder()">
     <div class="row my-4">
       <h2 class="titles">Crear pedido</h2>
     </div>
@@ -24,7 +24,7 @@
             <tr class="tRow" *ngFor="let i of dataArray;let p=index">
               <th class="text align-middle" scope="row">
                 <input type="text" disabled class="form-control text-center" name="codigo_producto{{p}}"
-                  [(ngModel)]="i.codigo_producto" >
+                  [(ngModel)]="i.codigo_producto">
               </th>
               <td class="text align-middle">
                 <select (change)="productCodeSet(p)" name="nombre{{p}}" [(ngModel)]="i.nombre" class="form-control"
@@ -38,7 +38,7 @@
               </td>
               <td class="text align-middle">
                 <input type="number" class="form-control text-center" name="cantidad{{p}}" [(ngModel)]="i.cantidad"
-                   [attr.disabled]="active === 1 ? 'disabled' : null">
+                  [attr.disabled]="active === 1 ? 'disabled' : null">
               </td>
               <td class="text align-middle">
                 <select class="form-control" name="Medida" name="unidad_medicion{{p}}" [(ngModel)]="i.unidad_medicion"
@@ -55,13 +55,12 @@
                   [(ngModel)]="i.valor" [attr.disabled]="active === 1 ? 'disabled' : null">
               </td>
               <td class="text align-middle">
-                <input type="number" class="form-control text-center" name="cantidad{{p}}" [(ngModel)]="i.iva"
+                <input type="number" class="form-control text-center" name="cantidad{{p}}" (change)="onChange()" [(ngModel)]="i.iva"
                   id="productAmount" [attr.disabled]="active === 1 ? 'disabled' : null">
               </td>
               <td id="comentarios" class="text">
                 <textarea type="textarea" rows="2" class="form-control text-center" name="cantidad{{p}}"
-                  [(ngModel)]="i.comentarios"
-                  [attr.disabled]="active === 1 ? 'disabled' : null"></textarea>
+                  [(ngModel)]="i.comentarios" [attr.disabled]="active === 1 ? 'disabled' : null"></textarea>
               </td>
               <td *ngIf="p==0" class="text align-middle">
 
@@ -83,14 +82,30 @@
         <img src="../../../../assets/Iconos/plus.png" height="25px" alt="">
       </button>
     </div>
-    <div class="row d-flex justify-content-end">
+    <div  id="total" class="row d-flex justify-content-end">
       <div class="col-4" id="total">
+        <div class="form-group row">
+          <label for="sellAmount" id="labelSell" class="col-3 col-form-label text-center titles">IVA%
+            </label>
+          <div class="col">
+            <input type="text" readonly class="form-control text-center" disabled id="sellAmount"
+              value={{totalIva|currency}}>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="sellAmount" id="labelSell" class="col-3 col-form-label text-center titles">Sub
+            Total</label>
+          <div class="col">
+            <input type="text" readonly class="form-control text-center" disabled id="sellAmount"
+              value={{totalSell|currency}}>
+          </div>
+        </div>
         <div class="form-group row">
           <label for="sellAmount" id="labelSell" class="col-3 col-form-label text-center titles">Venta
             Total</label>
           <div class="col">
             <input type="text" readonly class="form-control text-center" disabled id="sellAmount"
-              value={{totalSell|currency}}>
+              value={{total|currency}}>
           </div>
         </div>
 
@@ -115,8 +130,8 @@
                   <label for="deliveryDate" class="col-sm-3 col-form-label titles">Fecha de
                     entrega</label>
                   <div class="col-sm-9">
-                    <input type="date" [min]="minDate" class="form-control" id="deliveryDate"  submit-required="true"  required [(ngModel)]="date" name="date"
-                      [attr.disabled]="active === 1 ? 'disabled' : null">
+                    <input type="date" [min]="minDate" class="form-control" id="deliveryDate" submit-required="true"
+                      required [(ngModel)]="date" name="date" [attr.disabled]="active === 1 ? 'disabled' : null">
                   </div>
                 </div>
               </div>
