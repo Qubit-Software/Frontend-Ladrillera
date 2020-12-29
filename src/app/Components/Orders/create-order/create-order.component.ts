@@ -16,7 +16,7 @@ export class CreateOrderComponent implements OnInit {
   minDate = moment(new Date()).format('YYYY-MM-DD');
   ladId: any;
   public totalSell = 0;
-  public total=0;
+  public total = 0;
   public totalIva = 0;
   public product = new product();
   public dataArray = [];
@@ -110,7 +110,7 @@ export class CreateOrderComponent implements OnInit {
 
   public addForm() {
     this.product = new product();
-    this.product.iva=0;
+    this.product.iva = 0;
     this.dataArray.push(this.product);
     console.log(this.dataArray)
   }
@@ -154,16 +154,20 @@ export class CreateOrderComponent implements OnInit {
     var iva = 0;
     this.totalSell = 0;
     this.totalIva = 0;
-    this.total=0;
+    this.total = 0;
     for (let i = 0; i < this.dataArray.length; i++) {
-      if (this.dataArray[i].valor==null) {
+      if (this.dataArray[i].valor == null) {
         test += 0;
+      } else {
+        test += this.dataArray[i].valor;
+
       }
-      if (this.dataArray[i].iva==null) {
+      if (this.dataArray[i].iva == null) {
         iva += 0;
+      } else {
+        iva += this.dataArray[i].iva;
+
       }
-      test += this.dataArray[i].valor;
-      iva += this.dataArray[i].iva;
     }
     this.totalIva += iva;
     if (isNaN(this.totalIva)) {
@@ -173,6 +177,6 @@ export class CreateOrderComponent implements OnInit {
     if (isNaN(this.totalSell)) {
       this.totalSell = 0;
     }
-    this.total=Number(this.totalSell+this.totalIva);
+    this.total = Number(this.totalSell + this.totalIva);
   }
 }
