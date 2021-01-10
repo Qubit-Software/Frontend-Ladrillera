@@ -17,10 +17,36 @@ export class CreateClientComponent implements OnInit {
   form: FormGroup;
   modulesName = [];
   modulesModel = [];
-  constructor(private client: ClientService, private moduleService: ModulesService, private fb: FormBuilder) { this.createForm(); }
+  empleados = [];
+  constructor(private client: ClientService, private empleadosServices: AdminService, private fb: FormBuilder) { this.createForm(); }
 
   ngOnInit(): void {
+    this.empleados = new Array();
+    this.getEmployees();
+  }
 
+  private getEmployees() {
+    Swal.fire({
+      allowOutsideClick: false,
+      icon: 'info',
+      text: 'Espere por favor'
+    });
+    Swal.showLoading();
+    this.empleadosServices.getEmployees().subscribe((res:[]) => {
+      Swal.close();
+      for (let em of res) {
+        if(em['rol']==='Ventas'){
+          this.empleados.push(em);
+        }
+      }
+      console.log(this.empleados);
+    }, error => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error al obtener empleados',
+        text: error
+      });
+    });
   }
   get nombresNoValido() {
     return this.form.get("nombres").invalid && this.form.get('nombres').touched;
@@ -48,6 +74,13 @@ export class CreateClientComponent implements OnInit {
   }
   get tipoValido() {
     return this.form.get("tipo").valid && this.form.get('tipo').touched;
+  }
+  // empleado validation
+  get empleadoNoValido() {
+    return this.form.get("empleado").invalid && this.form.get('empleado').touched;
+  }
+  get empleadoValido() {
+    return this.form.get("empleado").valid && this.form.get('empleado').touched;
   }
   // city validation
   get cityNoValido() {
@@ -87,6 +120,7 @@ export class CreateClientComponent implements OnInit {
       apellidos: ['', [Validators.required,]],
       cedula_ciudadania: ['', [Validators.required, Validators.minLength(4)]],
       tipo: ['', [Validators.required,]],
+      empleado: ['', [Validators.required,]],
       city: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.minLength(4)]],
@@ -110,7 +144,7 @@ export class CreateClientComponent implements OnInit {
         text: 'Espere por favor'
       });
       Swal.showLoading();
-      this.client.createClient('1', this.form.get("nombres").value, this.form.get("apellidos").value, this.form.get("cedula_ciudadania").value, this.form.get("tipo").value, this.form.get("city").value, this.form.get("email").value, this.form.get("phone").value).toPromise().then(res => {
+      this.client.createClient(this.form.get("empleado").value, this.form.get("nombres").value, this.form.get("apellidos").value, this.form.get("cedula_ciudadania").value, this.form.get("tipo").value, this.form.get("city").value, this.form.get("email").value, this.form.get("phone").value).toPromise().then(res => {
         console.log(this.imagesToUpload);
         var peticiones: any[] = [];
         for (let i = 0; i < this.imagesToUpload.length; i++) {

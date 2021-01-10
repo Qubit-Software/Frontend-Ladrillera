@@ -43,6 +43,13 @@
                     formControlName="phone" [class.is-invalid]="phoneNoValido" [class.is-valid]="phoneValido">
                 </div>
                 <div class="col-12 my-1">
+                  <select class="form-control titles" formControlName="empleado" [class.is-invalid]="empleadoNoValido"
+                    [class.is-valid]="empleadoValido">
+                    <option value="" disabled>Selecciona vendedor</option>
+                    <option *ngFor="let answers of empleados" [ngValue]="answers.id">{{answers.nombre}} {{answers.apellido}}</option>
+                  </select>
+                </div>
+                <div class="col-12 my-1">
                   <label for="photoFile" class="text-center text"> Documentos adjuntos</label>
                   <input type="file" formControlName="photoFile" class="form-control titles-file titles text-wrap" multiple
                     (change)="handleFileInput($event.target.files)" [class.is-invalid]="photoFiledNoValido"

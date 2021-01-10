@@ -1,4 +1,4 @@
 export const environment = {
-  apiUrl: 'https://80d5ef0284ae.ngrok.io/api',
+  apiUrl: 'https://api.intranet-ladrillera21.com/api',
   production: true
 };
