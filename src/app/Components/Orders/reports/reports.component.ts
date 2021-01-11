@@ -20,7 +20,7 @@ export class ReportsComponent implements OnInit {
   }
 
   private getElements(finalizados) {
-    
+
     if (finalizados == true) {
       this.pedidos=this.pedidos.filter(element => element.status != "Pedido finalizado");
     } else {
@@ -34,14 +34,18 @@ export class ReportsComponent implements OnInit {
       this.CreateOrderService.getPedidos().subscribe((result: any[]) => {
         result.forEach(p => {
           const ped = new PedidoModel();
+          var empleado=p['cliente']['empleado_asociado'];
+          console.log(empleado);
           ped.id = `LAD21-${p.id}`;
           ped.status = p.estatus;
           ped.total = p.total;
+          ped.nombreEmpleado = `${empleado['nombre']} ${empleado['apellido']}`
           if (ped !== null) {
             this.pedidos.push(ped);
           }
           Swal.close();
         });
+        console.log(this.pedidos)
       });
     }
   }
@@ -50,4 +54,5 @@ export class PedidoModel {
   id: string;
   status: string;
   total: string;
+  nombreEmpleado: string;
 }

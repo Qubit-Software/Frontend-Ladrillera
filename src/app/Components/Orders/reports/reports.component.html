@@ -18,6 +18,7 @@
             <th class="titles" id="tbHeadLeft">Codigo Pedido</th>
             <th class="titles separator">Status</th>
             <th class="titles separator">Total</th>
+            <th class="titles separator">Vendedor Asociado</th>
             <!-- <th class="titles separator" id="tbHeadRight">
               <img src="../../../../assets/Iconos/notebook.png" height="30px" alt="">
             </th> -->
@@ -33,6 +34,9 @@
             </td>
             <td class="text">
               {{pedido.total|currency}}
+            </td>
+            <td class="text">
+              {{pedido.nombreEmpleado}}
             </td>
           </tr>
         </tbody>
