@@ -27,11 +27,12 @@ export class WebSocketService {
       broadcaster: "pusher",
       key: "pusher_app_key",
       cluster: "mt1",
-      wsHost: '3.239.114.33',
-      forceTLS: false,
-      encrypted: false,
+      wsHost: 'api.intranet-ladrillera21.com',
+      encrypted: true,
       disableStats: true,
-      wsPort: 6001
+      wssPort: 443,
+      enabledTransports: ['ws', 'wss'], 
+      wsPort: 443
     });
     window['echo'] = this.echo;
     this.listen();
