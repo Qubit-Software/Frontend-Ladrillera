@@ -31,7 +31,7 @@ export class WebSocketService {
       encrypted: true,
       disableStats: true,
       wssPort: 443,
-      enabledTransports: ['ws', 'wss'], 
+      enabledTransports: ['ws', 'wss'],
       wsPort: 443
     });
     window['echo'] = this.echo;
@@ -40,15 +40,19 @@ export class WebSocketService {
   listen() {
     this.echo.channel('notificaciones')
       .listen('EventoNotificacionGeneral', async (data) => {
-        this.notificationData.unshift(data);
-
-        let audio = new Audio();
-        audio.src = "../../../assets/Sonidos/1.mp3";
-        audio.load();
-        audio.play();
-        this.notificationAmount$.emit();
+        let rol = localStorage.getItem('rol');
+        console.log(data);
+        if (data['alcance'] == rol || data['alcance'] == 'Todos') {
+          this.notificationData.unshift(data);
+          let audio = new Audio();
+          audio.src = "../../../assets/Sonidos/1.mp3";
+          audio.load();
+          audio.play();
+          this.notificationAmount$.emit();
+        }
       })
 
   }
-  constructor() { }
+  constructor() {
+  }
 }

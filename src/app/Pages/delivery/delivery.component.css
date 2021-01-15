@@ -123,6 +123,13 @@ a {
     .container-fluid {
         margin-top: 1rem;
     }
+    #leftMenu {
+      display: none;
+    }
+    #col10Table{
+      flex: 0 0 100% !important;
+      max-width: 100% !important;
+    }
 }
 
 @media (max-width: 320px) {

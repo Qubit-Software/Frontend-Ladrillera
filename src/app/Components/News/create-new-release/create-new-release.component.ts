@@ -60,7 +60,7 @@ export class CreateNewReleaseComponent implements OnInit {
       Swal.showLoading();
       // name, lastname, cedula, gender, bornDate, rol,correo,contrasena, fileToUp: File
       this.admin.createComunicado(this.form.get('title').value, this.form.get('paragraph').value, fecha).subscribe(resp => {
-        this.notificacionesService.sendNotification('Nueva actualizacion', 'Hay una nueva actualizacion, mirala ahora', '/home', 'Alto', 10).subscribe(res => {
+        this.notificacionesService.sendNotification('Nueva actualizacion', 'Hay una nueva actualizacion, mirala ahora', '/home', 'Todos', 10).subscribe(res => {
           Swal.close();
           console.log(resp);
           Swal.fire('Comicado realizado',

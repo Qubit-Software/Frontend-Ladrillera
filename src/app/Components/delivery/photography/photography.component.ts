@@ -64,7 +64,7 @@ export class PhotographyComponent implements OnInit {
 
   constructor(private CreateOrderService: CreateOrderService, private route: ActivatedRoute, private clientServ: ClientService, private router: Router, private sendPicturesServ: CreateOrderService) {
     this.idOrder = parseInt(this.route.snapshot.paramMap.get("id").slice(0, 99));
-    this.value = "http://ladrillera21.s3-website-us-east-1.amazonaws.com/lodge/charge/" + this.idOrder;
+    this.value = "https://intranet-ladrillera21.com/lodge/charge/" + this.idOrder;
     this.getActualDate();
   }
 

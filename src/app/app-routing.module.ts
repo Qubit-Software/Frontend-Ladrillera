@@ -91,7 +91,8 @@ const routes: Routes = [
     path: 'delivery', component: DeliveryComponent, canActivate: [AuthGuard], children: [
       { path: 'cronogram', component: CronogramaComponent, canActivate: [AuthGuard] },
       { path: 'search', component: SearchOrderComponent, canActivate: [AuthGuard] },
-      { path: 'photography/:id', component: PhotographyComponent }
+      { path: 'photography/:id', component: PhotographyComponent },
+      { path: 'charge/:id', component: ChargeOrderComponent }
     ]
   },
   { path: '', component: LoginComponent, canActivate: [ActiveUserGuard] },

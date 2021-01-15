@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
+import { NotificacionesService } from 'src/app/Services/notificaciones/notificaciones.service';
 
 import { CreateOrderService } from 'src/app/Services/Orders/createOrder/create-order.service';
 import Swal from 'sweetalert2';
@@ -49,7 +50,7 @@ export class CreateOrderComponent implements OnInit {
     }
   ]
 
-  constructor(private fb: FormBuilder, private CreateOrderService: CreateOrderService, private router: Router) {
+  constructor(private fb: FormBuilder, private CreateOrderService: CreateOrderService, private router: Router, private notificacionesService: NotificacionesService) {
 
   }
 
@@ -78,6 +79,9 @@ export class CreateOrderComponent implements OnInit {
         this.dataArray = [];
         this.ladId = result['pedido'].id;
         Swal.close();
+        this.notificacionesService.sendNotification('Nuevo pedido', `El pedido de codigo LAD21-${this.ladId}  ha sido creado`, '/home', 'Facturacion', 10).subscribe((res) => {
+        console.log(res);
+        });
         Swal.fire({
           title: '',
           text: "El codigo del pedido es: Lad21-" + this.ladId,

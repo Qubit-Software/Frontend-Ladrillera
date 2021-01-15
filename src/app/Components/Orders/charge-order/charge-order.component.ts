@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { product } from 'src/app/models/products.model';
 import { ClientService } from 'src/app/Services/Client/client.service';
+import { NotificacionesService } from 'src/app/Services/notificaciones/notificaciones.service';
 import { CreateOrderService } from 'src/app/Services/Orders/createOrder/create-order.service';
 import Swal from 'sweetalert2';
 
@@ -26,6 +27,8 @@ export class ChargeOrderComponent implements OnInit {
   atras = false;
   confirm = false;
   continuar = true;
+  mensajeNot: string;
+  subjectRol: string;
   public products = [
     {
       "codigo": "LAD21-MATCO",
@@ -48,10 +51,10 @@ export class ChargeOrderComponent implements OnInit {
   ];
 
   constructor(private CreateOrderService: CreateOrderService, private route: ActivatedRoute, public clientServ: ClientService,
-    private router: Router) { }
+    private router: Router, private notificacionesService: NotificacionesService) { }
 
   ngOnInit(): void {
-    
+
     this.mainConfig();
   }
   public mainConfig() {
@@ -89,7 +92,7 @@ export class ChargeOrderComponent implements OnInit {
         const produc = this.products.find(prod => prod.codigo === p.codigo_producto);
         p.nombre = produc.nombre;
       });
-     
+
     });
   }
   getConfigbtn() {
@@ -106,14 +109,20 @@ export class ChargeOrderComponent implements OnInit {
   disableBtn() {
     if ((this.rol === 'Finanzas' || this.rol === 'Administrador') && this.pedidos.status === 'Pendiente Pago') {
       this.btnDisable = true;
+      this.mensajeNot = 'pendiente de despacho'
+      this.subjectRol= 'Despacho';
       this.status = 2;
     }
     if ((this.rol === 'Facturacion' || this.rol === 'Administrador') && this.pedidos.status === 'Factura no generada') {
       this.btnDisable = true;
+      this.mensajeNot = 'pendiente de pago'
+      this.subjectRol= 'Finanzas';
       this.status = 4;
     }
     if ((this.rol === 'Porteria' || this.rol === 'Administrador') && this.pedidos.status === 'Despacho finalizado') {
       this.btnDisable = true;
+      this.mensajeNot = 'ha sido despachado'
+      this.subjectRol= 'Administrador';
       this.status = 5;
     }
   }
@@ -135,6 +144,9 @@ export class ChargeOrderComponent implements OnInit {
     });
     Swal.showLoading();
     this.CreateOrderService.changeStatus(this.pedidos.id, this.status).subscribe((result) => {
+      this.notificacionesService.sendNotification('Nuevo pedido', `El pedido de codigo LAD21-${this.pedidos.id} ${this.mensajeNot} `, '/home', `${this.subjectRol}`, 10).subscribe((res) => {
+        console.log(res);
+      });
       console.log(result);
       Swal.close();
       this.router.navigateByUrl('/home');
