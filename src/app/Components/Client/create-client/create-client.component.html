@@ -49,12 +49,12 @@
                     <option *ngFor="let answers of empleados" [ngValue]="answers.id">{{answers.nombre}} {{answers.apellido}}</option>
                   </select>
                 </div>
-                <div class="col-12 my-1">
+                <!-- <div class="col-12 my-1">
                   <label for="photoFile" class="text-center text"> Documentos adjuntos</label>
                   <input type="file" formControlName="photoFile" class="form-control titles-file titles text-wrap" multiple
                     (change)="handleFileInput($event.target.files)" [class.is-invalid]="photoFiledNoValido"
                     [class.is-valid]="photoFileValido">
-                </div>
+                </div> -->
               </div>
             </div>
             <div id="button" class=" text-center">

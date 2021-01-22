@@ -32,10 +32,10 @@ export class CreateClientComponent implements OnInit {
       text: 'Espere por favor'
     });
     Swal.showLoading();
-    this.empleadosServices.getEmployees().subscribe((res:[]) => {
+    this.empleadosServices.getEmployees().subscribe((res: []) => {
       Swal.close();
       for (let em of res) {
-        if(em['rol']==='Ventas'){
+        if (em['rol'] === 'Ventas') {
           this.empleados.push(em);
         }
       }
@@ -97,12 +97,12 @@ export class CreateClientComponent implements OnInit {
     return this.form.get("email").valid && this.form.get('email').touched;
   }
   // foto validation
-  get photoFiledNoValido() {
-    return this.form.get("photoFile").invalid && this.form.get('photoFile').touched;
-  }
-  get photoFileValido() {
-    return this.form.get("photoFile").valid && this.form.get('photoFile').touched;
-  }
+  // get photoFiledNoValido() {
+  //   return this.form.get("photoFile").invalid && this.form.get('photoFile').touched;
+  // }
+  // get photoFileValido() {
+  //   return this.form.get("photoFile").valid && this.form.get('photoFile').touched;
+  // }
 
   // phone validation
   get phoneNoValido() {
@@ -124,15 +124,15 @@ export class CreateClientComponent implements OnInit {
       city: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.minLength(4)]],
-      photoFile: ['', [Validators.required]],
+      // photoFile: ['', [Validators.required]],
     });
   }
 
-  handleFileInput(file: FileList) {
-    for (let i = 0; i < file.length; i++) {
-      this.imagesToUpload.push(file.item(i));
-    }
-  }
+  // handleFileInput(file: FileList) {
+  //   for (let i = 0; i < file.length; i++) {
+  //     this.imagesToUpload.push(file.item(i));
+  //   }
+  // }
 
   public sendDocs() {
     if (this.form.invalid) {
@@ -145,25 +145,33 @@ export class CreateClientComponent implements OnInit {
       });
       Swal.showLoading();
       this.client.createClient(this.form.get("empleado").value, this.form.get("nombres").value, this.form.get("apellidos").value, this.form.get("cedula_ciudadania").value, this.form.get("tipo").value, this.form.get("city").value, this.form.get("email").value, this.form.get("phone").value).toPromise().then(res => {
-        console.log(this.imagesToUpload);
-        var peticiones: any[] = [];
-        for (let i = 0; i < this.imagesToUpload.length; i++) {
-          var peticion = this.client.sendDocs(res['id'], this.imagesToUpload[i], this.form.get("tipo").value);
-          peticiones.push(peticion);
-        }
-        forkJoin(peticiones).subscribe(() => {
-          Swal.close();
-          Swal.fire({
-            title: 'Registro realizado',
-            icon: 'success',
-            html: 'El usuario se ha registrado',
-          })
-        }, (err) => {
-          Swal.close();
-          console.log(err);
-        });
-      }
-      );
+        Swal.close();
+        Swal.fire({
+          title: 'Registro realizado',
+          icon: 'success',
+          html: 'El usuario se ha registrado',
+        })
+      }, (err) => {
+        Swal.close();
+        console.log(err);
+      });
+      // console.log(this.imagesToUpload);
+      // var peticiones: any[] = [];
+      // for (let i = 0; i < this.imagesToUpload.length; i++) {
+      //   var peticion = this.client.sendDocs(res['id'], this.imagesToUpload[i], this.form.get("tipo").value);
+      //   peticiones.push(peticion);
+      // }
+      // forkJoin(peticiones).subscribe(() => {
+      //   Swal.close();
+      //   Swal.fire({
+      //     title: 'Registro realizado',
+      //     icon: 'success',
+      //     html: 'El usuario se ha registrado',
+      //   })
+      // }, (err) => {
+      //   Swal.close();
+      //   console.log(err);
+      // });
     }
   }
 }
