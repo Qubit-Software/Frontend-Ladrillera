@@ -185,4 +185,13 @@
     float: center;
     margin-left: 10%;
   }
+  .fixed-bottom{
+    position: relative;
+    overflow: auto;
+  }
+  .offset-2{
+    margin-left: 0px;
+    flex: 0 0 200%;
+    max-width: 200%;
+  }
 }

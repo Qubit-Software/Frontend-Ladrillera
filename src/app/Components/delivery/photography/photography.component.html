@@ -77,29 +77,30 @@
     </div>
   </div>
 
-  <div id="cupload">
-    <div id="upload" class="file-field">
-      <div id="ari"></div>
+  <div class="containerActions">
+    <div id="cupload">
+      <div id="upload" class="file-field">
+        <div id="ari"></div>
 
-      <div id="aba" class="flex-container">
-        <span>📷</span>
-        <input type="file" placeholder="subir foto" style="color: transparent" (change)="fileUpload($event,$event.target.files)" multiple
-          class="form-control mb-2">
-
+        <div id="aba" class="flex-container">
+          <span>📷</span>
+          <input type="file" placeholder="subir foto" style="color: transparent"
+            (change)="fileUpload($event,$event.target.files)" multiple class="form-control mb-2">
+        </div>
+      </div>
+    </div>
+    <div id="buttons" class="row ">
+      <div class="col text-center">
+        <button type="button" [ngClass]="{btnDisable: atras === false } " class="btn btn-danger text"
+          (click)="Atras()">Atras</button>
+        <!-- Button trigger modal -->
+        <button type="button" [ngClass]="{btnDisable: confirm === false } " class="btn btn-danger text"
+          (click)="sendPics()">Confirmar</button>
+        <button class="btn text" [ngClass]="{btnDisable: continuar === false } " (click)="verificar()"
+          [disabled]="!continueEnable">Continuar </button>
       </div>
     </div>
   </div>
-  <div id="buttons" class="row ">
-    <div class="col text-center">
-      <button type="button" [ngClass]="{btnDisable: atras === false } " class="btn btn-danger text"
-        (click)="Atras()">Atras</button>
-      <!-- Button trigger modal -->
-      <button type="button" [ngClass]="{btnDisable: confirm === false } " class="btn btn-danger text" (click)="sendPics()">Confirmar</button>
-      <button class="btn text" [ngClass]="{btnDisable: continuar === false } " (click)="verificar()"
-        [disabled]="!continueEnable">Continuar </button>
-    </div>
-  </div>
-
   <div id="cont">
   </div>
 </div>
@@ -107,7 +108,8 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog ">
     <div class="modal-content">
       <div class="modal-body">
@@ -119,12 +121,10 @@
               </div>
               <span>FECHA: <span style="font-weight: bold;">{{today}}</span></span>
               <p>HORA DE IMPRESIÓN: <span style="font-weight: bold;">{{hour}}</span> </p>
-              <p>CÓDIGO DEL PEDIDO: <span
-                  style="font-weight: bold;">Lad21-{{idOrder}}</span> </p>
+              <p>CÓDIGO DEL PEDIDO: <span style="font-weight: bold;">Lad21-{{idOrder}}</span> </p>
               <p style="margin-bottom: 40px;">NOMBRE DEL CONDUCTOR:</p>
               <hr style="border-top: 1px solid rgb(0 0 0);">
-              <table class="table"
-                style="text-align: center; border: 2px solid black; border-collapse: initial;">
+              <table class="table" style="text-align: center; border: 2px solid black; border-collapse: initial;">
                 <tr>
                   <th scope="col" class="w-50" style="border-right: 2px solid black;">NO</th>
                   <th scope="col" class="w-50">REALIZADO</th>
