@@ -115,4 +115,9 @@ export class CreateOrderService {
     };
     return this.http.delete(`${environment.apiUrl}/ventas/pedidos/${orderId}`, opts);
   }
+
+  public getSeguimiento(orderId){
+
+    return this.http.get(`${environment.apiUrl}/public/ventas/pedidos/${orderId}`);
+  }
 }

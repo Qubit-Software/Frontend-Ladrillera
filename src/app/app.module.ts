@@ -5,6 +5,7 @@ import { HttpClientModule } from "@angular/common/http";
 
 import { TooltipModule } from 'ng2-tooltip-directive';
 
+import { StepProgressBarModule } from 'projects/step-progress-bar/src/lib/step-progress-bar.module';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './Pages/home/home.component';
 import { LoginComponent } from './Pages/login/login.component';
@@ -45,6 +46,7 @@ import { CronogramAccountingComponent } from './Components/accounting/cronogram-
 import { AllEmployeesComponent } from './Components/Employee/all-employees/all-employees.component';
 import { ModifyNewsComponent } from './Components/News/modify-news/modify-news.component';
 import { DeleteOrderComponent } from './Components/Orders/delete-order/delete-order.component';
+import { SeguimientoComponent } from './Pages/seguimiento/seguimiento.component';
 
 
 @NgModule({
@@ -78,7 +80,8 @@ import { DeleteOrderComponent } from './Components/Orders/delete-order/delete-or
     CronogramAccountingComponent,
     AllEmployeesComponent,
     ModifyNewsComponent,
-    DeleteOrderComponent
+    DeleteOrderComponent,
+    SeguimientoComponent
   ],
   imports: [
     BrowserModule,
@@ -88,7 +91,8 @@ import { DeleteOrderComponent } from './Components/Orders/delete-order/delete-or
     ReactiveFormsModule,
     TooltipModule,
     FullCalendarModule,
-    NgxQRCodeModule
+    NgxQRCodeModule,
+    StepProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

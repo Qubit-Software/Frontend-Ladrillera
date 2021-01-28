@@ -1,0 +1,15 @@
+{
+  "name": "step-progress-bar",
+  "description": "Simple step progress bar for angular 6+",
+  "homepage": "https://github.com/erivanbarbosa/lib-step-progress-bar",
+  "bugs": "https://github.com/erivanbarbosa/lib-step-progress-bar/issues",
+  "repository": "erivanbarbosa/lib-step-progress-bar",
+  "version": "1.0.2",
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/common": "^8.2.14",
+    "@angular/core": "^8.2.14",
+    "font-awesome": "^4.7.0"
+
+  }
+}

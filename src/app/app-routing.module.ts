@@ -29,10 +29,12 @@ import { AllEmployeesComponent } from './Components/Employee/all-employees/all-e
 import { CronogramAccountingComponent } from './Components/accounting/cronogram-accounting/cronogram-accounting.component';
 import { ModifyNewsComponent } from './Components/News/modify-news/modify-news.component';
 import { DeleteOrderComponent } from './Components/Orders/delete-order/delete-order.component';
+import { SeguimientoComponent } from './Pages/seguimiento/seguimiento.component';
 
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'seguimiento/:id', component: SeguimientoComponent},
   {
     path: 'admin', component: CreateEmployeesComponent, canActivate: [AuthGuard], children: [
       { path: 'cronogram', component: CronogramAccountingComponent, canActivate: [AuthGuard] },

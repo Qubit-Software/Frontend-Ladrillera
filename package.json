@@ -37,6 +37,7 @@
     "pusher-js": "^7.0.1",
     "rxjs": "~6.5.4",
     "save": "^2.4.0",
+    "step-progress-bar": "^1.0.2",
     "sweetalert2": "^9.15.2",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

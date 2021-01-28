@@ -1,0 +1,8 @@
+<div class="containers" [ngStyle]="{'width': width + '%'}" [class.item-success]="item.status=='success'"
+  [class.item-fail]="item.status=='fail'" [class.first-item]="item.isFirst">
+  <div class="step-item">
+    <p>{{item.value}}</p>
+  </div>
+
+  <div class="item-line"></div>
+</div>

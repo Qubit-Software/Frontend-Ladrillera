@@ -20,6 +20,7 @@ export class NavBarComponent implements OnInit {
   constructor(private auth: AuthService, public router: Router, public webSocket: WebSocketService) { }
 
   ngOnInit() {
+    // console.log(str1.startsWith('Sat'));
     if(localStorage.getItem('foto')=='null'){
       this.fotoUrl='../../../assets/Iconos/people.svg';
     }else{
